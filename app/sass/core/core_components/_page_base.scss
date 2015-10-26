@@ -1,0 +1,102 @@
+
+/* ===========================================
+ * Specific rules page's base
+ * =========================================== */
+
+/* Define basic page's ruleset
+ * ==================================== */
+
+/**
+* apply a natural box layout model to all elements |
+* http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+* ONLY for IE8 and up browser support
+* OLD WAY
+*
+*,*:after,*:before {
+   @include box-sizing(border-box);
+}
+*/
+
+/*
+* Credits to csstricks.com and jon Neal
+* http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/?utm_source=dlvr.it&utm_medium=twitter
+*/
+
+html {
+   box-sizing: border-box;
+}
+
+*, *:before, *:after {
+   box-sizing: inherit;
+}
+
+
+* {
+   margin: 0;
+   padding: 0;
+}
+
+/*
+*  Thanks Inuits.css Framework
+*  1. Make sure all viewport height is filled
+*  2. Make sure Fonts rendering is consistent on OSX when sub-pixel anti-aliasing is not supported.
+*/
+
+html {
+
+   font-size: rem($base-font-size);
+   line-height: (parseInt($base-line-height) / parseInt($base-font-size));
+   overflow-y: scroll;
+   min-height: 100%; // 1.
+   -moz-osx-font-smoothing: grayscale; // 2.
+    -webkit-font-smoothing: antialiased; // 2.
+}
+
+a {
+   text-decoration: none;
+}
+
+/* This has been removed since it's bad for accessibility: http://outlinenone.fr/
+a,
+a:focus,
+a:active,
+button,
+button:active {
+   outline: none;
+}
+*/
+
+a:focus {
+   -moz-outline-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   font-weight: normal;
+}
+
+/** Credits to Twitter's bootstrap **/
+// Reset fonts for relevant elements
+input,
+button,
+select,
+textarea {
+ font-family: inherit;
+ font-size: inherit;
+ line-height: inherit;
+}
+
+
+/** Main wrapper rules here **/
+
+body {
+}
+
+.content {
+   max-width: $max-screen-width;
+   margin: 0 auto;
+}

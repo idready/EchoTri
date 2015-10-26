@@ -1,0 +1,58 @@
+
+/* ===========================================
+ * Inputs types
+ * =========================================== */
+
+/* Some inputs variables
+ * source:
+ * [1] foundation.zurb.com
+ * [2] Twitter bootstrap
+ * ==================================== */
+
+$input-background-disabled: smartscale($input-background) !default;
+
+// Override the content-box declaration set by Normalize
+input[type="search"] {
+  box-sizing: border-box;
+}
+
+// Disabled state
+input {
+  &.disabled,
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    cursor: $input-cursor-disabled;
+
+    &, &:hover {
+      background-color: $input-background-disabled;
+    }
+  }
+}
+
+// Override content-box in Normalize (* isn't specific enough) [2]
+// Removed all mixins' prefixes since autoprefixer is highly recommanded
+input[type="search"] {
+  box-sizing: border-box;
+}
+
+// Make range inputs behave like textual form controls [2]
+input[type="range"] {
+  display: block;
+  width: 100%;
+}
+
+// Position radios and checkboxes better [2]
+input[type="radio"],
+input[type="checkbox"] {
+  margin: rem(4px) 0 0;
+  margin-top: 1px \9; // IE8-9
+  line-height: normal;
+}
+
+// Focus for file, radio, and checkbox
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  @include tab-focus;
+}

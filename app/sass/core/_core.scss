@@ -1,0 +1,39 @@
+
+/* ===========================================
+ * Framework's core components
+ * =========================================== */
+
+// Make sure the charset is set appropriately
+@charset "UTF-8";
+
+/* Normalize all elements
+ * ==================================== */
+ @import 'vendor/normalize';
+
+/* Variables
+ * ==================================== */
+ @import 'core_components/variables';
+
+/* Mixins
+ * ==================================== */
+ @import 'core_components/mixins';
+
+/* Helpers
+ * ==================================== */
+ @import 'core_components/helpers';
+
+/* Grid
+ * ==================================== */
+ @import 'core_components/grids';
+
+ /* Typography
+  * ==================================== */
+  @import 'core_components/typography';
+
+ /* Page base
+ * ==================================== */
+ @import 'core_components/page_base';
+
+ /* Print
+ * ==================================== */
+ @import 'core_components/print';

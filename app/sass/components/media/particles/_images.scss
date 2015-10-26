@@ -1,0 +1,30 @@
+
+
+/* ===========================================
+ * Basic rules for image
+ * =========================================== */
+
+/*
+ * [1] foundation.zurb.com
+ * [2] Twitter bootstrap
+ * [3] Inuit css framework
+ * ==================================== */
+
+/*
+ * Credits to inuit.css framework https://github.com/inuitcss/base.images/blob/master/_base.images.scss
+ * 1. Avoid Google map breakdown when setting max-width to 100% n images
+ * 2. If specified do not put restriction if there is inline css (Note: Can still be remove if necessary)
+ * ==================================== */
+
+.gm-style img, // 1
+img[width],    // 2
+img[height]{  // 2
+    max-width: none;
+}
+
+// [3]
+img {
+    max-width: 100%;
+    font-style: italic;
+    vertical-align: middle;
+}

@@ -1,0 +1,43 @@
+
+/* ===========================================
+ * Helper classes
+ * =========================================== */
+
+/* Clearfix reset for Third party apps
+ * ==================================== */
+
+@mixin reset-box-sizing() { // For Third party if the proper method fails (see grid/page_base.scss)
+
+  &,
+  *,
+  *:before,
+  *:after {
+    box-sizing: 'content-box';
+  }
+
+}
+
+
+/* Vertically center element
+ * ==================================== */
+
+/*
+ * IE9+
+ *
+ * usage : @extend %vertical-align;
+ * This is used to avoid css rendering of the ruleset on css when extending;
+ * Source: http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
+ *
+ */
+
+/* Note: Add these properties on the parent element to avoid blurry effect */
+@mixin parent-element-vertical-align() {
+
+  transform-style: preserve-3d;
+}
+
+@mixin vertical-align() {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}

@@ -1,0 +1,11 @@
+
+
+// WebKit-style focus
+
+@mixin tab-focus() {
+  // Default
+  outline: thin dotted;
+  // WebKit
+  outline: rem(5px) auto -webkit-focus-ring-color;
+  outline-offset: rem(-2px);
+}
