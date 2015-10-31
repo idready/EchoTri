@@ -16,3 +16,8 @@
     clear: both;
   }
 }
+
+.clearfix {
+
+    @include clearfix();
+}

@@ -5,3 +5,44 @@
 
 /* Specific rule section
  * ==================================== */
+
+
+.footer {
+
+    background: $secondary-color;
+    min-height: 60px;
+    text-align: center;
+
+
+
+    .footer-links__item {
+
+        color: $white;
+        border-right: 1px solid $white;
+        display: inline-block;
+        padding: 0 20px;
+
+        &:first-child {
+
+        }
+        &:last-child {
+
+            border-right: none;
+            padding-right: 0;
+        }
+
+        a {
+            color: $white;
+            text-decoration: none;
+            transition: color $animation-duration;
+
+            &:hover {
+
+                color: $primary-color;
+                text-decoration: none;
+            }
+        }
+
+    }
+
+}

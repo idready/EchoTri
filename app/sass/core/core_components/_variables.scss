@@ -38,7 +38,7 @@ $grid-gutter: 20px !default;
 $grid-one-col: (100 / $grid-columns) * 1% !default;
 $grid-row-min-height: 1px !default;
 
-$max-screen-width: rem(1400px) !default;
+$max-screen-width: 1400px !default;
 
 $bp-screen-size: (
 
@@ -75,7 +75,7 @@ $open-sans-regular: 'Open-Sans-Regular';
 /* Animations
  * ==================================== */
 
-$animation-duration: .3s !default;
+$animation-duration: 0.3s !default;
 $animation-delay: 0s !default;
 $animation-function: ease !default;
 $animation-fill: both !default;
