@@ -5,3 +5,99 @@
 
 /* Specific rule for a page
  * ==================================== */
+
+.info-section {
+
+    @include clearfix();
+    color: $white;
+    padding: 35px 20px 70px;
+    text-align: center;
+
+    .title {
+
+        display: inline-block;
+        font-size: 36px;
+        margin-bottom: 30px;
+        position: relative;
+
+        &::after {
+
+            background: $white;
+            bottom: 0;
+            content: '';
+            height: 5px;
+            position: absolute;
+            right: 0;
+            width: 60px;
+        }
+    }
+
+    .icon-elt {
+
+        .icon {
+
+            max-height: 150px;
+            max-width: 250px;
+        }
+    }
+
+    .info-section__item {
+
+        margin-bottom: 30px;
+
+        // Section item label
+        .info-section__item-label {
+
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    }
+
+
+    &.activity {
+
+        background: $primary-color;
+    }
+    &.contact {
+        background: $secondary-color;
+    }
+
+    // Responsiveness spices
+    @include mq('sm') {
+
+        .icon-elt {
+
+            .icon {
+
+                max-height: 90px;
+                max-width: 200px;
+            }
+        }
+
+        .info-section__item {
+
+            min-height: 190px; // @TODO: Remove once flexbox is in use
+        }
+    }
+
+    @include mq('md') {
+
+        .title {
+
+            margin-bottom: 50px;
+        }
+
+        .info-section__item {
+
+            // min-height: 190px; // @TODO: Remove once flexbox is in use
+            margin-bottom: 40px;
+
+            .info-section__item-label {
+
+                font-size: 18px;
+                margin-top: 20px;
+            }
+        }
+
+    }
+}

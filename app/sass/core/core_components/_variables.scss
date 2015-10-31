@@ -23,6 +23,8 @@ $success-color: #43AC6A !default;
 $warning-color: #F08A24 !default;
 $dark-color: #232323 !default;
 $gray: #dfdfdf !default;
+$black: #000000 !default;
+$white: #ffffff !default;
 $gray-dark: darken($gray, 8) !default;
 $gray-light: lighten($gray, 8) !default;
 
@@ -30,7 +32,7 @@ $gray-light: lighten($gray, 8) !default;
 /* Grids
  * ==================================== */
 
-$grid-class-name: 'col' !default;
+$grid-class-name: 'span' !default;
 $grid-columns: 12 !default;
 $grid-gutter: 20px !default;
 $grid-one-col: (100 / $grid-columns) * 1% !default;
@@ -40,6 +42,7 @@ $max-screen-width: rem(1400px) !default;
 
 $bp-screen-size: (
 
+    bp-xss-screen: 'xss',
 	bp-xs-screen: 'xs',
 	bp-sm-screen: 'sm',
 	bp-md-screen: 'md',
@@ -47,6 +50,7 @@ $bp-screen-size: (
 );
 
 // default Breakpoints, but remember that you are advised to add more when content breaks
+$bp-xxs-screen: 320px !default;
 $bp-xs-screen: 480px !default;
 $bp-sm-screen: 768px !default;
 $bp-md-screen: 992px !default;

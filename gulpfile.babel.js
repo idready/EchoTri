@@ -7,30 +7,46 @@ import {stream as wiredep} from 'wiredep';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
+var path = require('path');
+
+var pxtoremOptions = {
+    root_value: 16,
+    unit_precision: 5,
+    prop_white_list: [], // default ['font', 'font-size', 'line-height', 'letter-spacing']
+    selector_black_list: ['border'],
+    replace: true,
+    media_query: true // default false
+};
+
+var postcssOptions = {
+    map: false
+};
+
 
 gulp.task('styles', () => {
-  return gulp.src('app/sass/*.scss')
-    .pipe($.plumber())
-    .pipe($.sourcemaps.init())
-    .pipe($.sass.sync({
-      outputStyle: 'expanded',
-      precision: 10,
-      includePaths: ['.']
+    return gulp.src('app/sass/*.scss')
+        .pipe($.plumber())
+        .pipe($.sourcemaps.init())
+        .pipe($.sass.sync({
+            outputStyle: 'expanded',
+            precision: 10,
+            includePaths: ['.']
     }).on('error', $.sass.logError))
-    .pipe($.autoprefixer({browsers: ['last 1 version']}))
-    .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('app/styles'))
-    .pipe(reload({stream: true}));
+        .pipe($.autoprefixer({browsers: ['last 1 version']}))
+        .pipe($.sourcemaps.write())
+        .pipe($.pxtorem(pxtoremOptions, postcssOptions))
+        .pipe(gulp.dest('app/styles'))
+        .pipe(reload({stream: true}));
 });
 
 function lint(files, options) {
-  return () => {
-    return gulp.src(files)
-      .pipe(reload({stream: true, once: true}))
-      .pipe($.eslint(options))
-      .pipe($.eslint.format())
-      .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
-  };
+    return () => {
+        return gulp.src(files)
+          .pipe(reload({stream: true, once: true}))
+          .pipe($.eslint(options))
+          .pipe($.eslint.format())
+          .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
+    };
 }
 const testLintOptions = {
   env: {
@@ -70,6 +86,33 @@ gulp.task('images', () => {
     .pipe(gulp.dest('dist/images'));
 });
 
+gulp.task('svgstore', () => {
+
+  return gulp.src('app/images/svg-src/{,*//*}*.svg')
+    .pipe($.rename({prefix: 'shapes-'}))
+    .pipe($.svgmin(function (file) {
+
+        var prefix = path.basename(file.relative, path.extname(file.relative));
+        console.log(file);
+        return {
+            plugins: [{
+              removeViewBox: false,
+              removeUselessStrokeAndFill: false,
+              cleanupIDs: {
+                prefix: prefix + '-',
+                minify: true
+              },
+              removeDoctype: true
+            }]
+        }
+    }))
+    .pipe($.svgstore({
+        inlineSvg: false
+    }))
+    .pipe($.rename('svg-defs.svg'))
+    .pipe(gulp.dest('app/images/svg/'));
+});
+
 gulp.task('fonts', () => {
   return gulp.src(require('main-bower-files')({
     filter: '**/*.{eot,svg,ttf,woff,woff2}'
@@ -90,27 +133,28 @@ gulp.task('extras', () => {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 gulp.task('serve', ['styles', 'fonts'], () => {
-  browserSync({
+    browserSync({
     notify: false,
     port: 9000,
     server: {
-      baseDir: ['.tmp', 'app'],
-      routes: {
-        '/bower_components': 'bower_components'
-      }
+        baseDir: ['.tmp', 'app'],
+        routes: {
+          '/bower_components': 'bower_components'
+        }
     }
-  });
+    });
 
-  gulp.watch([
-    'app/*.html',
-    'app/scripts/**/*.js',
-    'app/images/**/*',
-    '.tmp/fonts/**/*'
-  ]).on('change', reload);
+    gulp.watch([
+        'app/*.html',
+        'app/scripts/**/*.js',
+        'app/images/**/*',
+        '.tmp/fonts/**/*'
+    ]).on('change', reload);
 
-  gulp.watch('app/sass/**/*.scss', ['styles']);
-  gulp.watch('app/fonts/**/*', ['fonts']);
-  gulp.watch('bower.json', ['wiredep', 'fonts']);
+    gulp.watch('app/sass/**/*.scss', ['styles']);
+    gulp.watch('app/images/svg-src/{,*/}*.svg', ['svgstore']);
+    gulp.watch('app/fonts/**/*', ['fonts']);
+    gulp.watch('bower.json', ['wiredep', 'fonts']);
 });
 
 gulp.task('serve:dist', () => {

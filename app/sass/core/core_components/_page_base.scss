@@ -45,7 +45,7 @@ html {
 html {
 
    font-size: rem($base-font-size);
-   line-height: (parseInt($base-line-height) / parseInt($base-font-size));
+   line-height: $base-line-height;
    overflow-y: scroll;
    min-height: 100%; // 1.
    -moz-osx-font-smoothing: grayscale; // 2.
@@ -94,6 +94,8 @@ textarea {
 /** Main wrapper rules here **/
 
 body {
+
+   color: $white;
 }
 
 .content {
