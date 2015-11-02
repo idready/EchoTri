@@ -16,20 +16,10 @@
     .title {
 
         display: inline-block;
-        font-size: 36px;
+        font-size: 24px;
         margin-bottom: 30px;
         position: relative;
-
-        &::after {
-
-            background: $white;
-            bottom: 0;
-            content: '';
-            height: 5px;
-            position: absolute;
-            right: 0;
-            width: 60px;
-        }
+        transition: font-size $animation-duration;
     }
 
     .icon-elt {
@@ -75,8 +65,10 @@
 
             .icon {
 
+                height: 90px;
                 transition: transform $animation-duration;
                 transform: scale(1);
+                width: 100px;
             }
         }
 
@@ -86,7 +78,7 @@
             .info-section__item-label {
 
                 display: inline-block;
-                max-width: 60%;
+                max-width: 40%;
             }
 
             &:hover {
@@ -145,7 +137,6 @@
                 transition: opacity $animation-duration, transform $animation-duration;
                 transform: scale(1.4);
                 width: 100%;
-                // z-index: -1;
             }
         }
 
@@ -168,11 +159,10 @@
 
                 .icon-elt {
 
-                    // Make sure icon is still visible
                     .icon {
 
                         top: 55%;
-                        z-index: 2;
+                        z-index: 2; // Make sure icon is still visible on top of pseudo-element
                     }
 
                     &::after {
@@ -183,12 +173,52 @@
                 }
 
             }
+
         }
 
     }
 
     // Responsiveness spices
+
+    @include mq('xxs') {
+
+        .title {
+
+            font-size: 32px;
+        }
+    }
+
     @include mq('xs') {
+
+        .title {
+
+            font-size: 36px;
+
+            // Border-line on title
+            &::after {
+
+                background: $white;
+                bottom: 0;
+                content: '';
+                height: 5px;
+                position: absolute;
+                right: 0;
+                width: 60px;
+            }
+        }
+
+        &.activity {
+
+            .icon-elt {
+
+                .icon {
+
+                    height: 80px;
+                    width: 100px;
+                }
+            }
+
+        }
 
         &.contact {
 
@@ -216,8 +246,26 @@
         .info-section__item {
 
             min-height: 190px; // @TODO: Remove once flexbox is in use
+
+            // Section item label
+            .info-section__item-label {
+
+                font-size: 16px;
+            }
         }
 
+        &.activity {
+
+            .info-section__item {
+
+
+                .info-section__item-label {
+
+                    max-width: 70%;
+                }
+            }
+
+        }
         &.contact {
 
             .content {
@@ -252,11 +300,21 @@
 
             .info-section__item-label {
 
-                font-size: 18px;
                 margin-top: 20px;
             }
-        }
 
+            &.activity {
+
+                .info-section__item-label {
+
+                    .info-section__item-label {
+
+                        max-width: 60%;
+                    }
+                }
+            }
+
+        }
 
     }
 

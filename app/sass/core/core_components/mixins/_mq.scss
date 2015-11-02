@@ -7,6 +7,12 @@
  * ==================================== */
 
 @mixin mq($breakpoint) {
+
+  @if $breakpoint == "xxs" {
+    @media screen and ( min-width: $bp-xxs-screen ) {
+      @content;
+    }
+  }
   @if $breakpoint == "xs" {
     @media screen and ( min-width: $bp-xs-screen ) {
       @content;
