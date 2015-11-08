@@ -10,3 +10,5 @@ test/bower_components
 
 app/scripts/components
 wapp/styles/*.css
+
+scssReport.*

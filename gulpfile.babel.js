@@ -25,13 +25,19 @@ var postcssOptions = {
 
 gulp.task('styles', () => {
     return gulp.src('app/sass/*.scss')
+        // .pipe($.scsslint({
+        //     'reporterOutputFormat': 'Checkstyle',
+        //     'filePipeOutput': 'scssReport.xml',
+        //     'endless': true, // Allow the test even after each watch task
+        //     'verbose': true
+        // }))
         .pipe($.plumber())
         .pipe($.sourcemaps.init())
         .pipe($.sass.sync({
             outputStyle: 'expanded',
             precision: 10,
             includePaths: ['.']
-    }).on('error', $.sass.logError))
+        }).on('error', $.sass.logError))
         .pipe($.autoprefixer({browsers: ['last 1 version']}))
         .pipe($.sourcemaps.write())
         .pipe($.pxtorem(pxtoremOptions, postcssOptions))
@@ -151,6 +157,7 @@ gulp.task('serve', ['styles', 'fonts'], () => {
         '.tmp/fonts/**/*'
     ]).on('change', reload);
 
+    // gulp.watch('app/scripts/**/*.js', ['lint']);
     gulp.watch('app/sass/**/*.scss', ['styles']);
     gulp.watch('app/images/svg-src/{,*/}*.svg', ['svgstore']);
     gulp.watch('app/fonts/**/*', ['fonts']);

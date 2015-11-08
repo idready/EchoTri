@@ -1,0 +1,203 @@
+
+/* ===========================================
+ * Full page modal
+ * =========================================== */
+
+/* From Cody House: https://codyhouse.co/gem/svg-modal-window/
+ * Edited some code to fit my framework
+ * ==================================== */
+
+
+// Dynamically added class to remove double scroll
+.no-overflow {
+
+    overflow: hidden;
+}
+
+/* --------------------------------
+
+Main Content
+
+-------------------------------- */
+
+.cd-main-content {
+
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: table;
+
+    .center {
+
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    h1 {
+
+        font-size: 2.2rem;
+        line-height: 1;
+        margin-bottom: 1em;
+    }
+
+    @include mq('sm') {
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 300;
+        }
+    }
+}
+
+/* --------------------------------
+
+Modal Window
+
+-------------------------------- */
+
+.cd-modal {
+
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    visibility: hidden;
+    transition: visibility 0s $modal-animation-duration;
+
+    svg {
+
+        left: 0;
+        right: 0;
+        position: absolute;
+    }
+
+    svg > path {
+        fill: lighten($primary-color, 5%%);
+    }
+
+    .modal-close {
+
+        top: 20px;
+        right: 5%;
+
+
+        /* image replacement */
+        // overflow: hidden;
+        position: absolute;
+
+        /* Force hardware acceleration*/
+        transform: translateZ(0);
+        backface-visibility: hidden;
+
+        visibility: hidden;
+        opacity: 0;
+        transform: scale(0);
+        transition: transform .3s 0s, visibility 0s .3s, opacity .3s 0s;
+        z-index: 1;
+
+        .no-touch &:hover {
+            // background-color: rgba($black, 0.5);
+        }
+
+        .icon-elt {
+
+            /* 'X' icon */
+            color: $white;
+
+            .icon {
+
+                height: 40px;
+                left: auto;
+                position: absolute;
+                top: 0;
+                right: 5%;
+                width: 40px;
+            }
+
+        }
+    }
+
+    &.modal-is-visible {
+
+        visibility: visible;
+        transition: visibility 0s 0s;
+
+        .modal-close {
+
+            visibility: visible;
+            opacity: 1;
+            transition: transform .3s 0s, visibility 0s 0s, opacity .3s 0s;
+            transform: scale(1);
+        }
+    }
+}
+
+.cd-modal-content {
+
+    position: relative;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 3em 5% 4em;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity $modal-animation-duration/2 0s, transform $modal-animation-duration/2 0s;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    p {
+        color: $white;
+        line-height: 1.6;
+        margin: 2em 0;
+    }
+
+    .modal-is-visible & {
+
+        opacity: 1;
+        transform: translateY(0);
+        -webkit-overflow-scrolling: touch;
+        transition: opacity $modal-animation-duration/2 $modal-animation-duration/2, transform $modal-animation-duration/2 $modal-animation-duration/2;
+    }
+
+    @include mq('sm') {
+
+        padding: 3em 10% 4em;
+
+        p {
+            font-size: 2.4rem;
+        }
+    }
+}
+
+/* --------------------------------
+
+ Cover Layer - hide main content when modal is fired
+
+-------------------------------- */
+.cd-cover-layer {
+
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: lighten($primary-color, 35%);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity $modal-animation-duration/2 $modal-animation-duration/2, visibility 0s $modal-animation-duration;
+
+    &.modal-is-visible {
+
+        opacity: 1;
+        visibility: visible;
+        transition: opacity $modal-animation-duration/2 0s, visibility 0s 0s;
+    }
+
+    &.page-type {
+
+        background: $primary-color;
+    }
+}

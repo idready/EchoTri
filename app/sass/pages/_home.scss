@@ -6,6 +6,8 @@
 /* Specific rule for a page
  * ==================================== */
 
+@import 'regions/modal/modal';
+
 .info-section {
 
     @include clearfix();
