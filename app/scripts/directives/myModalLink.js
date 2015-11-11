@@ -1,7 +1,8 @@
 
 'use strict';
 
-myApp.directive('myModalLink', function() {
+// @TODO: Replace all jQuery instance with vanilla or angular (jQLite)
+myApp.directive('myModalLink', function($document) {
 
     return {
 
@@ -10,8 +11,7 @@ myApp.directive('myModalLink', function() {
         // transclude: true,
         link: function(scope, element, attrs) {
 
-            var modalTriggerBts = $('a[data-type="cd-modal-trigger"]'),
-                coverLayer = $('.cd-cover-layer');
+            var coverLayer = angular.element(document.querySelector('.cd-cover-layer'));
 
             /*
                 convert a cubic bezier value to a custom mina easing
@@ -19,11 +19,16 @@ myApp.directive('myModalLink', function() {
             */
             var duration = 600,
                 epsilon = (1000 / 60 / duration) / 4,
-                firstCustomMinaAnimation = bezier(0.63,0.35,0.48,0.92, epsilon); //@TODO: change custom animation
+                firstCustomMinaAnimation = bezier(0.63,0.35,0.48,0.92, epsilon); //@TODO: change custom bezier function
 
-            modalTriggerBts.each(function(){
-                initModal($(this));
-            });
+            // console.log(element.attr('data-modal-event'));
+            var modalTriggerId =  element.attr('data-modal-event'),
+                modal = angular.element(document.querySelector('.cd-modal[data-modal="'+ modalTriggerId +'"]')),
+                svgCoverLayer = modal.children('.cd-svg-bg'),
+                paths = svgCoverLayer.find('path'),
+                pathStepsContainer = angular.element(document.querySelector('.cd-svg-bg')),
+                pathsArray = [],
+                pathSteps = [];
 
             function animateModal(paths, pathSteps, duration, animationType) {
                 var path1 = ( animationType == 'open' ) ? pathSteps[1] : pathSteps[0],
@@ -86,50 +91,56 @@ myApp.directive('myModalLink', function() {
 
             function initModal(modalTrigger) {
 
-                // console.log(element.attr('data-modal-event'));
-                var modalTriggerId =  element.attr('data-modal-event'),
-                    modal = $('.cd-modal[data-modal="'+ modalTriggerId +'"]'),
-                    svgCoverLayer = modal.children('.cd-svg-bg'),
-                    paths = svgCoverLayer.find('path'),
-                    pathsArray = [];
                 //store Snap objects
                 pathsArray[0] = Snap('#'+paths.eq(0).attr('id')),
                 pathsArray[1] = Snap('#'+paths.eq(1).attr('id')),
                 pathsArray[2] = Snap('#'+paths.eq(2).attr('id'));
 
                 //store path 'd' attribute values
-                var pathSteps = [];
-                pathSteps[0] = svgCoverLayer.data('step1');
-                pathSteps[1] = svgCoverLayer.data('step2');
-                pathSteps[2] = svgCoverLayer.data('step3');
-                pathSteps[3] = svgCoverLayer.data('step4');
-                pathSteps[4] = svgCoverLayer.data('step5');
-                pathSteps[5] = svgCoverLayer.data('step6');
+                pathSteps[0] = pathStepsContainer.attr('data-step1');
+                pathSteps[1] = pathStepsContainer.attr('data-step2');
+                pathSteps[2] = pathStepsContainer.attr('data-step3');
+                pathSteps[3] = pathStepsContainer.attr('data-step4');
+                pathSteps[4] = pathStepsContainer.attr('data-step5');
+                pathSteps[5] = pathStepsContainer.attr('data-step6');
 
-                //open modal window
-                modalTrigger.on('click', function(event){
-
-                    event.preventDefault();
-                    $('html').toggleClass('no-overflow');
-                    modal.addClass('modal-is-visible');
-                    coverLayer.addClass('modal-is-visible');
-                    animateModal(pathsArray, pathSteps, duration, 'open');
-                });
-
-                //close modal window
-                modal.on('click', '.modal-close', function(event){
-
-                    event.preventDefault();
-                    modal.removeClass('modal-is-visible');
-                    coverLayer.removeClass('modal-is-visible');
-                    animateModal(pathsArray, pathSteps, duration, 'close');
-                    $('html').toggleClass('no-overflow');
-                });
             }
 
+            initModal(element);
 
             scope.showModal = function showModal(evt){
+
+                evt.preventDefault();
+
+                angular.element(document.getElementsByTagName('html')).addClass('no-overflow');
+                modal.addClass('modal-is-visible');
+                coverLayer.addClass('modal-is-visible');
+                animateModal(pathsArray, pathSteps, duration, 'open');
+
+                //close modal window
+                modal.on('click', function(evt){
+
+                    evt.preventDefault(); // in case it's a link
+                    scope.closeModal();
+                });
             }
+
+            scope.closeModal = function (){
+
+                angular.element(document.getElementsByTagName('html')).removeClass('no-overflow');
+                modal.removeClass('modal-is-visible');
+                coverLayer.removeClass('modal-is-visible');
+                animateModal(pathsArray, pathSteps, duration, 'close');
+            }
+
+            $document.on('keyup', function(evt){
+
+                // ESC or Return
+                if(parseInt(evt.keyCode, 10) == 27 || parseInt(evt.keyCode, 10) == 8) {
+
+                    scope.closeModal();
+                }
+            });
 
             element.on('click', scope.showModal);
 

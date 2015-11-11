@@ -75,7 +75,7 @@ Modal Window
     }
 
     svg > path {
-        fill: lighten($primary-color, 5%%);
+        fill: lighten($primary-color, 5%);
     }
 
     .modal-close {
@@ -163,11 +163,8 @@ Modal Window
 
     @include mq('sm') {
 
-        padding: 3em 10% 4em;
+        padding: 4em 10% 4em;
 
-        p {
-            font-size: 2.4rem;
-        }
     }
 }
 
