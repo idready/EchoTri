@@ -193,8 +193,4 @@ Modal Window
         transition: opacity $modal-animation-duration/2 0s, visibility 0s 0s;
     }
 
-    &.page-type {
-
-        background: $primary-color;
-    }
 }

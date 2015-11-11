@@ -2,16 +2,21 @@
 'use strict';
 
 // @TODO: Replace all jQuery instance with vanilla or angular (jQLite)
-myApp.directive('myModalLink', function($document) {
+myApp.directive('myModalLink', function($document, $timeout) {
 
     return {
 
-        scope: {},
+        scope: {
+            pageType: '@pageType'
+        },
         reastrict: 'AE',
         // transclude: true,
         link: function(scope, element, attrs) {
 
-            var coverLayer = angular.element(document.querySelector('.cd-cover-layer'));
+
+            var coverLayer = angular.element(document.querySelector('.cd-cover-layer')),
+                pageType = (angular.isUndefined(scope.pageType)) ? false : scope.pageType;
+                scope.timeOut = null;
 
             /*
                 convert a cubic bezier value to a custom mina easing
@@ -31,12 +36,17 @@ myApp.directive('myModalLink', function($document) {
                 pathSteps = [];
 
             function animateModal(paths, pathSteps, duration, animationType) {
+
                 var path1 = ( animationType == 'open' ) ? pathSteps[1] : pathSteps[0],
                     path2 = ( animationType == 'open' ) ? pathSteps[3] : pathSteps[2],
                     path3 = ( animationType == 'open' ) ? pathSteps[5] : pathSteps[4];
                 paths[0].animate({'d': path1}, duration, firstCustomMinaAnimation);
                 paths[1].animate({'d': path2}, duration, firstCustomMinaAnimation);
                 paths[2].animate({'d': path3}, duration, firstCustomMinaAnimation);
+
+                if(animationType == 'close')
+                    scope.$emit('path-animation-completed');
+
             }
 
             function bezier(x1, y1, x2, y2, epsilon){
@@ -87,7 +97,8 @@ myApp.directive('myModalLink', function($document) {
                     return curveY(t2);
 
                 };
-            };
+
+            }
 
             function initModal(modalTrigger) {
 
@@ -105,7 +116,7 @@ myApp.directive('myModalLink', function($document) {
                 pathSteps[5] = pathStepsContainer.attr('data-step6');
 
             }
-
+            console.log(scope.pageType);
             initModal(element);
 
             scope.showModal = function showModal(evt){
@@ -116,6 +127,11 @@ myApp.directive('myModalLink', function($document) {
                 modal.addClass('modal-is-visible');
                 coverLayer.addClass('modal-is-visible');
                 animateModal(pathsArray, pathSteps, duration, 'open');
+
+                if (angular.isDefined(scope.pageType)) {
+                    modal.addClass(pageType);
+                    coverLayer.addClass(scope.pageType);
+                }
 
                 //close modal window
                 modal.on('click', function(evt){
@@ -128,10 +144,24 @@ myApp.directive('myModalLink', function($document) {
             scope.closeModal = function (){
 
                 angular.element(document.getElementsByTagName('html')).removeClass('no-overflow');
+
                 modal.removeClass('modal-is-visible');
                 coverLayer.removeClass('modal-is-visible');
                 animateModal(pathsArray, pathSteps, duration, 'close');
             }
+
+            scope.$on('path-animation-completed', function(evt){
+
+                // Avoid the background color change before path animation complete
+                scope.timeOut = $timeout(
+                    function(){
+                        if (angular.isDefined(scope.pageType)) {
+                            modal.removeClass(pageType);
+                            coverLayer.removeClass(pageType);
+                        }
+                    }, 700
+                );
+            });
 
             $document.on('keyup', function(evt){
 

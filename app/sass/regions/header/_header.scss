@@ -130,3 +130,26 @@
 
     }
 }
+
+.cd-modal {
+
+    &.secondary {
+
+        svg > path {
+            fill: lighten($secondary-color, 5%);
+        }
+    }
+}
+
+.cd-cover-layer {
+
+    &.primary {
+
+        background: $primary-color;
+    }
+
+    &.secondary {
+
+        background: $secondary-color;
+    }
+}
