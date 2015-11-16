@@ -2,12 +2,13 @@
 'use strict';
 
 // @TODO: Replace all jQuery instance with vanilla or angular (jQLite)
-myApp.directive('myModalLink', function($document, $timeout) {
+myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $rootScope) {
 
     return {
 
         scope: {
-            pageType: '@pageType'
+            pageType: '@pageType',
+            pageTemplate: '@pageTemplate'
         },
         reastrict: 'AE',
         // transclude: true,
@@ -16,7 +17,10 @@ myApp.directive('myModalLink', function($document, $timeout) {
 
             var coverLayer = angular.element(document.querySelector('.cd-cover-layer')),
                 pageType = (angular.isUndefined(scope.pageType)) ? false : scope.pageType;
+                scope.pageTemplate = (angular.isUndefined(scope.pageTemplate)) ? false : scope.pageTemplate;
                 scope.timeOut = null;
+                // scope.isLoading = true;
+                $rootScope.isLoading = true;
 
             /*
                 convert a cubic bezier value to a custom mina easing
@@ -116,12 +120,46 @@ myApp.directive('myModalLink', function($document, $timeout) {
                 pathSteps[5] = pathStepsContainer.attr('data-step6');
 
             }
-            console.log(scope.pageType);
+            // console.log(scope.pageType);
+            console.log(scope.pageTemplate);
             initModal(element);
 
             scope.showModal = function showModal(evt){
 
                 evt.preventDefault();
+                $rootScope.isLoading = true;
+
+                // dynamic template @TODO: replace with a single service which return a json or concatenated html
+                var templateUrl = 'template/'+scope.pageTemplate+'.html';
+
+                if (scope.pageTemplate) {
+
+                    $http.get(templateUrl)
+                         .then(
+                            function(datas){
+
+                                $rootScope.isLoading = false;
+                                console.log(datas);
+
+                                var modalContent = angular.element(document.querySelector('.modal-page-content'));
+                                if (modalContent && modalContent.length > 0) {
+
+                                    modalContent.remove();
+                                }
+
+                                var linkFn = $compile('<div class="span-xs-12 modal-page-content">'+datas.data+'</div>');
+                                var element = linkFn(scope);
+                                console.log(element)
+                                angular.element(document.querySelector('.cd-modal-content')).append(element);
+                            },
+                            function(errors){
+
+                                console.log(errors);
+                            }
+                        );
+                } else {
+                    $rootScope.isLoading = false;
+                }
 
                 angular.element(document.getElementsByTagName('html')).addClass('no-overflow');
                 modal.addClass('modal-is-visible');
@@ -152,7 +190,7 @@ myApp.directive('myModalLink', function($document, $timeout) {
 
             scope.$on('path-animation-completed', function(evt){
 
-                // Avoid the background color change before path animation complete
+                // Avoid the background color change before path animation is completed
                 scope.timeOut = $timeout(
                     function(){
                         if (angular.isDefined(scope.pageType)) {

@@ -4,7 +4,7 @@
 var myApp = angular.module('echoTri', ['ui.router']);
 
 // CONFIG
-myApp.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider,$httpProvider, $urlRouterProvider,$locationProvider) {
+myApp.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider,$httpProvider, $urlRouterProvider, $locationProvider) {
 
     $urlRouterProvider.otherwise("/");
 

@@ -33,7 +33,7 @@
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="scripts/components/bower_components/modernizr/modernizr.js"></script>
     <script src="scripts/components/bower_components/svg4everybody/dist/svg4everybody.min.js"></script>
-    <script src="scripts/components/bower_components/angular/angular.min.js"></script>
+    <script src="scripts/components/bower_components/angular/angular.js"></script>
     <!-- endbuild -->
   </head>
   <body ng-app="echoTri">
@@ -102,13 +102,13 @@
 
             <header><h2 class="title">Contact</h2></header>
             <div class="content clearfix">
-                <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" page-type="secondary" class="span-xs-12 span-sm-6 info-section__item">
+                <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" page-type="secondary" page-template="reachUs" class="span-xs-12 span-sm-6 info-section__item">
                     <span class="icon-elt">
                         <svg class="icon"><use xlink:href="images/svg/svg-defs.svg#shapes-envelope" /></svg>
                     </span>
                     <h3 class="info-section__item-label">Nos coordonnées</h3>
                 </a>
-                <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" page-type="secondary" class="span-xs-12 span-sm-6 info-section__item">
+                <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" page-type="secondary" page-template="writeToUs" class="span-xs-12 span-sm-6 info-section__item">
                     <span class="icon-elt">
                         <svg class="icon"><use xlink:href="images/svg/svg-defs.svg#shapes-location-point" /></svg>
                     </span>
@@ -140,15 +140,10 @@
 
         <div class="cd-modal-content">
 
-            <!-- The page icon -->
-            <span class="elt-icon icon-bg">
-                <svg class="icon"><use xlink:href="images/svg/svg-defs.svg#shapes-papers" /></svg>
-            </span>
-            <h3 class="page-title">Collecte de papiers sur place</h3>
-            <div class="page-content">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, beatae ducimus possimus nulla soluta, est, quos illum non totam dignissimos doloribus praesentium maxime mollitia recusandae minus voluptate provident delectus sapiente.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. </p>
+            <div ng-hide="!isLoading">
+                Chargement en cours.....
             </div>
+
         </div> <!-- cd-modal-content -->
 
         <a href="#0" class="modal-close">
