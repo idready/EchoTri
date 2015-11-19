@@ -1,7 +1,6 @@
 
 'use strict';
 
-// @TODO: Replace all jQuery instance with vanilla or angular (jQLite)
 myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $rootScope) {
 
     return {
@@ -121,7 +120,7 @@ myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $r
 
             }
             // console.log(scope.pageType);
-            console.log(scope.pageTemplate);
+            // console.log(scope.pageTemplate);
             initModal(element);
 
             scope.showModal = function showModal(evt){
@@ -139,17 +138,10 @@ myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $r
                             function(datas){
 
                                 $rootScope.isLoading = false;
-                                console.log(datas);
-
-                                var modalContent = angular.element(document.querySelector('.modal-page-content'));
-                                if (modalContent && modalContent.length > 0) {
-
-                                    modalContent.remove();
-                                }
 
                                 var linkFn = $compile('<div class="span-xs-12 modal-page-content">'+datas.data+'</div>');
                                 var element = linkFn(scope);
-                                console.log(element)
+
                                 angular.element(document.querySelector('.cd-modal-content')).append(element);
                             },
                             function(errors){
@@ -158,7 +150,8 @@ myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $r
                             }
                         );
                 } else {
-                    $rootScope.isLoading = false;
+
+                    $rootScope.isLoading = true;
                 }
 
                 angular.element(document.getElementsByTagName('html')).addClass('no-overflow');
@@ -172,21 +165,29 @@ myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $r
                 }
 
                 //close modal window
-                modal.on('click', function(evt){
+                // modal.on('click', function(evt){
 
-                    evt.preventDefault(); // in case it's a link
-                    scope.closeModal();
-                });
+                //     // in case it's a link
+                //      evt.preventDefault();
+                //     scope.closeModal();
+                // });
             }
 
-            scope.closeModal = function (){
+            scope.closeModal = function closeModal() {
 
+                // evt.preventDefault();
                 angular.element(document.getElementsByTagName('html')).removeClass('no-overflow');
 
                 modal.removeClass('modal-is-visible');
                 coverLayer.removeClass('modal-is-visible');
                 animateModal(pathsArray, pathSteps, duration, 'close');
+                angular.element(document.querySelector('.cd-modal-content')).empty();
             }
+
+            $rootScope.$on('closeModal', function (evt){
+
+                scope.closeModal();
+            });
 
             scope.$on('path-animation-completed', function(evt){
 
@@ -203,8 +204,8 @@ myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $r
 
             $document.on('keyup', function(evt){
 
-                // ESC or Return
-                if(parseInt(evt.keyCode, 10) == 27 || parseInt(evt.keyCode, 10) == 8) {
+                // ESC to close
+                if(parseInt(evt.keyCode, 10) == 27) {
 
                     scope.closeModal();
                 }

@@ -1,0 +1,24 @@
+
+/* ===========================================
+ * @mixin: Selection
+ * =========================================== */
+
+/* Change the selection background and color
+ * ==================================== */
+
+@mixin selection-color($bg-color: $black, $color: $white) {
+
+  // FF
+  &::-moz-selection {
+
+    background: $bg-color;
+    color: $color;
+  }
+
+  &::selection {
+
+    background: $bg-color;
+    color: $color;
+  }
+
+}

@@ -8,11 +8,19 @@
 
 @import 'regions/modal/modal';
 
+
+.wrapper {
+
+    background-repeat: repeat;
+    background-size: contain;
+}
+
 .info-section {
 
     @include clearfix();
     color: $white;
     padding: 35px 20px 70px;
+    position: relative;
     text-align: center;
 
     .title {
@@ -59,7 +67,8 @@
     // Specificity
     &.activity {
 
-        background: $primary-color;
+
+        background-color: rgba($primary-color, 0.8);
 
         .icon-elt {
 
@@ -80,7 +89,7 @@
             .info-section__item-label {
 
                 display: inline-block;
-                max-width: 40%;
+                max-width: 80%;
             }
 
             &:hover {
@@ -100,7 +109,8 @@
     }
     &.contact {
 
-        background: $secondary-color;
+
+        background-color: rgba($secondary-color, 0.8);
 
         .content {
 
@@ -181,7 +191,6 @@
     }
 
     // Responsiveness spices
-
     @include mq('xxs') {
 
         .title {
@@ -210,6 +219,16 @@
         }
 
         &.activity {
+
+            .info-section__item {
+
+
+                .info-section__item-label {
+
+                    max-width: 60%;
+                }
+
+            }
 
             .icon-elt {
 
@@ -252,7 +271,7 @@
             // Section item label
             .info-section__item-label {
 
-                font-size: 16px;
+                font-size: 20px;
             }
         }
 

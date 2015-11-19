@@ -2,12 +2,17 @@
 <span class="elt-icon icon-bg">
     <svg class="icon"><use xlink:href="images/svg/svg-defs.svg#shapes-papers" /></svg>
 </span>
-<h3 class="page-title">Collecte de papiers sur place</h3>
-<div class="page-content">
+<h3 class="page-title">Nous écrire</h3>
+<div class="page-content" ng-controller="ContactFormCtrl">
 
-    write to us
-    <!-- <div class="ng-hide" ng-show="!isLoading">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, beatae ducimus possimus nulla soluta, est, quos illum non totam dignissimos doloribus praesentium maxime mollitia recusandae minus voluptate provident delectus sapiente.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. </p>
-    </div> -->
+    <form action="" method="Post" novalidate id="echo-form" class="contact-form" ng-model="formContact" ng-submit="formSubmit($event)">
+        <input type="text" ng-model="echoForm.company" name="company" id="company" placeholder="Votre entreprise">
+        <input type="text" ng-model="echoForm.rs" name="rs" id="rs" placeholder="Votre raison sociale">
+        <input type="text" ng-model="echoForm.name" name="name" id="name" placeholder="Votre nom">
+        <input type="text" ng-model="echoForm.firstName" name="firstName" id="firstNname" placeholder="Votre prénom">
+        <input type="text" ng-model="echoForm.email" name="email" id="email" placeholder="Votre email">
+        <textarea name="message" id="message" ng-model="echoForm.message" cols="30" rows="10" placeholder="Votre message"></textarea>
+        <button type="submit" class="button">Envoyer</button>
+    </form>
+
 </div>

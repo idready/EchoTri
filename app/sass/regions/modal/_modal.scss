@@ -194,3 +194,83 @@ Modal Window
     }
 
 }
+
+/* --------------------------------
+
+ Custom components of the modal
+
+-------------------------------- */
+
+// @Test
+@include selection-color($primary-color, $white);
+
+.contact-form {
+
+    // common
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    button[type="submit"],
+    textarea {
+        font-size: 25px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea {
+
+        @include placeholder-color($white);
+
+        background: transparent;
+        border-color: $white;
+        border-style: solid;
+        border-width: 0 0 3px 0;
+        color: $white;
+        display: block;
+
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+
+        display: block;
+        transition: $default-transition;
+        width: 100%;
+
+        &:focus,
+        &:active {
+
+        }
+    }
+
+    textarea {
+
+    }
+
+     // Responsiveness spices
+    @include mq('sm') {
+
+        // common
+        // common
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        button[type="submit"],
+        textarea {
+            font-size: 30px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+
+            margin-bottom: 30px;
+        }
+
+    }
+
+}
