@@ -5,16 +5,42 @@
 <h3 class="page-title">Nous écrire</h3>
 <div class="page-content" ng-controller="ContactFormCtrl">
 
-    <form action="" method="Post" novalidate id="echo-form" name="echoFrom" class="contact-form" ng-model="formContact" ng-submit="formSubmit($event)">
-        <input type="text" ng-disabled="form.handle" ng-model="echoForm.company" name="company" id="company" placeholder="Votre entreprise">
-        <input type="text" ng-disabled="form.handle" ng-model="echoForm.rs" name="rs" id="rs" placeholder="Votre raison sociale">
-        <input type="text" ng-disabled="form.handle" ng-model="echoForm.name" name="name" id="name" placeholder="Votre nom">
-        <input type="text" ng-disabled="form.handle" ng-model="echoForm.firstName" name="firstName" id="firstNname" placeholder="Votre prénom">
-        <input type="text" ng-disabled="form.handle" ng-model="echoForm.email" ng-pattern="REGEX_EMAIL" name="email" id="email" placeholder="Votre email" ng-blur required>
+    <form action="" method="Post" novalidate id="echo-form" name="echoForm" class="contact-form" ng-model="formContact" ng-submit="formSubmit($event)">
+        <!-- Company Field -->
+        <pre>
+        {{user.company.$error}}
+        {{user.company.$blurred}}
+        {{user.company.$invalid && user.company.$blurred}}
+        </pre>
+        <div class="input-block">
+            <input type="text" ng-disabled="form.handle" ng-model="user.company" name="company" id="company" placeholder="Votre entreprise*" required>
+            <!-- <label for="company" class="placeholder-rbm" ng-class="{'visible-pld': user.company.length}"><span class="ng-hide" ng-show="user.company.$invalid && user.company.$blurred">Le champ "</span>Votre entreprise* <span ng-show="user.company.$invalid && user.company.$blurred">" est invalid</span></label> -->
+            <label for="company" class="placeholder-rbm" ng-class="{'visible-pld': user.company.length}">Votre entreprise*</label>
+        </div>
+        <!-- Social Ent Field -->
+        <div class="input-block">
+            <input type="text" ng-disabled="form.handle" ng-model="user.rs" name="rs" id="rs" placeholder="Votre raison sociale*" required>
+            <label for="rs" class="placeholder-rbm" ng-class="{'visible-pld': user.rs.length}">Votre raison sociale*</label>
+        </div>
+        <!-- Name Field -->
+        <div class="input-block">
+            <input type="text" ng-disabled="form.handle" ng-model="user.name" name="name" id="name" placeholder="Votre nom*" required>
+            <label for="name" class="placeholder-rbm" ng-class="{'visible-pld': user.name.length}">Votre nom*</label>
+        </div>
+        <!-- First Name Field -->
+        <div class="input-block">
+            <input type="text" ng-disabled="form.handle" ng-model="user.firstName" name="firstName" id="firstNname" placeholder="Votre prénom">
+            <label for="firstName" class="placeholder-rbm" ng-class="{'visible-pld': user.firstName.length}">Votre prénom</label>
+        </div>
+        <!-- Email Field -->
+        <div class="input-block">
+            <input type="text" ng-disabled="form.handle" ng-model="user.email" ng-pattern="REGEX_EMAIL" name="email" id="email" placeholder="Votre email*" ng-model-options="{ allowInvalid: true }" required>
+            <label for="email" class="placeholder-rbm" ng-class="{'visible-pld': user.email.length}">Votre email*</label>
+        </div>
         <ul class="ng-hide" ng-show="form.submit && echoFrom.email.$error || echoFrom.email.$error && echoFrom.email.$blurred">
             <li class="ng-hide" ng-show="echoFrom.email.$required">Champ requis.</li>
         </ul>
-        <textarea name="message" id="message" ng-disabled="form.handle" ng-model="echoForm.message" cols="30" rows="4" placeholder="Votre message"></textarea>
+        <textarea name="message" id="message" ng-disabled="form.handle" ng-model="user.message" cols="30" rows="4" placeholder="Votre message"></textarea>
         <button type="submit" class="button">Envoyer</button>
     </form>
 

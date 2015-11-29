@@ -112,9 +112,14 @@ Modal Window
                 height: 40px;
                 left: auto;
                 position: absolute;
-                top: 0;
                 right: 5%;
+                transition: $default-transition;
+                top: 0;
                 width: 40px;
+
+                &:hover {
+                    transform: rotate(90deg) scale(1.2);
+                }
             }
 
         }
@@ -250,6 +255,31 @@ Modal Window
 
     textarea {
 
+    }
+
+    .input-block {
+
+        position: relative;
+
+        .placeholder-rbm {
+
+            color: $primary-color;
+            opacity: 0;
+            position: absolute;
+            transition: all 0.4s ease-in;
+            text-transform: uppercase;
+            top: 20px;
+            visibility: hidden;
+            width: auto;
+
+        }
+
+        input + .placeholder-rbm.visible-pld {
+
+            top: -20px;
+            opacity: 1;
+            visibility: visible;
+        }
     }
 
      // Responsiveness spices

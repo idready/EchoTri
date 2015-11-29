@@ -4,7 +4,7 @@
 myApp.controller('ContactFormCtrl', ['$scope', '$timeout', function($scope, $timeout) {
 
 
-    $scope.echoForm = {};
+    // $scope.echoForm = {};
     $scope.form = {
 
         handle: false,
@@ -24,9 +24,10 @@ myApp.controller('ContactFormCtrl', ['$scope', '$timeout', function($scope, $tim
 
             evt.preventDefault();
         }
+        console.log(evt);
 
         $scope.handle = true;
-        console.log($scope.echoForm);
+
         $timeout(function(){
             console.log('disabled')
             $scope.handle = false;

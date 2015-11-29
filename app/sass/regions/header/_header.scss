@@ -140,6 +140,13 @@
             fill: lighten($secondary-color, 5%);
         }
     }
+
+     &.tertiary {
+
+        svg > path {
+            fill: lighten(mix($primary-color, $secondary-color), 5%);
+        }
+    }
 }
 
 .cd-cover-layer {
@@ -152,5 +159,10 @@
     &.secondary {
 
         background: $secondary-color;
+    }
+
+    &.tertiary {
+
+        background: mix($primary-color, $secondary-color);
     }
 }
