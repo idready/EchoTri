@@ -11,7 +11,7 @@
 
 .wrapper {
 
-    background-repeat: repeat;
+    background-repeat: repeat-y;
     background-size: contain;
 }
 
@@ -65,10 +65,8 @@
     }
 
     // Specificity
+    &.missions,
     &.activity {
-
-
-        background-color: rgba($primary-color, 0.8);
 
         .icon-elt {
 
@@ -76,6 +74,7 @@
 
             .icon {
 
+                fill: $white;
                 height: 90px;
                 transition: transform $animation-duration;
                 transform: scale(1);
@@ -94,10 +93,10 @@
 
             &:hover {
 
-                .info-section__item-label {
+                // .info-section__item-label {
 
-                    color: $secondary-color;
-                }
+                //     color: $secondary-color;
+                // }
 
                 .icon {
 
@@ -106,6 +105,32 @@
             }
         }
 
+    }
+    &.activity {
+
+        background-color: rgba($primary-color, 0.8);
+
+        .info-section__item {
+
+
+            &:hover {
+
+                color: $secondary-color;
+            }
+        }
+    }
+    &.missions {
+
+        background-color: rgba(mix($primary-color, $secondary-color), 0.8);
+
+        .info-section__item {
+
+
+            &:hover {
+
+                color: $primary-color;
+            }
+        }
     }
     &.contact {
 

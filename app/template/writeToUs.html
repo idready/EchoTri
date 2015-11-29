@@ -5,13 +5,16 @@
 <h3 class="page-title">Nous écrire</h3>
 <div class="page-content" ng-controller="ContactFormCtrl">
 
-    <form action="" method="Post" novalidate id="echo-form" class="contact-form" ng-model="formContact" ng-submit="formSubmit($event)">
-        <input type="text" ng-model="echoForm.company" name="company" id="company" placeholder="Votre entreprise">
-        <input type="text" ng-model="echoForm.rs" name="rs" id="rs" placeholder="Votre raison sociale">
-        <input type="text" ng-model="echoForm.name" name="name" id="name" placeholder="Votre nom">
-        <input type="text" ng-model="echoForm.firstName" name="firstName" id="firstNname" placeholder="Votre prénom">
-        <input type="text" ng-model="echoForm.email" name="email" id="email" placeholder="Votre email">
-        <textarea name="message" id="message" ng-model="echoForm.message" cols="30" rows="10" placeholder="Votre message"></textarea>
+    <form action="" method="Post" novalidate id="echo-form" name="echoFrom" class="contact-form" ng-model="formContact" ng-submit="formSubmit($event)">
+        <input type="text" ng-disabled="form.handle" ng-model="echoForm.company" name="company" id="company" placeholder="Votre entreprise">
+        <input type="text" ng-disabled="form.handle" ng-model="echoForm.rs" name="rs" id="rs" placeholder="Votre raison sociale">
+        <input type="text" ng-disabled="form.handle" ng-model="echoForm.name" name="name" id="name" placeholder="Votre nom">
+        <input type="text" ng-disabled="form.handle" ng-model="echoForm.firstName" name="firstName" id="firstNname" placeholder="Votre prénom">
+        <input type="text" ng-disabled="form.handle" ng-model="echoForm.email" ng-pattern="REGEX_EMAIL" name="email" id="email" placeholder="Votre email" ng-blur required>
+        <ul class="ng-hide" ng-show="form.submit && echoFrom.email.$error || echoFrom.email.$error && echoFrom.email.$blurred">
+            <li class="ng-hide" ng-show="echoFrom.email.$required">Champ requis.</li>
+        </ul>
+        <textarea name="message" id="message" ng-disabled="form.handle" ng-model="echoForm.message" cols="30" rows="4" placeholder="Votre message"></textarea>
         <button type="submit" class="button">Envoyer</button>
     </form>
 

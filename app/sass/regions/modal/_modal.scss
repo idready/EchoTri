@@ -231,6 +231,12 @@ Modal Window
 
         margin-bottom: 20px;
         width: 100%;
+
+        &:focus,
+        &:active {
+
+            outline: 0;
+        }
     }
 
     input[type="text"],
@@ -240,11 +246,6 @@ Modal Window
         display: block;
         transition: $default-transition;
         width: 100%;
-
-        &:focus,
-        &:active {
-
-        }
     }
 
     textarea {
