@@ -1,17 +1,17 @@
 <!-- The page icon -->
 <span class="elt-icon icon-bg">
-    <svg class="icon"><use xlink:href="images/svg/svg-defs.svg#shapes-papers" /></svg>
+    <svg class="icon"><use xlink:href="images/svg/svg-defs.svg#shapes-envelope" /></svg>
 </span>
 <h3 class="page-title">Nous écrire</h3>
 <div class="page-content" ng-controller="ContactFormCtrl">
 
     <form action="" method="Post" novalidate id="echo-form" name="echoForm" class="contact-form" ng-model="formContact" ng-submit="formSubmit($event)">
         <!-- Company Field -->
-        <pre>
+        <!-- <pre>
         {{user.company.$error}}
         {{user.company.$blurred}}
         {{user.company.$invalid && user.company.$blurred}}
-        </pre>
+        </pre> -->
         <div class="input-block">
             <input type="text" ng-disabled="form.handle" ng-model="user.company" name="company" id="company" placeholder="Votre entreprise*" required>
             <!-- <label for="company" class="placeholder-rbm" ng-class="{'visible-pld': user.company.length}"><span class="ng-hide" ng-show="user.company.$invalid && user.company.$blurred">Le champ "</span>Votre entreprise* <span ng-show="user.company.$invalid && user.company.$blurred">" est invalid</span></label> -->

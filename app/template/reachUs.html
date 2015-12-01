@@ -3,7 +3,7 @@
     <svg class="icon"><use xlink:href="images/svg/svg-defs.svg#shapes-location-point" /></svg>
 </span>
 <h3 class="page-title">Nous Coordonées</h3>
-<div class="page-content contact-infos">
+<div ng-controller="GoogleMapsCtrl" class="page-content contact-infos">
 
     <p><strong>Adresse: </strong>22 Rue des grandes courbes, 72100 Le Mans</p>
     <p><strong>Téléphone: </strong>02 43 72 98 37</p>
@@ -11,6 +11,7 @@
     <p><strong>Nos horaires</strong></p>
     <p>Lundi - Vendredi 8h - 12h / 13h30 - 17h30 <strong>fermé les jours fériés</strong></p>
 
+    <div ui-gmap-google-map class="location-map" center='map.center' zoom='map.zoom'></div>
     <!-- <div class="ng-hide" ng-show="!isLoading">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, beatae ducimus possimus nulla soluta, est, quos illum non totam dignissimos doloribus praesentium maxime mollitia recusandae minus voluptate provident delectus sapiente.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. </p>

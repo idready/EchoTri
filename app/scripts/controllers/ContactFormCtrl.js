@@ -3,7 +3,7 @@
 
 myApp.controller('ContactFormCtrl', ['$scope', '$timeout', function($scope, $timeout) {
 
-
+    console.log('formctrl');
     // $scope.echoForm = {};
     $scope.form = {
 

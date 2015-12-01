@@ -154,6 +154,7 @@ myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $r
                     $rootScope.isLoading = true;
                 }
 
+                // Remove overflow on the page to avoid double scroll (modal and the page)
                 angular.element(document.getElementsByTagName('html')).addClass('no-overflow');
                 modal.addClass('modal-is-visible');
                 coverLayer.addClass('modal-is-visible');
@@ -162,6 +163,11 @@ myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $r
                 if (angular.isDefined(scope.pageType)) {
                     modal.addClass(pageType);
                     coverLayer.addClass(scope.pageType);
+
+                    // load the map
+                    if (scope.pageTemplate === 'reachUs') {
+                        scope.$emit('gMapsEvent:load');
+                    }
                 }
 
                 //close modal window

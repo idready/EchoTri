@@ -1,10 +1,10 @@
 
 'use strict';
 
-var myApp = angular.module('echoTri', ['ui.router']);
+var myApp = angular.module('echoTri', ['ui.router', 'uiGmapgoogle-maps']);
 
 // CONFIG
-myApp.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider,$httpProvider, $urlRouterProvider, $locationProvider) {
+myApp.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationProvider', 'uiGmapGoogleMapApiProvider', function($stateProvider,$httpProvider, $urlRouterProvider, $locationProvider, GoogleMapApiProviders) {
 
     $urlRouterProvider.otherwise("/");
 
@@ -15,6 +15,9 @@ myApp.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locatio
         controller: 'HomeCtrl'
     });
 
+    GoogleMapApiProviders.configure({
+        china: false // default
+    });
     // $stateProvider.state('root.branch', {
 
     //     url: '/page',
