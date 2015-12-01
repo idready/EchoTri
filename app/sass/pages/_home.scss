@@ -18,6 +18,9 @@
 .info-section {
 
     @include clearfix();
+
+    border-top-width: 2px;
+    border-top-style: solid;
     color: $white;
     padding: 35px 20px 70px;
     position: relative;
@@ -109,6 +112,7 @@
     &.activity {
 
         background-color: rgba($primary-color, 0.8);
+        border-top-color: rgba($primary-color, 0.9);
 
         .info-section__item {
 
@@ -122,6 +126,7 @@
     &.missions {
 
         background-color: rgba(mix($primary-color, $secondary-color), 0.8);
+        border-top-color: rgba(mix($primary-color, $secondary-color), 0.9);
 
         .info-section__item {
 
@@ -136,7 +141,7 @@
 
 
         background-color: rgba($secondary-color, 0.8);
-
+        border-top-color: rgba($secondary-color, 0.9);
         .content {
 
            display: inline-block;

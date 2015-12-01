@@ -206,9 +206,10 @@ Modal Window
 
 -------------------------------- */
 
-// @Test
+// Custom selection colors
 @include selection-color($primary-color, $white);
 
+// Contact form
 .contact-form {
 
     // common
@@ -302,6 +303,25 @@ Modal Window
             margin-bottom: 30px;
         }
 
+    }
+
+}
+
+// Contact infos
+.contact-infos {
+
+    .cd-modal & {
+
+        p { // Wordpress made me sin °__°
+
+            font-size: 20px;
+            margin: 10px 0 20px;
+
+            strong {
+
+                font-size: 22px;
+            }
+        }
     }
 
 }
