@@ -125,6 +125,7 @@ myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $r
 
             scope.showModal = function showModal(evt){
 
+                svg4everybody();
                 evt.preventDefault();
                 $rootScope.isLoading = true;
 

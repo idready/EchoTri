@@ -324,9 +324,21 @@ Modal Window
         }
     }
 
+    .angular-google-map {
+
+        margin-bottom: 40px;
+    }
+
     .angular-google-map-container {
 
         height: 445px;
+    }
+
+    .location-map-title {
+
+        color: $secondary-color;
+        font-size: 16px;
+        font-weight: bold;
     }
 
 }

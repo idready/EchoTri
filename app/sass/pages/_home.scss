@@ -111,7 +111,7 @@
     }
     &.activity {
 
-        background-color: rgba($primary-color, 0.8);
+        background-color: rgba($primary-color, 0.9);
         border-top-color: rgba($primary-color, 0.9);
 
         .info-section__item {
@@ -125,7 +125,7 @@
     }
     &.missions {
 
-        background-color: rgba(mix($primary-color, $secondary-color), 0.8);
+        background-color: rgba(mix($primary-color, $secondary-color), 0.9);
         border-top-color: rgba(mix($primary-color, $secondary-color), 0.9);
 
         .info-section__item {

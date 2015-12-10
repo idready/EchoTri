@@ -31,7 +31,8 @@
 
         display: inline-block;
         margin-bottom: 30px;
-        max-width: 200px;
+        max-width: 300px;
+        min-width: 280px;
 
         .icon {
 
@@ -105,7 +106,7 @@
         top: -20px;
         position: absolute;
         width: 450px;
-        z-index: 1;
+        z-index: 0;
     }
 
     .page-title {
@@ -113,8 +114,10 @@
         font-size: 40px;
         font-weight: bold;
         margin-bottom: 60px;
+        position: relative;
         text-align: center;
         text-decoration: underline;
+        z-index: 1;
     }
 
     .page-content {

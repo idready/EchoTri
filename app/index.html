@@ -33,6 +33,7 @@
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="scripts/components/bower_components/modernizr/modernizr.js"></script>
     <script src="scripts/components/bower_components/svg4everybody/dist/svg4everybody.min.js"></script>
+
     <!-- @TODO: Load the minify version -->
     <script src="scripts/components/bower_components/angular/angular.js"></script>
     <!-- endbuild -->
@@ -128,7 +129,7 @@
                 <span class="icon-elt">
                     <svg class="icon"><use xlink:href="images/svg/svg-defs.svg#shapes-organize" /></svg>
                 </span>
-                <h3 class="info-section__item-label">Ordganisation du parcours</h3>
+                <h3 class="info-section__item-label">Organisation du parcours</h3>
             </a>
           </section>
           <section class="info-section contact">
@@ -153,7 +154,8 @@
       <!-- oter -->
       <footer class="footer">
           <ul class="footer-links">
-              <li class="footer-links__item"><a href="#">Liens utiles</a></li>
+              <li class="footer-links__item"><a href="#">Qui sommes nous? </a></li>
+              <li class="footer-links__item"><a href="#">Blog</a></li>
               <li class="footer-links__item"><a target="_blank" href="https://www.facebook.com/EchoTri-545067608842775/">Facebook</a></li>
               <li class="footer-links__item">EchoTri tous droits reservés 2015</li>
           </ul>
@@ -173,7 +175,7 @@
 
         <div class="cd-modal-content">
 
-            {{isLoading}}
+            <!-- {{isLoading}} -->
             <div ng-hide="!isLoading">
                 Chargement en cours.....
             </div>
@@ -208,6 +210,7 @@
     <script src="scripts/components/bower_components/lazysizes/plugins/unveilhooks/ls.unveilhooks.min.js"></script>
     <script src="scripts/components/bower_components/lazysizes/lazysizes.min.js"></script>
     <script src="scripts/components/bower_components/Snap.svg/dist/snap.svg-min.js"></script>
+    <!-- // <script src="scripts/components/bower_components/angular-animate/angular-animate.min.js"></script> -->
     <script src="scripts/components/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <!-- Maps -->
     <script src="scripts/components/bower_components/lodash/lodash.min.js"></script>

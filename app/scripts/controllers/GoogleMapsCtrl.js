@@ -1,28 +1,71 @@
 
 'use strict';
 
-myApp.controller('GoogleMapsCtrl', ['$scope', 'uiGmapLogger', 'uiGmapGoogleMapApi', function($scope, $log, GoogleMapApi) {
+myApp.controller('GoogleMapsCtrl', ['$scope', '$timeout', 'uiGmapLogger', 'uiGmapGoogleMapApi', function($scope, $timeout, $log, GoogleMapApi) {
 
     console.log('gMaps ctrl');
 
     $log.currentLevel = $log.LEVELS.debug;
 
-    // $scope.$on('gMapsEvent:load', function(){
+    // GoogleMapApi.currentLevel = $log.LEVELS.debug;
+    // $log.info("hmm"); //not logged
+    // $log.debug("huh!"); //logged
+    // $log.warn("uhoh!"); //logged
+    // $log.error("oh crap!"); //logged
 
-    //     GoogleMapApi.then(function(maps) {
+    $scope.options = {scrollwheel: false};
 
-    //         $scope.googleVersion = maps.version;
-    //         maps.visualRefresh = true;
-    //         $log.info('$scope.map.rectangle.bounds set');
-    //         $scope.map.rectangle.bounds = new maps.LatLngBounds(
-    //           new maps.LatLng(55,-100),
-    //           new maps.LatLng(49,-78)
-    //         );
-    //     });
-    // });
-
+    // Maps coordinates
     $scope.map = {
-        center: { latitude: 47.979284, longitude: 0.1695898 },
-        zoom: 15
+        center: { latitude: 47.9791492, longitude: 0.170657 },
+        zoom: 16
     }
+    // The marker
+    $scope.marker = {
+
+        id: 0,
+        coords: {
+            latitude: 47.9791492,
+            longitude: 0.170657
+        },
+        options: { draggable: true },
+        show: true,
+
+    };
+    // The window title
+    $scope.title = 'EchoTri';
+
+    $scope.windowOptions = {
+
+        visible: false
+    };
+
+    $scope.onClick = function() {
+
+        // @TODO: add animation on window title display
+        $scope.windowOptions.visible = !$scope.windowOptions.visible;
+    };
+
+    GoogleMapApi.then(
+
+        function(maps) {
+
+            // maps.visualRefresh = true;
+            $log.debug('Google Map successfully loaded')
+
+
+            $timeout(function(){
+
+                $scope.windowOptions.visible = !$scope.windowOptions.visible;
+            }, 500);
+
+            console.log(maps);
+        },
+        function(errors) {
+
+            $log.error('GoogleMapApi Error: ', errors); //logged
+        }
+    );
+
+
 }]);
