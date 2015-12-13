@@ -26,4 +26,23 @@ var myApp = angular.module('echoTri', ['ui.router', 'uiGmapgoogle-maps']);
 //     // });
 // }]);
 
+// Constants
+myApp.constant('DIRECTIVES_TEMPLATES', {
+
+    'template_url': ''
+});
+
+myApp.constant('MY_EVENTS', {
+
+    'KEYUP': 'keyup',
+    'CLICK': 'click',
+    'MODAL_OPEN_COMPLETED': 'modal_open_completed',
+    'MODAL_CLOSE_COMPLETED': 'modal_close_completed',
+    'MODAL_PATH_OPEN_COMPLETED': 'modal_path_open_completed',
+    'MODAL_PATH_CLOSE_COMPLETED': 'modal_path_close_completed'
+});
+
+
+myApp.config(function(){});
 myApp.run(function(){});
+

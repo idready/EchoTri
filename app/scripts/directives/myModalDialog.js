@@ -1,7 +1,7 @@
 
 'use strict';
 
-myApp.directive('myModalDialog', function() {
+myApp.directive('myModalDialog', [function() {
 
     return {
 
@@ -15,4 +15,4 @@ myApp.directive('myModalDialog', function() {
         }
     }
 
-});
+}]);

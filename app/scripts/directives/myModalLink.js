@@ -1,7 +1,7 @@
 
 'use strict';
 
-myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $rootScope) {
+myApp.directive('myModalLink', ['MY_EVENTS', '$document', '$timeout', '$http', '$compile', '$rootScope', function(MY_EVENTS, $document, $timeout, $http, $compile, $rootScope) {
 
     return {
 
@@ -18,7 +18,6 @@ myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $r
                 pageType = (angular.isUndefined(scope.pageType)) ? false : scope.pageType;
                 scope.pageTemplate = (angular.isUndefined(scope.pageTemplate)) ? false : scope.pageTemplate;
                 scope.timeOut = null;
-                // scope.isLoading = true;
                 $rootScope.isLoading = true;
 
             /*
@@ -49,10 +48,10 @@ myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $r
 
                 if(animationType == 'close') {
 
-                    scope.$emit('close:path-animation-completed');
+                    scope.$emit(MY_EVENTS.MODAL_PATH_CLOSE_COMPLETED);
                 } else {
 
-                    scope.$emit('open:path-animation-completed');
+                    scope.$emit(MY_EVENTS.MODAL_PATH_OPEN_COMPLETED);
                 }
 
             }
@@ -135,11 +134,11 @@ myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $r
                 $rootScope.isLoading = true;
 
                 // dynamic template @TODO: replace with a single service which return a json or concatenated html
-                var templateUrl = 'template/'+scope.pageTemplate+'.html';
-
+                var templateUrl = 'scripts/directives/templates/'+scope.pageTemplate+'.html';
+                // console.log(scope.pageTemplate);
                 if (scope.pageTemplate) {
 
-                    $http.get(templateUrl)
+                    $http({method: 'GET', url: templateUrl})
                         .then(
                             function(datas){
 
@@ -197,7 +196,7 @@ myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $r
                 scope.closeModal();
             });
 
-            scope.$on('close:path-animation-completed', function(evt){
+            scope.$on(MY_EVENTS.MODAL_PATH_CLOSE_COMPLETED, function(evt){
 
                 // Avoid the background color change before path animation is completed
                 scope.timeOut = $timeout(
@@ -208,16 +207,16 @@ myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $r
                         }
                     }, 700
                 );
-                console.log('Path close animation finished', evt);
+                // console.log('Path close animation finished', evt);
             });
 
-            scope.$on('open:path-animation-completed', function(evt){
+            scope.$on(MY_EVENTS.MODAL_PATH_OPEN_COMPLETED, function(evt){
 
                 $timeout(function(){
                     modal.addClass('modal-is-visible');
                     coverLayer.addClass('modal-is-visible');
                 }, 100);
-                console.log('Path open animation finished', evt);
+                // console.log('Path open animation finished', evt);
             });
 
             $document.on('keyup', function(evt){
@@ -229,9 +228,9 @@ myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $r
                 }
             });
 
-            element.on('click', scope.showModal);
+            element.on(MY_EVENTS.CLICK, scope.showModal);
 
         }
     }
 
-});
+}]);
