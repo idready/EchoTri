@@ -47,8 +47,13 @@ myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $r
                 paths[1].animate({'d': path2}, duration, firstCustomMinaAnimation);
                 paths[2].animate({'d': path3}, duration, firstCustomMinaAnimation);
 
-                if(animationType == 'close')
-                    scope.$emit('path-animation-completed');
+                if(animationType == 'close') {
+
+                    scope.$emit('close:path-animation-completed');
+                } else {
+
+                    scope.$emit('open:path-animation-completed');
+                }
 
             }
 
@@ -125,7 +130,7 @@ myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $r
 
             scope.showModal = function showModal(evt){
 
-                svg4everybody();
+                // svg4everybody();
                 evt.preventDefault();
                 $rootScope.isLoading = true;
 
@@ -135,7 +140,7 @@ myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $r
                 if (scope.pageTemplate) {
 
                     $http.get(templateUrl)
-                         .then(
+                        .then(
                             function(datas){
 
                                 $rootScope.isLoading = false;
@@ -143,22 +148,24 @@ myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $r
                                 var linkFn = $compile('<div class="span-xs-12 modal-page-content">'+datas.data+'</div>');
                                 var element = linkFn(scope);
 
-                                angular.element(document.querySelector('.cd-modal-content')).append(element);
+                                angular.element(document.querySelector('.cd-modal-dyn-content')).append(element);
                             },
                             function(errors){
 
-                                console.log(errors);
+                                console.warn(errors);
                             }
                         );
                 } else {
 
+                    // @TODO: set default template
+                    console.log('Loading... '+$rootScope.isLoading);
                     $rootScope.isLoading = true;
                 }
 
                 // Remove overflow on the page to avoid double scroll (modal and the page)
                 angular.element(document.getElementsByTagName('html')).addClass('no-overflow');
-                modal.addClass('modal-is-visible');
-                coverLayer.addClass('modal-is-visible');
+
+                // Animate the svg path
                 animateModal(pathsArray, pathSteps, duration, 'open');
 
                 if (angular.isDefined(scope.pageType)) {
@@ -167,17 +174,11 @@ myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $r
 
                     // load the map
                     if (scope.pageTemplate === 'reachUs') {
-                        scope.$emit('gMapsEvent:load');
+                        $rootScope.$emit('gMapsEvent:load');
                     }
                 }
 
-                //close modal window
-                // modal.on('click', function(evt){
 
-                //     // in case it's a link
-                //      evt.preventDefault();
-                //     scope.closeModal();
-                // });
             }
 
             scope.closeModal = function closeModal() {
@@ -188,7 +189,7 @@ myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $r
                 modal.removeClass('modal-is-visible');
                 coverLayer.removeClass('modal-is-visible');
                 animateModal(pathsArray, pathSteps, duration, 'close');
-                angular.element(document.querySelector('.cd-modal-content')).empty();
+                angular.element(document.querySelector('.cd-modal-dyn-content')).empty();
             }
 
             $rootScope.$on('closeModal', function (evt){
@@ -196,7 +197,7 @@ myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $r
                 scope.closeModal();
             });
 
-            scope.$on('path-animation-completed', function(evt){
+            scope.$on('close:path-animation-completed', function(evt){
 
                 // Avoid the background color change before path animation is completed
                 scope.timeOut = $timeout(
@@ -207,6 +208,16 @@ myApp.directive('myModalLink', function($document, $timeout, $http, $compile, $r
                         }
                     }, 700
                 );
+                console.log('Path close animation finished', evt);
+            });
+
+            scope.$on('open:path-animation-completed', function(evt){
+
+                $timeout(function(){
+                    modal.addClass('modal-is-visible');
+                    coverLayer.addClass('modal-is-visible');
+                }, 100);
+                console.log('Path open animation finished', evt);
             });
 
             $document.on('keyup', function(evt){

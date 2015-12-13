@@ -176,10 +176,11 @@
         <div class="cd-modal-content">
 
             <!-- {{isLoading}} -->
-            <div ng-hide="!isLoading">
+            <div class="ng-hide" ng-show="isLoading">
                 Chargement en cours.....
             </div>
 
+            <div class="cd-modal-dyn-content"></div>
         </div> <!-- cd-modal-content -->
 
         <a href="#" class="modal-close" title="Fermer">

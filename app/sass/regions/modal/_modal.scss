@@ -44,6 +44,7 @@ Main Content
     @include mq('sm') {
 
         h1 {
+
             font-size: 4rem;
             font-weight: 300;
         }
@@ -66,6 +67,21 @@ Modal Window
     width: 100%;
     visibility: hidden;
     transition: visibility 0s $modal-animation-duration;
+
+    .cd-svg-bg,
+    .modal-close {
+
+        // svg {
+
+        //     left: 0;
+        //     right: 0;
+        //     position: absolute;
+        // }
+
+        // svg > path {
+        //     fill: lighten($primary-color, 5%);
+        // }
+    }
 
     svg {
 
@@ -90,7 +106,7 @@ Modal Window
 
         /* Force hardware acceleration*/
         transform: translateZ(0);
-        backface-visibility: hidden;
+        // backface-visibility: hidden;
 
         visibility: hidden;
         opacity: 0;
@@ -109,6 +125,7 @@ Modal Window
 
             .icon {
 
+                // fill: $white;
                 height: 40px;
                 left: auto;
                 position: absolute;
@@ -130,6 +147,12 @@ Modal Window
         visibility: visible;
         transition: visibility 0s 0s;
 
+        // Fix FF and IE bug with svg covering all other svg
+        .cd-svg-bg {
+
+            visibility: hidden;
+        }
+
         .modal-close {
 
             visibility: visible;
@@ -137,6 +160,7 @@ Modal Window
             transition: transform .3s 0s, visibility 0s 0s, opacity .3s 0s;
             transform: scale(1);
         }
+
     }
 }
 
@@ -153,6 +177,7 @@ Modal Window
     -moz-osx-font-smoothing: grayscale;
 
     p {
+
         color: $white;
         line-height: 1.6;
         margin: 2em 0;
