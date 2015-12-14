@@ -27,9 +27,9 @@ var myApp = angular.module('echoTri', ['ui.router', 'uiGmapgoogle-maps']);
 // }]);
 
 // Constants
-myApp.constant('DIRECTIVES_TEMPLATES', {
+myApp.constant('DIRECTIVE_TEMPLATES', {
 
-    'template_url': ''
+    'TEMPLATE_URL': 'scripts/directives/templates/'
 });
 
 myApp.constant('MY_EVENTS', {

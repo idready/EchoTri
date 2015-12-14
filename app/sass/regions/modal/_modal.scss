@@ -68,31 +68,21 @@ Modal Window
     visibility: hidden;
     transition: visibility 0s $modal-animation-duration;
 
-    .cd-svg-bg,
-    .modal-close {
+    // Animated paths
+    .cd-svg-bg {
 
-        // svg {
+        svg > path {
+            fill: lighten($primary-color, 2%);
+        }
 
-        //     left: 0;
-        //     right: 0;
-        //     position: absolute;
-        // }
+        svg {
 
-        // svg > path {
-        //     fill: lighten($primary-color, 5%);
-        // }
+            left: 0;
+            right: 0;
+            position: absolute;
+        }
     }
 
-    svg {
-
-        left: 0;
-        right: 0;
-        position: absolute;
-    }
-
-    svg > path {
-        fill: lighten($primary-color, 5%);
-    }
 
     .modal-close {
 
@@ -122,17 +112,19 @@ Modal Window
 
             /* 'X' icon */
             color: $white;
+            height: 40px;
+            left: auto;
+            position: absolute;
+            right: 5%;
+            top: 0;
+            width: 40px;
 
             .icon {
 
-                // fill: $white;
-                height: 40px;
-                left: auto;
-                position: absolute;
-                right: 5%;
+                height: 100%;
+                position: relative;
                 transition: $default-transition;
-                top: 0;
-                width: 40px;
+                width: 100%;
 
                 &:hover {
                     transform: rotate(90deg) scale(1.2);
@@ -146,12 +138,6 @@ Modal Window
 
         visibility: visible;
         transition: visibility 0s 0s;
-
-        // Fix FF and IE bug with svg covering all other svg
-        .cd-svg-bg {
-
-            visibility: hidden;
-        }
 
         .modal-close {
 

@@ -139,19 +139,24 @@
 
     &.secondary {
 
-        svg > path {
-            fill: lighten($secondary-color, 5%);
+        .cd-svg-bg {
+            svg > path {
+                fill: lighten($secondary-color, 5%);
+            }
         }
     }
 
      &.tertiary {
 
-        svg > path {
-            fill: lighten(mix($primary-color, $secondary-color), 5%);
+        .cd-svg-bg {
+            svg > path {
+                fill: lighten(mix($primary-color, $secondary-color), 5%);
+            }
         }
     }
 }
 
+// Theming
 .cd-cover-layer {
 
     &.primary {

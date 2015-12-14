@@ -1,7 +1,7 @@
 
 'use strict';
 
-myApp.directive('myModalLink', ['MY_EVENTS', '$document', '$timeout', '$http', '$compile', '$rootScope', function(MY_EVENTS, $document, $timeout, $http, $compile, $rootScope) {
+myApp.directive('myModalLink', ['MY_EVENTS', 'DIRECTIVE_TEMPLATES', '$document', '$timeout', '$http', '$compile', '$rootScope', function(MY_EVENTS, DIRECTIVE_TEMPLATES, $document, $timeout, $http, $compile, $rootScope) {
 
     return {
 
@@ -129,37 +129,27 @@ myApp.directive('myModalLink', ['MY_EVENTS', '$document', '$timeout', '$http', '
 
             scope.showModal = function showModal(evt){
 
-                // svg4everybody();
                 evt.preventDefault();
                 $rootScope.isLoading = true;
 
-                // dynamic template @TODO: replace with a single service which return a json or concatenated html
-                var templateUrl = 'scripts/directives/templates/'+scope.pageTemplate+'.html';
-                // console.log(scope.pageTemplate);
-                if (scope.pageTemplate) {
+                var templateUrl = (scope.pageTemplate) ? scope.pageTemplate : 'default';
+                console.log(scope.pageTemplate);
 
-                    $http({method: 'GET', url: templateUrl})
-                        .then(
-                            function(datas){
+                $http.get(DIRECTIVE_TEMPLATES.TEMPLATE_URL +templateUrl+ '.html')
+                    .success(function(datas){
 
-                                $rootScope.isLoading = false;
+                        $rootScope.isLoading = false;
+                        var templateData = (angular.isDefined(datas.data)) ? datas.data : datas;
+                        var linkFn = $compile('<div class="span-xs-12 modal-page-content">' +templateData+ '</div>');
+                        var element = linkFn(scope);
 
-                                var linkFn = $compile('<div class="span-xs-12 modal-page-content">'+datas.data+'</div>');
-                                var element = linkFn(scope);
+                        angular.element(document.querySelector('.cd-modal-dyn-content')).append(element);
+                    })
+                    .error(function(errors){
 
-                                angular.element(document.querySelector('.cd-modal-dyn-content')).append(element);
-                            },
-                            function(errors){
+                        console.warn(errors);
+                    });
 
-                                console.warn(errors);
-                            }
-                        );
-                } else {
-
-                    // @TODO: set default template
-                    console.log('Loading... '+$rootScope.isLoading);
-                    $rootScope.isLoading = true;
-                }
 
                 // Remove overflow on the page to avoid double scroll (modal and the page)
                 angular.element(document.getElementsByTagName('html')).addClass('no-overflow');
