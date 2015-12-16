@@ -105,7 +105,7 @@
         opacity: 0.15;
         top: -20px;
         position: absolute;
-        width: 450px;
+        width: auto;
         z-index: 0;
     }
 
@@ -132,6 +132,15 @@
             margin-bottom: 30px;
         }
 
+    }
+
+    // Responsiveness
+    @include mq('sm') {
+
+        .icon-bg .icon {
+
+            width: 450px;
+        }
     }
 }
 

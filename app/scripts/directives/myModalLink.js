@@ -133,7 +133,6 @@ myApp.directive('myModalLink', ['MY_EVENTS', 'DIRECTIVE_TEMPLATES', '$document',
                 $rootScope.isLoading = true;
 
                 var templateUrl = (scope.pageTemplate) ? scope.pageTemplate : 'default';
-                console.log(scope.pageTemplate);
 
                 $http.get(DIRECTIVE_TEMPLATES.TEMPLATE_URL +templateUrl+ '.html')
                     .success(function(datas){
@@ -156,6 +155,14 @@ myApp.directive('myModalLink', ['MY_EVENTS', 'DIRECTIVE_TEMPLATES', '$document',
 
                 // Animate the svg path
                 animateModal(pathsArray, pathSteps, duration, 'open');
+
+                // Scroll to top
+                // @TODO: Scroll to top
+                // Velocity(angular.element(document.querySelector('.cd-modal-content')), {
+                //     duration: 100,
+                //     loop: false,
+                //     easing: 'ease-in-out'
+                // });
 
                 if (angular.isDefined(scope.pageType)) {
                     modal.addClass(pageType);
