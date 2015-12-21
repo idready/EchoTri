@@ -76,6 +76,54 @@ gulp.task('html', ['styles'], () => {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('scripts', ['header-scripts', 'main-scripts'], () => {
+
+  console.info('Concat and Uglify successfully');
+});
+
+gulp.task('main-scripts', function() {
+  return gulp.src([
+      'app/scripts/components/bower_components/lazysizes/plugins/bgset/ls.bgset.min.js',
+      'app/scripts/components/bower_components/lazysizes/plugins/optimumx/ls.optimumx.min.js',
+      'app/scripts/components/bower_components/lazysizes/plugins/respimg/ls.respimg.min.js',
+      'app/scripts/components/bower_components/lazysizes/plugins/unveilhooks/ls.unveilhooks.min.js',
+      'app/scripts/components/bower_components/lazysizes/lazysizes.min.js',
+      'app/scripts/components/bower_components/Snap.svg/dist/snap.svg-min.js',
+      'app/scripts/components/bower_components/angular-ui-router/release/angular-ui-router.min.js',
+
+      'app/scripts/components/bower_components/lodash/lodash.min.js',
+      'app/scripts/components/bower_components/angular-simple-logger/dist/angular-simple-logger.min.js',
+      'app/scripts/components/bower_components/angular-google-maps/dist/angular-google-maps.min.js',
+
+      'app/scripts/components/vendor/velocity/velocity.min.js',
+
+      'app/scripts/app.js',
+      'app/scripts/directives/myModalLink.js',
+      'app/scripts/directives/myModalDialog.js',
+      'app/scripts/controllers/HomeCtrl.js',
+      'app/scripts/controllers/ModalCtrl.js',
+      'app/scripts/controllers/ContactFormCtrl.js',
+      'app/scripts/controllers/GoogleMapsCtrl.js',
+      'app/scripts/main.js'
+    ])
+    .pipe($.concat({ path: 'all.js'}))
+    .pipe($.uglify())
+    // .pipe(gulp.dest('app/'));
+    .pipe(gulp.dest('app/wp/wp-content/themes/echotri/js'));
+});
+
+gulp.task('header-scripts', function() {
+  return gulp.src([
+      'app/scripts/components/bower_components/modernizr/modernizr.js',
+      'app/scripts/components/bower_components/svg4everybody/dist/svg4everybody.min.js',
+      'app/scripts/components/bower_components/angular/angular.js',
+    ])
+    .pipe($.concat({ path: 'header-all.js'}))
+    .pipe($.uglify())
+    // .pipe(gulp.dest('app/'));
+    .pipe(gulp.dest('app/wp/wp-content/themes/echotri/js'));
+});
+
 gulp.task('images', () => {
   return gulp.src('app/images/**/*')
     .pipe($.if($.if.isFile, $.cache($.imagemin({
@@ -157,7 +205,7 @@ gulp.task('serve', ['styles', 'fonts'], () => {
         '.tmp/fonts/**/*'
     ]).on('change', reload);
 
-    // gulp.watch('app/scripts/**/*.js', ['lint']);
+    gulp.watch('app/scripts/**/*.js', ['scripts']);
     gulp.watch('app/sass/**/*.scss', ['styles']);
     gulp.watch('app/images/svg-src/{,*/}*.svg', ['svgstore']);
     gulp.watch('app/fonts/**/*', ['fonts']);

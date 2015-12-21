@@ -1,0 +1,25 @@
+<!-- The page icon -->
+<span class="elt-icon icon-bg">
+    <svg class="icon"><use xlink:href="images/svg/svg-defs.svg#shapes-location-point" /></svg>
+</span>
+<h3 class="page-title">Nos Coordonées</h3>
+<div ng-controller="GoogleMapsCtrl" class="page-content contact-infos">
+
+    <p><strong>Adresse: </strong>22 Rue des grandes courbes, 72100 Le Mans</p>
+    <p><strong>Téléphone: </strong>02 43 72 98 37</p>
+    <p><strong>Fax: </strong>02 43 72 10 19</p>
+    <p><strong>Nos horaires</strong></p>
+    <p>Lundi - Vendredi 8h - 12h / 13h30 - 17h30 <strong>fermé les jours fériés</strong></p>
+
+    <div ui-gmap-google-map refresh="true" class="location-map" center='map.center' zoom='map.zoom'>
+        <div ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+            <div ui-gmap-window options="windowOptions" closeClick="closeWindow()">
+                <h4 class="location-map-title">{{title}}</h4>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="ng-hide" ng-show="!isLoading">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, beatae ducimus possimus nulla soluta, est, quos illum non totam dignissimos doloribus praesentium maxime mollitia recusandae minus voluptate provident delectus sapiente.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. </p>
+    </div> -->
+</div>
