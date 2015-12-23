@@ -13,8 +13,6 @@
     min-height: 60px;
     text-align: center;
 
-
-
     .footer-links__item {
 
         color: $white;
@@ -43,6 +41,13 @@
             }
         }
 
+    }
+
+    // @TODO: read about margin collapse : https://css-tricks.com/what-you-should-know-about-collapsing-margins/
+    // Copyrights text
+    .footer-cpr {
+
+        padding: 30px 0 20px;
     }
 
 }

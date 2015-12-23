@@ -60,6 +60,14 @@ const testLintOptions = {
   }
 };
 
+gulp.task('wp-styles', () => {
+
+  console.log('copied stylesheet file for WP');
+  return gulp.src('app/styles/home.css')
+    .pipe(gulp.dest('app/wp/wp-content/themes/echotri/css/'));
+
+});
+
 gulp.task('lint', lint('app/scripts/**/*.js'));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
@@ -206,7 +214,7 @@ gulp.task('serve', ['styles', 'fonts'], () => {
     ]).on('change', reload);
 
     gulp.watch('app/scripts/**/*.js', ['scripts']);
-    gulp.watch('app/sass/**/*.scss', ['styles']);
+    gulp.watch('app/sass/**/*.scss', ['styles', 'wp-styles']);
     gulp.watch('app/images/svg-src/{,*/}*.svg', ['svgstore']);
     gulp.watch('app/fonts/**/*', ['fonts']);
     gulp.watch('bower.json', ['wiredep', 'fonts']);

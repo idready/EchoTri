@@ -40,6 +40,16 @@
     <!-- endbuild -->
 
 	<?php wp_head(); ?>
+
+	<?php /* Variables for Js */ ?>
+
+	<script>
+
+		var CONFIG_VARS =  {
+			WP_TEMPLATE_URL : "<?php echo get_template_directory_uri(); ?>"
+		};
+
+	</script>
 </head>
 
 <body <?php body_class(); ?> ng-app="echoTri" ng-strict-di>

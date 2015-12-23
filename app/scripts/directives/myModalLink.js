@@ -125,16 +125,24 @@ myApp.directive('myModalLink', ['MY_EVENTS', 'DIRECTIVE_TEMPLATES', '$document',
             }
             // console.log(scope.pageType);
             // console.log(scope.pageTemplate);
+
             initModal(element);
 
             scope.showModal = function showModal(evt){
 
                 evt.preventDefault();
                 $rootScope.isLoading = true;
+                var templateUrl = '';
 
-                var templateUrl = (scope.pageTemplate) ? scope.pageTemplate : 'default';
+                if (typeof CONFIG_VARS != 'undefined') {
+                    templateUrl =  CONFIG_VARS.WP_TEMPLATE_URL + '/js/directives/templates/';
+                } else {
+                    templateUrl =  DIRECTIVE_TEMPLATES.TEMPLATE_URL;
+                }
 
-                $http.get(DIRECTIVE_TEMPLATES.TEMPLATE_URL +templateUrl+ '.html')
+                var templateFileName = (scope.pageTemplate) ? scope.pageTemplate : 'default';
+
+                $http.get(templateUrl + templateFileName + '.html')
                     .success(function(datas){
 
                         $rootScope.isLoading = false;

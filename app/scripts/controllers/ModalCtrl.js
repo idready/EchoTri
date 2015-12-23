@@ -5,7 +5,6 @@ myApp.controller('ModalCtrl', ['$scope', '$rootScope', '$state', function($scope
 
     console.log('Modal controller');
 
-
     $scope.closeModal = function closeModal(evt) {
 
         if(typeof evt !== 'undefined') evt.preventDefault();
