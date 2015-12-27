@@ -32,11 +32,11 @@ get_header(); ?>
 
             <header><h2 class="title">Domaines d'intervention</h2></header>
             <!-- Infos item -->
-            <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" class="info-section__item span-xs-12 span-sm-4">
+            <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" data-postId ="6" class="info-section__item span-xs-12 span-sm-4">
                 <span class="icon-elt">
                     <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-papers" /></svg>
                 </span>
-                <h3 class="info-section__item-label">Collection de papiers sur place</h3>
+                <h3 class="info-section__item-label">Collecte de papiers sur place</h3>
             </a>
             <!-- Infos item -->
             <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" class="info-section__item span-xs-12 span-sm-4">

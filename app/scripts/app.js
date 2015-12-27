@@ -36,10 +36,12 @@ myApp.constant('MY_EVENTS', {
 
     'KEYUP': 'keyup',
     'CLICK': 'click',
+    'MODAL_CLOSE': 'modal_close',
     'MODAL_OPEN_COMPLETED': 'modal_open_completed',
     'MODAL_CLOSE_COMPLETED': 'modal_close_completed',
     'MODAL_PATH_OPEN_COMPLETED': 'modal_path_open_completed',
-    'MODAL_PATH_CLOSE_COMPLETED': 'modal_path_close_completed'
+    'MODAL_PATH_CLOSE_COMPLETED': 'modal_path_close_completed',
+    'MODAL_LOAD_DATAS': 'modal_load_datas'
 });
 
 

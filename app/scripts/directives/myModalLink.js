@@ -1,6 +1,7 @@
 
 'use strict';
 
+// @TODO: comment all function with angular doc way.
 myApp.directive('myModalLink', ['MY_EVENTS', 'DIRECTIVE_TEMPLATES', '$document', '$timeout', '$http', '$compile', '$rootScope', function(MY_EVENTS, DIRECTIVE_TEMPLATES, $document, $timeout, $http, $compile, $rootScope) {
 
     return {
@@ -130,7 +131,8 @@ myApp.directive('myModalLink', ['MY_EVENTS', 'DIRECTIVE_TEMPLATES', '$document',
 
             scope.showModal = function showModal(evt){
 
-                evt.preventDefault();
+                if (angular.isDefined(evt)) evt.preventDefault();
+
                 $rootScope.isLoading = true;
                 var templateUrl = '';
 
@@ -147,16 +149,16 @@ myApp.directive('myModalLink', ['MY_EVENTS', 'DIRECTIVE_TEMPLATES', '$document',
 
                         $rootScope.isLoading = false;
                         var templateData = (angular.isDefined(datas.data)) ? datas.data : datas;
-                        var linkFn = $compile('<div class="span-xs-12 modal-page-content">' +templateData+ '</div>');
+                        var linkFn = $compile('<div my-modal-dialog data-postId="'+attrs.postid+'" class="span-xs-12 modal-page-content">' +templateData+ '</div>');
                         var element = linkFn(scope);
 
                         angular.element(document.querySelector('.cd-modal-dyn-content')).append(element);
+                        // $rootScope.$emit(MY_EVENTS.MODAL_LOAD_DATAS, {post_id: attrs.postid});
                     })
                     .error(function(errors){
 
                         console.warn(errors);
                     });
-
 
                 // Remove overflow on the page to avoid double scroll (modal and the page)
                 angular.element(document.getElementsByTagName('html')).addClass('no-overflow');
@@ -196,7 +198,7 @@ myApp.directive('myModalLink', ['MY_EVENTS', 'DIRECTIVE_TEMPLATES', '$document',
                 angular.element(document.querySelector('.cd-modal-dyn-content')).empty();
             }
 
-            $rootScope.$on('closeModal', function (evt){
+            $rootScope.$on(MY_EVENTS.MODAL_CLOSE, function (evt){
 
                 scope.closeModal();
             });
@@ -222,6 +224,12 @@ myApp.directive('myModalLink', ['MY_EVENTS', 'DIRECTIVE_TEMPLATES', '$document',
                     coverLayer.addClass('modal-is-visible');
                 }, 100);
                 // console.log('Path open animation finished', evt);
+            });
+
+            // @TODO: add teardown
+            scope.$on('$destroy', function(evt){
+
+                console.log(evt);
             });
 
             $document.on('keyup', function(evt){

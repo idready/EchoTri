@@ -34,10 +34,6 @@
     <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/css/home.css">
     <!-- endbuild -->
 
-    <!-- build:js scripts/vendor/modernizr.js -->
-    <script src="<?php echo get_template_directory_uri() ?>/js/header-all.js"></script>
-
-    <!-- endbuild -->
 
 	<?php wp_head(); ?>
 

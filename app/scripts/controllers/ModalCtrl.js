@@ -1,14 +1,14 @@
 
 'use strict';
 
-myApp.controller('ModalCtrl', ['$scope', '$rootScope', '$state', function($scope, $rootScope, $state) {
+myApp.controller('ModalCtrl', ['MY_EVENTS', '$scope', '$rootScope', function(MY_EVENTS, $scope, $rootScope) {
 
     console.log('Modal controller');
 
     $scope.closeModal = function closeModal(evt) {
 
-        if(typeof evt !== 'undefined') evt.preventDefault();
-        $rootScope.$emit('closeModal');
+        if(angular.isDefined(evt)) evt.preventDefault();
+        $rootScope.$emit(MY_EVENTS.MODAL_CLOSE);
     }
 
 }]);
