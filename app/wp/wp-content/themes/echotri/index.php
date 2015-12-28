@@ -17,114 +17,49 @@
 
 get_header(); ?>
 
+<?php echo 'Silence is golden heh?' ?>
+<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
 
-      <!-- Add your site or application content here -->
-      <header class="header">
-            <div class="hero-cover lazyload" data-bgset="<?php echo get_template_directory_uri() ?>/images/hero-cover.jpg 4000w" data-sizes="auto">
-                <span class="icon-elt"><svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-logo-echotri" /></svg></span>
-                <p class="header-text">Insertion, Collection, Tri, Valorisation...</p>
-                <p class="header-text">Papiers, cartons et autres</p>
-            </div>
-      </header>
-      <!-- Main cotent -->
-      <section>
-          <section class="info-section activity">
+		<?php if ( have_posts() ) : ?>
 
-            <header><h2 class="title">Domaines d'intervention</h2></header>
-            <!-- Infos item -->
-            <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" data-postId ="6" class="info-section__item span-xs-12 span-sm-4">
-                <span class="icon-elt">
-                    <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-papers" /></svg>
-                </span>
-                <h3 class="info-section__item-label">Collecte de papiers sur place</h3>
-            </a>
-            <!-- Infos item -->
-            <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" class="info-section__item span-xs-12 span-sm-4">
-                <span class="icon-elt">
-                    <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-collect" /></svg>
-                </span>
-                <h3 class="info-section__item-label">Vente de papiers recyclés</h3>
-            </a>
-            <!-- Infos item -->
-            <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" class="info-section__item span-xs-12 span-sm-4">
-                <span class="icon-elt">
-                    <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-desktop" /></svg>
-                </span>
-                <h3 class="info-section__item-label">Enlèvement des consommables et matériaux informatiques</h3>
-            </a>
-            <!-- Infos item -->
-            <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" class="info-section__item span-xs-12 span-sm-4">
-                <span class="icon-elt">
-                    <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-movers" /></svg>
-                </span>
-                <h3 class="info-section__item-label">Petits déménagements et transferts de mobiliers</h3>
-            </a>
-            <!-- Infos item -->
-            <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" class="info-section__item span-xs-12 span-sm-4">
-                <span class="icon-elt">
-                    <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-safe" /></svg>
-                </span>
-                <h3 class="info-section__item-label">Gestion des documents confidentiels</h3>
-            </a>
-            <!-- Infos item -->
-            <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" class="info-section__item span-xs-12 span-sm-4">
-                <span class="icon-elt">
-                    <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-bin" /></svg>
-                </span>
-                <h3 class="info-section__item-label">Débarras administratifs, commerciaux et industriels </h3>
-            </a>
-          </section>
-          <section class="info-section missions">
+			<?php if ( is_home() && ! is_front_page() ) : ?>
+				<header>
+					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+				</header>
+			<?php endif; ?>
 
-            <header><h2 class="title">Missions sociales</h2></header>
-            <!-- Infos item -->
-            <a href="#" my-modal-link data-modal-event="modal-trigger" page-type="tertiary" data-type="cd-modal-trigger" class="info-section__item span-xs-12 span-sm-3">
-                <span class="icon-elt">
-                    <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-employee" /></svg>
-                </span>
-                <h3 class="info-section__item-label">Accompagnement des salariés</h3>
-            </a>
-            <!-- Infos item -->
-            <a href="#" my-modal-link data-modal-event="modal-trigger" page-type="tertiary" data-type="cd-modal-trigger" class="info-section__item span-xs-12 span-sm-3">
-                <span class="icon-elt">
-                    <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-list" /></svg>
-                </span>
-                <h3 class="info-section__item-label">Objets de la mission</h3>
-            </a>
-            <!-- Infos item -->
-            <a href="#" my-modal-link data-modal-event="modal-trigger" page-type="tertiary" data-type="cd-modal-trigger" class="info-section__item span-xs-12 span-sm-3">
-                <span class="icon-elt">
-                    <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-people" /></svg>
-                </span>
-                <h3 class="info-section__item-label">Accueil du public</h3>
-            </a>
-            <!-- Infos item -->
-            <a href="#" my-modal-link data-modal-event="modal-trigger" page-type="tertiary" data-type="cd-modal-trigger" class="info-section__item span-xs-12 span-sm-3">
-                <span class="icon-elt">
-                    <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-organize" /></svg>
-                </span>
-                <h3 class="info-section__item-label">Organisation du parcours</h3>
-            </a>
-          </section>
-          <section class="info-section contact">
+			<?php
+			// Start the loop.
+			while ( have_posts() ) : the_post();
 
-            <header><h2 class="title">Contact</h2></header>
-            <div class="content clearfix">
-                <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" page-type="secondary" page-template="writeToUs" class="span-xs-12 span-sm-6 info-section__item">
-                    <span class="icon-elt">
-                        <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-envelope" /></svg>
-                    </span>
-                    <h3 class="info-section__item-label">Nous écrire</h3>
-                </a>
-                <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" page-type="secondary" page-template="reachUs" class="span-xs-12 span-sm-6 info-section__item">
-                    <span class="icon-elt">
-                        <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-location-point" /></svg>
-                    </span>
-                    <h3 class="info-section__item-label">Nos coordonnées</h3>
-                </a>
-            </div>
-          </section>
-      </section>
+				/*
+				 * Include the Post-Format-specific template for the content.
+				 * If you want to override this in a child theme, then include a file
+				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+				 */
+				get_template_part( 'template-parts/content', get_post_format() );
+
+			// End the loop.
+			endwhile;
+
+			// Previous/next page navigation.
+			the_posts_pagination( array(
+				'prev_text'          => __( 'Previous page', 'twentysixteen' ),
+				'next_text'          => __( 'Next page', 'twentysixteen' ),
+				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentysixteen' ) . ' </span>',
+			) );
+
+		// If no content, include the "No posts found" template.
+		else :
+			get_template_part( 'template-parts/content', 'none' );
+
+		endif;
+		?>
+
+		</main><!-- .site-main -->
+	</div><!-- .content-area -->
+
 
 <?php get_footer(); ?>
 

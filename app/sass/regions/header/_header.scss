@@ -133,6 +133,30 @@
         }
 
     }
+    // WP
+    .article-content {
+
+        font-size: 18px;
+        line-height: 1;
+
+        // @TODO: style common content elements
+        a {
+
+
+        }
+
+        img {
+
+            display: block;
+            margin: 10px 0;
+            max-width: 100%;
+        }
+
+        p {
+
+        }
+    }
+
 
     // Responsiveness
     @include mq('sm') {
@@ -140,6 +164,12 @@
         .icon-bg .icon {
 
             width: 450px;
+        }
+        // WP
+        .article-content {
+
+            font-size: 24px;
+            line-height: 1.5;
         }
     }
 }

@@ -154,6 +154,7 @@ myApp.directive('myModalLink', ['MY_EVENTS', 'DIRECTIVE_TEMPLATES', '$document',
 
                         angular.element(document.querySelector('.cd-modal-dyn-content')).append(element);
                         // $rootScope.$emit(MY_EVENTS.MODAL_LOAD_DATAS, {post_id: attrs.postid});
+
                     })
                     .error(function(errors){
 

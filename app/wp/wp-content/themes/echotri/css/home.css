@@ -2682,9 +2682,24 @@ table td {
   margin-bottom: 1.875rem;
 }
 
+.cd-modal-content .article-content {
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+.cd-modal-content .article-content img {
+  display: block;
+  margin: 0.625rem 0;
+  max-width: 100%;
+}
+
 @media screen and (min-width: 48rem) {
   .cd-modal-content .icon-bg .icon {
     width: 28.125rem;
+  }
+  .cd-modal-content .article-content {
+    font-size: 1.5rem;
+    line-height: 1.5;
   }
 }
 
