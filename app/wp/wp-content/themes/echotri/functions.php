@@ -49,17 +49,26 @@ add_action( 'wp_ajax_nopriv_get_articles', 'get_articles' );
 
 function get_articles() {
 
-  // @TODO: clean $_REQUEST['post_id'] for security
-  $args = array(
+    $post_id = trim($_REQUEST['post_id']);
+    if ( $post_id === 'undefined' || !is_numeric($post_id) ) $post_id = 1;
+
+    // @TODO: clean $_REQUEST['post_id'] for security
+    $args = array(
       'post_type' => 'post',
-      'p' => $_REQUEST['post_id']
-  );
+      'p' => $post_id
+    );
 
-  $ajax_query = new WP_Query($args);
+    $ajax_query = new WP_Query($args);
 
-  echo json_encode(array('title'=> $ajax_query->post->post_title, 'content'=> $ajax_query->post->post_content));
+    if ( $ajax_query->have_posts() ) :
+        while ( $ajax_query->have_posts() ) : $ajax_query->the_post();
+            get_template_part( 'template-parts/modal' );
+        endwhile;
+    endif;
 
+    // @TODO: Send Template part instead
+    // echo json_encode(array('title'=> $ajax_query->post->post_title, 'content'=> $ajax_query->post->post_content));
 
-  die();
+    die();
 }
 

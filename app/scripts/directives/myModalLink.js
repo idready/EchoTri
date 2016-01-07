@@ -151,6 +151,7 @@ myApp.directive('myModalLink', ['MY_EVENTS', 'DIRECTIVE_TEMPLATES', '$document',
                         var templateData = (angular.isDefined(datas.data)) ? datas.data : datas;
                         var linkFn = $compile('<div my-modal-dialog data-postId="'+attrs.postid+'" class="span-xs-12 modal-page-content">' +templateData+ '</div>');
                         var element = linkFn(scope);
+                        scope.postIcon = attrs.posticon;
 
                         angular.element(document.querySelector('.cd-modal-dyn-content')).append(element);
                         // $rootScope.$emit(MY_EVENTS.MODAL_LOAD_DATAS, {post_id: attrs.postid});

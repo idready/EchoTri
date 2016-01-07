@@ -27,17 +27,15 @@ myApp.directive('myModalDialog', ['MY_EVENTS', '$rootScope', '$compile', '$http'
                     requestPost.then(
                         function(response){
 
-                            scope.title = response.data.title;
-                            scope.content = response.data.content;
-
+                            console.log(response);
                             $rootScope.isLoading = false;
                             // @TODO: find a way to do this on the template
-                            var datas = '<h3 class="page-title">'+scope.title+'</h3>'+
-                                        '<div class="page-content">'+scope.content+'</div>';
-                            var linkFn = $compile('<div>'+datas+'</div>');
+                            // var datas = '<h3 class="page-title">'+scope.title+'</h3>'+
+                            //             '<div class="page-content">'+scope.content+'</div>';
+                            var linkFn = $compile('<div>'+response.data+'</div>');
                             var element = linkFn(scope);
 
-                            angular.element(document.querySelector('.modal-page-content .article-content')).append(element);
+                            angular.element(document.querySelector('.modal-page-content .dyn-content')).append(element);
 
                         },
                         function(errors){
