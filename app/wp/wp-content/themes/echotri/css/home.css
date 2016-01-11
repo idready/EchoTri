@@ -3044,6 +3044,15 @@ Modal Window
   visibility: visible;
 }
 
+.contact-form .valid-field {
+  color: #43AC6A;
+}
+
+.contact-form .errors-block {
+  color: #F04124;
+  margin-bottom: 1.25rem;
+}
+
 @media screen and (min-width: 48rem) {
   .contact-form input[type="text"],
   .contact-form input[type="email"],

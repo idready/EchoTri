@@ -4,14 +4,18 @@
 myApp.controller('ContactFormCtrl', ['$scope', '$timeout', function($scope, $timeout) {
 
     console.log('formctrl');
-    // $scope.echoForm = {};
+
     $scope.form = {
 
         handle: false,
         submit: false
     };
 
-    $scope.REGEX_EMAIL = '/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i';
+    // @TODO: Don't send request to wp for modal with defined template
+    // Form patterns
+    // $scope.REGEX_NAMES = '/^[0-9]+$/';
+    // $scope.REGEX_NAMES = '/^(?=.*[a-zA-Z]{1,})(?=.*[\d]{0,})[a-zA-Z0-9]$/';
+    $scope.REGEX_EMAIL = '/^(([a-zA-Z]|[0-9])|([-]|[_]|[.]))+[@](([a-zA-Z0-9])|([-])){2,63}[.](([a-zA-Z0-9]){2,63})+$/gi';
     // ^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$
     $scope.$on('loading', function(){
 
@@ -25,6 +29,8 @@ myApp.controller('ContactFormCtrl', ['$scope', '$timeout', function($scope, $tim
             evt.preventDefault();
         }
         console.log(evt);
+        console.log($scope.echoForm);
+        console.log($scope.guest);
 
         $scope.handle = true;
 

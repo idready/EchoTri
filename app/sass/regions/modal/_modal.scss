@@ -295,10 +295,24 @@ Modal Window
         }
     }
 
-     // Responsiveness spices
+    // Error messages
+    .valid-field {
+        color: $success-color;
+    }
+    .invalid-field {}
+    .errors-block {
+
+        color: $alert-color;
+        margin-bottom: 20px;
+
+        li {
+
+        }
+    }
+
+    // Responsiveness spices
     @include mq('sm') {
 
-        // common
         // common
         input[type="text"],
         input[type="email"],
