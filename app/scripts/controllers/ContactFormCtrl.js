@@ -1,7 +1,7 @@
 
 'use strict';
 
-myApp.controller('ContactFormCtrl', ['$scope', '$timeout', function($scope, $timeout) {
+myApp.controller('ContactFormCtrl', ['$scope', '$timeout', '$http', function($scope, $timeout, $http) {
 
     console.log('formctrl');
 
@@ -28,16 +28,30 @@ myApp.controller('ContactFormCtrl', ['$scope', '$timeout', function($scope, $tim
 
             evt.preventDefault();
         }
-        console.log(evt);
-        console.log($scope.echoForm);
-        console.log($scope.guest);
 
-        $scope.handle = true;
+        console.log($scope.echoForm.$name+ ' is Valid:' +$scope.echoForm.$valid);
 
-        $timeout(function(){
-            console.log('disabled')
-            $scope.handle = false;
-        }, 1000);
+        if ($scope.echoForm.$valid) {
+
+            // $scope.form.handle = true;
+            console.log($scope.echoForm.$name+ ' is Valid:' +$scope.echoForm.$valid);
+            // @TODO: set caching
+            $http({method: 'POST', url: CONFIG_VARS.WP_TEMPLATE_URL+'/handle-mail.php', params: $scope.guest}).then(
+                function(datas){
+
+                    console.log('Datas: ', datas);
+                    $scope.form.handle = false;
+                },
+                function(error){
+                    console.warn(error);
+                    $scope.form.handle = false;
+                });
+        }
+
+        // $timeout(function(){
+        //     console.log('disabled')
+
+        // }, 20000);
     }
 
 }]);

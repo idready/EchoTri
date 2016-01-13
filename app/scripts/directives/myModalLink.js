@@ -124,8 +124,6 @@ myApp.directive('myModalLink', ['MY_EVENTS', 'DIRECTIVE_TEMPLATES', '$document',
                 pathSteps[5] = pathStepsContainer.attr('data-step6');
 
             }
-            // console.log(scope.pageType);
-            // console.log(scope.pageTemplate);
 
             initModal(element);
 
@@ -146,10 +144,10 @@ myApp.directive('myModalLink', ['MY_EVENTS', 'DIRECTIVE_TEMPLATES', '$document',
 
                 $http.get(templateUrl + templateFileName + '.html')
                     .success(function(datas){
-
+                        // data-pageTemplate="'+scope.pageTemplate+'"
                         $rootScope.isLoading = false;
                         var templateData = (angular.isDefined(datas.data)) ? datas.data : datas;
-                        var linkFn = $compile('<div my-modal-dialog data-postId="'+attrs.postid+'" class="span-xs-12 modal-page-content">' +templateData+ '</div>');
+                        var linkFn = $compile('<div my-modal-dialog pageTemplate="'+templateFileName+'" data-postId="'+attrs.postid+'" class="span-xs-12 modal-page-content">' +templateData+ '</div>');
                         var element = linkFn(scope);
                         scope.postIcon = attrs.posticon;
 

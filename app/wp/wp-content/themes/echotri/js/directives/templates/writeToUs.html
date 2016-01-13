@@ -7,21 +7,14 @@
 
     <form action="" method="Post" id="echo-form" name="echoForm" class="contact-form" ng-model="formContact" ng-submit="formSubmit($event)" novalidate>
         <!-- Company Field -->
-        <!-- <pre> -->
-        <!-- {{echoForm.company}} <br> -->
-        <!-- {{echoForm.company}} <br>
-        {{echoForm.company.$blurred}} <br>
-        {{echoForm.company.$valid && echoForm.company.$blurred}} <br>
-        {{echoForm.company.$invalid && echoForm.company.$blurred}} <br> -->
-        <!-- </pre> -->
         <div class="input-block">
             <input type="text" ng-disabled="form.handle" ng-model="guest.company" name="company" id="company" ng-class="{'invalid-field': echoForm.company.$invalid && echoForm.company.$touched}" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[a-zA-Z-'` ŠšÐdŽžCcÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿRr]+$/" placeholder="Votre entreprise*" required>
             <!-- <label for="company" class="placeholder-rbm" ng-class="{'visible-pld': guest.company.length}"><span class="ng-hide" ng-show="guest.company.$invalid && guest.company.$blurred">Le champ "</span>Votre entreprise* <span ng-show="guest.company.$invalid && guest.company.$blurred">" est invalid</span></label> -->
             <label for="company" class="placeholder-rbm" ng-class="{'visible-pld': guest.company.length}">Votre entreprise*</label>
         </div>
          <!-- Field Errors -->
-        <ul class="errors-block ng-hide"  ng-show="form.submit && echoForm.company.$invalid || echoForm.company.$invalid && echoForm.company.$dirty" role="alert">
-            <li class="ng-hide" ng-show="echoForm.company.$error.required">Le champ entreprise requis.</li>
+        <ul class="errors-block ng-hide" ng-show="form.submit && echoForm.company.$invalid || echoForm.company.$invalid && echoForm.company.$dirty" role="alert">
+            <li class="ng-hide" ng-show="echoForm.company.$error.required">Le champ entreprise est obligatoire.</li>
             <li class="ng-hide" ng-show="echoForm.company.$error.pattern">Ce champ est invalide. Ex: "EchoTri" serait valide.</li>
             <li class="ng-hide" ng-show="echoForm.company.$error.minlength">Ce champ requiert au moins 3 caractères.</li>
             <li class="ng-hide" ng-show="echoForm.company.$error.maxlength">Ce champ excède le maximum de 30 caractères autorisés.</li>
@@ -33,8 +26,8 @@
             <label for="rs" class="placeholder-rbm" ng-class="{'visible-pld': guest.rs.length}">Votre raison sociale*</label>
         </div>
         <!-- Field Errors -->
-        <ul class="errors-block ng-hide"  ng-show="form.submit && echoForm.rs.$invalid || echoForm.rs.$invalid && echoForm.rs.$dirty" role="alert">
-            <li class="ng-hide" ng-show="echoForm.rs.$error.required">Le champ raison social requis.</li>
+        <ul class="errors-block ng-hide" ng-show="form.submit && echoForm.rs.$invalid || echoForm.rs.$invalid && echoForm.rs.$dirty" role="alert">
+            <li class="ng-hide" ng-show="echoForm.rs.$error.required">Le champ raison social est obligatoire.</li>
             <li class="ng-hide" ng-show="echoForm.rs.$error.pattern">Ce champ est invalide. Ex: "Société Civile Professionnelle" serait valide.</li>
             <li class="ng-hide" ng-show="echoForm.rs.$error.minlength">Ce champ requiert au moins 3 caractères.</li>
             <li class="ng-hide" ng-show="echoForm.rs.$error.maxlength">Ce champ excède le maximum de 30 caractères autorisés.</li>
@@ -46,8 +39,8 @@
             <label for="name" class="placeholder-rbm" ng-class="{'visible-pld': guest.name.length}">Votre nom*</label>
         </div>
         <!-- Field Errors -->
-        <ul class="errors-block ng-hide"  ng-show="form.submit && echoForm.name.$invalid || echoForm.name.$invalid && echoForm.name.$dirty" role="alert">
-            <li class="ng-hide" ng-show="echoForm.name.$error.required">Le champ nom requis.</li>
+        <ul class="errors-block ng-hide" ng-show="form.submit && echoForm.name.$invalid || echoForm.name.$invalid && echoForm.name.$dirty" role="alert">
+            <li class="ng-hide" ng-show="echoForm.name.$error.required">Le champ nom est obligatoire.</li>
             <li class="ng-hide" ng-show="echoForm.name.$error.pattern">Ce champ est invalide. Ex: "Pierre" serait valide.</li>
             <li class="ng-hide" ng-show="echoForm.name.$error.minlength">Ce champ requiert au moins 5 caractères.</li>
             <li class="ng-hide" ng-show="echoForm.name.$error.maxlength">Ce champ excède le maximum de 50 caractères autorisés.</li>
@@ -59,19 +52,19 @@
             <label for="firstName" class="placeholder-rbm" ng-class="{'visible-pld': guest.firstName.length}">Votre prénom</label>
         </div>
         <!-- Field Errors -->
-        <ul class="errors-block ng-hide"  ng-show="form.submit && echoForm.firstName.$invalid || echoForm.firstName.$invalid && echoForm.firstName.$dirty" role="alert">
+        <ul class="errors-block ng-hide" ng-show="form.submit && echoForm.firstName.$invalid || echoForm.firstName.$invalid && echoForm.firstName.$dirty" role="alert">
             <li class="ng-hide" ng-show="echoForm.firstName.$error.minlength">Ce champ requiert au moins 3 caractères.</li>
             <li class="ng-hide" ng-show="echoForm.firstName.$error.maxlength">Ce champ excède le maximum de 30 caractères autorisés.</li>
         </ul>
 
         <!-- Email Field -->
         <div class="input-block">
-            <input type="email" ng-disabled="form.handle" ng-model="guest.email" ng-minlength="5"  name="email" id="email" placeholder="Votre email*" ng-model-options="{ allowInvalid: true }" required>
+            <input type="email" ng-disabled="form.handle" ng-model="guest.email" ng-minlength="5"  name="email" id="email" ng-pattern="/^(([a-zA-Z]|[0-9])|([-]|[_]|[.]))+[@](([a-zA-Z0-9])|([-])){2,63}[.](([a-zA-Z0-9]){2,63})+$/gi" placeholder="Votre email*" ng-model-options="{ allowInvalid: true }" required>
             <label for="email" class="placeholder-rbm" ng-class="{'visible-pld': guest.email.length}">Votre email <span class="ng-hide" ng-show="echoForm.email.$valid && echoForm.email.$dirty">est valide </span>*</label>
         </div>
         <!-- Field Errors -->
-        <ul class="errors-block ng-hide"  ng-show="form.submit && echoForm.email.$invalid || echoForm.email.$invalid && echoForm.email.$dirty" role="alert">
-            <li class="ng-hide" ng-show="echoForm.email.$error.required">le champ email requis.</li>
+        <ul class="errors-block ng-hide" ng-show="form.submit && echoForm.email.$invalid || echoForm.email.$invalid && echoForm.email.$dirty" role="alert">
+            <li class="ng-hide" ng-show="echoForm.email.$error.required">Le champ email est obligatoire.</li>
             <li class="ng-hide" ng-show="echoForm.email.$error.pattern">Ce champ est invalide. Ex: monmail@domain.fr</li>
             <li class="ng-hide" ng-show="echoForm.email.$error.minlength">Ce champ requiert au moins 5 caractères.</li>
         </ul>
