@@ -132,17 +132,17 @@ myApp.directive('myModalLink', ['MY_EVENTS', 'DIRECTIVE_TEMPLATES', '$document',
                 if (angular.isDefined(evt)) evt.preventDefault();
 
                 $rootScope.isLoading = true;
-                var templateUrl = '';
+                scope.templateUrl = '';
 
                 if (typeof CONFIG_VARS != 'undefined') {
-                    templateUrl =  CONFIG_VARS.WP_TEMPLATE_URL + '/js/directives/templates/';
+                    scope.templateUrl =  CONFIG_VARS.WP_TEMPLATE_URL + '/js/directives/templates/';
                 } else {
-                    templateUrl =  DIRECTIVE_TEMPLATES.TEMPLATE_URL;
+                    scope.templateUrl =  DIRECTIVE_TEMPLATES.TEMPLATE_URL;
                 }
 
                 var templateFileName = (scope.pageTemplate) ? scope.pageTemplate : 'default';
 
-                $http.get(templateUrl + templateFileName + '.html')
+                $http.get(scope.templateUrl + templateFileName + '.html')
                     .success(function(datas){
                         // data-pageTemplate="'+scope.pageTemplate+'"
                         $rootScope.isLoading = false;
@@ -154,14 +154,15 @@ myApp.directive('myModalLink', ['MY_EVENTS', 'DIRECTIVE_TEMPLATES', '$document',
                         angular.element(document.querySelector('.cd-modal-dyn-content')).append(element);
                         // $rootScope.$emit(MY_EVENTS.MODAL_LOAD_DATAS, {post_id: attrs.postid});
 
+                        // Remove overflow on the page to avoid double scroll (modal and the page)
+                        angular.element(document.getElementsByTagName('html')).addClass('no-overflow');
+
                     })
                     .error(function(errors){
 
                         console.warn(errors);
                     });
 
-                // Remove overflow on the page to avoid double scroll (modal and the page)
-                angular.element(document.getElementsByTagName('html')).addClass('no-overflow');
 
                 // Animate the svg path
                 animateModal(pathsArray, pathSteps, duration, 'open');

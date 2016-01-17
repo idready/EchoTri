@@ -1,7 +1,7 @@
 
 'use strict';
 
-var myApp = angular.module('echoTri', ['ui.router', 'uiGmapgoogle-maps']);
+var myApp = angular.module('echoTri', ['ui.router', 'ngMessages', 'uiGmapgoogle-maps']);
 
 // CONFIG
 // myApp.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationProvider', 'uiGmapGoogleMapApiProvider', function($stateProvider,$httpProvider, $urlRouterProvider, $locationProvider, GoogleMapApiProviders) {

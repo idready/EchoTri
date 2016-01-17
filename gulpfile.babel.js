@@ -98,6 +98,7 @@ gulp.task('main-scripts', function() {
       'app/scripts/components/bower_components/lazysizes/lazysizes.min.js',
       'app/scripts/components/bower_components/Snap.svg/dist/snap.svg-min.js',
       'app/scripts/components/bower_components/angular-ui-router/release/angular-ui-router.min.js',
+      'app/scripts/components/bower_components/angular-messages/angular-messages.js',
 
       'app/scripts/components/bower_components/lodash/lodash.min.js',
       'app/scripts/components/bower_components/angular-simple-logger/dist/angular-simple-logger.min.js',
@@ -106,6 +107,7 @@ gulp.task('main-scripts', function() {
       'app/scripts/components/vendor/velocity/velocity.min.js',
 
       'app/scripts/app.js',
+      'app/scripts/filters/filters.js',
       'app/scripts/directives/myModalLink.js',
       'app/scripts/directives/myModalDialog.js',
       'app/scripts/controllers/HomeCtrl.js',
@@ -124,7 +126,7 @@ gulp.task('header-scripts', function() {
   return gulp.src([
       'app/scripts/components/bower_components/modernizr/modernizr.js',
       'app/scripts/components/bower_components/svg4everybody/dist/svg4everybody.min.js',
-      'app/scripts/components/bower_components/angular/angular.js',
+      'app/scripts/components/bower_components/angular/angular.js'
     ])
     .pipe($.concat({ path: 'header-all.js'}))
     .pipe($.uglify())
