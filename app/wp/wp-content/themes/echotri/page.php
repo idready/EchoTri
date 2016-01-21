@@ -40,6 +40,8 @@ get_header(); ?>
                     'post_type' => 'post',
                     'category_name' => 'domaines_interventions',
                     'posts_per_page' => 10,
+                    'meta_key' => 'position_lien',
+                    'orderby' => 'meta_value_num',
                     'order' => 'ASC',
                 );
 
