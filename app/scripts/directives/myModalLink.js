@@ -175,6 +175,7 @@ myApp.directive('myModalLink', ['MY_EVENTS', 'DIRECTIVE_TEMPLATES', '$document',
                 //     easing: 'ease-in-out'
                 // });
 
+                // Customize background for modal type
                 if (angular.isDefined(scope.pageType)) {
                     modal.addClass(pageType);
                     coverLayer.addClass(scope.pageType);
@@ -225,12 +226,6 @@ myApp.directive('myModalLink', ['MY_EVENTS', 'DIRECTIVE_TEMPLATES', '$document',
                     coverLayer.addClass('modal-is-visible');
                 }, 100);
                 // console.log('Path open animation finished', evt);
-            });
-
-            // @TODO: add teardown
-            scope.$on('$destroy', function(evt){
-
-                console.log(evt);
             });
 
             $document.on('keyup', function(evt){

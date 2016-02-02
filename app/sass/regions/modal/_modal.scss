@@ -178,6 +178,25 @@ Modal Window
         transition: opacity $modal-animation-duration/2 $modal-animation-duration/2, transform $modal-animation-duration/2 $modal-animation-duration/2;
     }
 
+    .dyn-content {
+
+        .wp-img {
+
+            display: inline-block;
+            margin: 0;
+
+            &.alignleft {float: left; margin-right: 20px;}
+            &.alignright {float: right; margin-left: 20px;}
+            &.aligncenter {
+                display: block;
+                text-align: center;
+            }
+            // images
+            .aligncenter {display: inline-block;}
+
+        }
+    }
+
     @include mq('sm') {
 
         padding: 4em 10% 4em;

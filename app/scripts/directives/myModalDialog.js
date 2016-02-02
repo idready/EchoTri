@@ -28,6 +28,28 @@ myApp.directive('myModalDialog', ['MY_EVENTS', '$rootScope', '$compile', '$http'
                             var element = linkFn(scope);
 
                             angular.element(document.querySelector('.modal-page-content .dyn-content')).append(element);
+                            // angular.element(document.querySelectorAll('img')).parent().addClass('wp-img');
+
+                            // Apply styles class for images
+                            angular.forEach( document.querySelectorAll('.modal-page-content img'), function(val, key){
+
+                                // vimeo ?
+                                if (angular.element(val).hasClass('alignleft')) angular.element(val).parent().addClass('alignleft');
+                                if (angular.element(val).hasClass('alignright')) angular.element(val).parent().addClass('alignright');
+                                if (angular.element(val).hasClass('aligncenter')) angular.element(val).parent().addClass('aligncenter');
+                                angular.element(val).parent().addClass('wp-img');
+                                // @TODO: Add a limit to video width for larger screen (+1400)
+                            });
+
+                            // Apply styles class for Video
+                            angular.forEach( document.querySelectorAll('.modal-page-content iframe'), function(val, key){
+
+                                // vimeo ?
+                                if (val.src.indexOf('vimeo') != -1) angular.element(val).parent().addClass('vimeo');
+                                angular.element(val).parent().addClass('flex-video widdescreen');
+                                // @TODO: Add a limit to video width for larger screen (+1400)
+                            });
+
 
                         },
                         function(errors){
@@ -41,6 +63,11 @@ myApp.directive('myModalDialog', ['MY_EVENTS', '$rootScope', '$compile', '$http'
             scope.retrievePost();
             // unsubscribe to event
             // scope.$on('destroy', retrieveDatas);
+            // @TODO: add teardown
+            scope.$on('$destroy', function(evt){
+
+                console.log(evt);
+            });
 
 
         }

@@ -73,82 +73,49 @@ get_header(); ?>
                 wp_reset_postdata();
                 ?>
 
-            <?php /* Static not useful anymore
-            <!-- Infos item -->
-            <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" data-postId ="6" class="info-section__item span-xs-12 span-sm-4">
-                <span class="icon-elt">
-                    <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-papers" /></svg>
-                </span>
-                <h3 class="info-section__item-label">Collecte de papiers sur place</h3>
-            </a>
-            <!-- Infos item -->
-            <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" class="info-section__item span-xs-12 span-sm-4">
-                <span class="icon-elt">
-                    <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-collect" /></svg>
-                </span>
-                <h3 class="info-section__item-label">Vente de papiers recyclés</h3>
-            </a>
-            <!-- Infos item -->
-            <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" class="info-section__item span-xs-12 span-sm-4">
-                <span class="icon-elt">
-                    <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-desktop" /></svg>
-                </span>
-                <h3 class="info-section__item-label">Enlèvement des consommables et matériaux informatiques</h3>
-            </a>
-            <!-- Infos item -->
-            <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" class="info-section__item span-xs-12 span-sm-4">
-                <span class="icon-elt">
-                    <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-movers" /></svg>
-                </span>
-                <h3 class="info-section__item-label">Petits déménagements et transferts de mobiliers</h3>
-            </a>
-            <!-- Infos item -->
-            <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" class="info-section__item span-xs-12 span-sm-4">
-                <span class="icon-elt">
-                    <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-safe" /></svg>
-                </span>
-                <h3 class="info-section__item-label">Gestion des documents confidentiels</h3>
-            </a>
-            <!-- Infos item -->
-            <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" class="info-section__item span-xs-12 span-sm-4">
-                <span class="icon-elt">
-                    <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-bin" /></svg>
-                </span>
-                <h3 class="info-section__item-label">Débarras administratifs, commerciaux et industriels </h3>
-            </a>
-            */ ?>
           </section>
           <section class="info-section missions">
 
             <header><h2 class="title">Missions sociales</h2></header>
             <!-- Infos item -->
-            <a href="#" my-modal-link data-modal-event="modal-trigger" page-type="tertiary" data-type="cd-modal-trigger" class="info-section__item span-xs-12 span-sm-3">
-                <span class="icon-elt">
-                    <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-employee" /></svg>
-                </span>
-                <h3 class="info-section__item-label">Accompagnement des salariés</h3>
-            </a>
-            <!-- Infos item -->
-            <a href="#" my-modal-link data-modal-event="modal-trigger" page-type="tertiary" data-type="cd-modal-trigger" class="info-section__item span-xs-12 span-sm-3">
-                <span class="icon-elt">
-                    <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-list" /></svg>
-                </span>
-                <h3 class="info-section__item-label">Objets de la mission</h3>
-            </a>
-            <!-- Infos item -->
-            <a href="#" my-modal-link data-modal-event="modal-trigger" page-type="tertiary" data-type="cd-modal-trigger" class="info-section__item span-xs-12 span-sm-3">
-                <span class="icon-elt">
-                    <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-people" /></svg>
-                </span>
-                <h3 class="info-section__item-label">Accueil du public</h3>
-            </a>
-            <!-- Infos item -->
-            <a href="#" my-modal-link data-modal-event="modal-trigger" page-type="tertiary" data-type="cd-modal-trigger" class="info-section__item span-xs-12 span-sm-3">
-                <span class="icon-elt">
-                    <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-organize" /></svg>
-                </span>
-                <h3 class="info-section__item-label">Organisation du parcours</h3>
-            </a>
+            <?php
+
+                $args = array(
+                    'post_type' => 'post',
+                    'category_name' => 'missions_sociales',
+                    'posts_per_page' => 10,
+                    'meta_key' => 'position_lien',
+                    'orderby' => 'meta_value_num',
+                    'order' => 'ASC',
+                );
+
+                $my_query = new WP_Query($args);
+
+                if($my_query->have_posts()):
+                ?>
+
+                <?php
+                // Loop
+                while ($my_query->have_posts() ) : $my_query->the_post();
+                ?>
+
+                    <!-- Infos item -->
+                    <a href="#" my-modal-link data-modal-event="modal-trigger" page-type="tertiary" data-type="cd-modal-trigger" data-posticon="<?php echo strtolower(the_field('icone_article')) ?>" data-postId="<?php the_ID() ?>" class="info-section__item span-xs-12 span-sm-3">
+                        <span class="icon-elt">
+                            <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-<?php echo strtolower(the_field('icone_article')) ?>" /></svg>
+                        </span>
+                        <h3 class="info-section__item-label"><?php the_title() ?></h3>
+                    </a>
+
+                <?php
+
+                endwhile;
+                endif;
+
+                // Reset
+                wp_reset_postdata();
+            ?>
+
           </section>
           <section class="info-section contact">
 
