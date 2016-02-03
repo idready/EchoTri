@@ -38,7 +38,6 @@ myApp.directive('myModalDialog', ['MY_EVENTS', '$rootScope', '$compile', '$http'
                                 if (angular.element(val).hasClass('alignright')) angular.element(val).parent().addClass('alignright');
                                 if (angular.element(val).hasClass('aligncenter')) angular.element(val).parent().addClass('aligncenter');
                                 angular.element(val).parent().addClass('wp-img');
-                                // @TODO: Add a limit to video width for larger screen (+1400)
                             });
 
                             // Apply styles class for Video
@@ -46,7 +45,7 @@ myApp.directive('myModalDialog', ['MY_EVENTS', '$rootScope', '$compile', '$http'
 
                                 // vimeo ?
                                 if (val.src.indexOf('vimeo') != -1) angular.element(val).parent().addClass('vimeo');
-                                angular.element(val).parent().addClass('flex-video widdescreen');
+                                angular.element(val).parent().addClass('flex-video widdescreen').wrap('<div class="wp-video"></diV>');
                                 // @TODO: Add a limit to video width for larger screen (+1400)
                             });
 

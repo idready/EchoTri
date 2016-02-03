@@ -111,25 +111,42 @@
 
     .page-title {
 
-        font-size: 40px;
+        font-size: 32px;
         font-weight: bold;
         margin-bottom: 60px;
         position: relative;
         text-align: center;
-        text-decoration: underline;
+        text-shadow: 0px 3px 1px rgba(0,0,0,0.3);
         z-index: 1;
     }
 
     .page-content {
 
-
         position: relative;
         text-align: left;
         z-index: 2;
 
+        li,
         p {
-            font-size: 24px;
+
+            font-size: 20px;
+            transition: $default-transition;
+        }
+
+        p {
             margin-bottom: 30px;
+        }
+
+        // Style list
+        ol,
+        ul {padding-left: 40px;}
+
+        ul li {list-style-type: disc;}
+        ol li {list-style-type: decimal;}
+        li {
+
+            list-style-type: disc;
+            margin-bottom: 10px;
         }
 
     }
@@ -138,39 +155,15 @@
 
         font-size: 18px;
         line-height: 1;
-
-        // @TODO: style common content elements
-        a {
-
-
-        }
-
-        img {
-
-            display: block;
-            margin: 10px 0;
-            max-width: 100%;
-
-            &.aligncenter {
-
-            }
-            &.alignleft {
-
-            }
-            &.alignright {
-
-            }
-        }
-
-        p {
-
-        }
     }
-
 
     // Responsiveness
     @include mq('sm') {
 
+        .page-title {
+
+            font-size: 40px;
+        }
         .icon-bg .icon {
 
             width: 450px;
@@ -181,7 +174,16 @@
             font-size: 24px;
             line-height: 1.5;
         }
+
+        .page-content {
+
+            li,
+            p {
+                font-size: 24px;
+            }
+        }
     }
+
 }
 
 .cd-modal {

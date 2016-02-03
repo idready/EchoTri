@@ -11,9 +11,9 @@
 
 /*** Mixins for grid columns ***/
 
-@mixin make-grid-columns($i: 1, $list: ".#{$grid-class-name}-xs-#{$i}, .#{$grid-class-name}-sm-#{$i}, .#{$grid-class-name}-md-#{$i}, .#{$grid-class-name}-lg-#{$i}") {
+@mixin make-grid-columns($i: 1, $list: ".#{$grid-class-name}-xs-#{$i}, .#{$grid-class-name}-sm-#{$i}, .#{$grid-class-name}-md-#{$i}, .#{$grid-class-name}-lg-#{$i}, .#{$grid-class-name}-xlg-#{$i}") {
   @for $i from (1 + 1) through $grid-columns {
-    $list: "#{$list}, .#{$grid-class-name}-xs-#{$i}, .#{$grid-class-name}-sm-#{$i}, .#{$grid-class-name}-md-#{$i}, .#{$grid-class-name}-lg-#{$i}";
+    $list: "#{$list}, .#{$grid-class-name}-xs-#{$i}, .#{$grid-class-name}-sm-#{$i}, .#{$grid-class-name}-md-#{$i}, .#{$grid-class-name}-lg-#{$i}, .#{$grid-class-name}-xlg-#{$i}";
   }
   #{$list} {
     float: left;
@@ -61,6 +61,9 @@
     @include calc-grid-column (lg, $grid-columns);
 }
 
+@media (min-width: rem($bp-xlg-screen)) {
+    @include calc-grid-column (xlg, $grid-columns);
+}
 
 /** Viewport bugfix for IE10 on Windows 8 & W8 Phone (< update 3) **/
 

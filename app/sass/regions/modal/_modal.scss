@@ -87,12 +87,11 @@ Modal Window
     .modal-close {
 
         top: 20px;
-        right: 5%;
-
 
         /* image replacement */
         // overflow: hidden;
         position: absolute;
+        right: 5%;
 
         /* Force hardware acceleration*/
         transform: translateZ(0);
@@ -192,7 +191,22 @@ Modal Window
                 text-align: center;
             }
             // images
+            img {
+                height: auto; // keeps ratio
+                margin-bottom: 10px;
+                max-width: 100%;
+            }
             .aligncenter {display: inline-block;}
+            .alignnone,
+            .alignright,
+            .alignleft {
+
+                margin-right: 10px;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
 
         }
     }
@@ -200,9 +214,22 @@ Modal Window
     @include mq('sm') {
 
         padding: 4em 10% 4em;
+    }
+
+    @include mq('lg') {
+
+       .dyn-content {
+
+            .wp-video {
+
+                margin: 0 auto;
+                width: 75%;
+            }
+        }
 
     }
 }
+
 
 /* --------------------------------
 
@@ -285,9 +312,7 @@ Modal Window
         width: 100%;
     }
 
-    textarea {
-
-    }
+    textarea {}
 
     .input-block {
 

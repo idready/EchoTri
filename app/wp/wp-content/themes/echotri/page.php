@@ -54,7 +54,6 @@ get_header(); ?>
                 // Loop
                 while ($my_query->have_posts() ) : $my_query->the_post();
                 ?>
-                <pre><?php //the_field('titre_article')  ?></pre>
 
                     <!-- Infos item -->
                     <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" data-posticon="<?php echo strtolower(the_field('icone_article')) ?>" data-postId="<?php the_ID() ?>" class="info-section__item span-xs-12 span-sm-4">

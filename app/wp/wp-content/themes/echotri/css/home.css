@@ -517,7 +517,7 @@ th {
  * ==================================== */
 /*** Mixins for grid columns ***/
 /*** Mixins for grid column type calculation ***/
-.span-xs-1, .span-sm-1, .span-md-1, .span-lg-1, .span-xs-2, .span-sm-2, .span-md-2, .span-lg-2, .span-xs-3, .span-sm-3, .span-md-3, .span-lg-3, .span-xs-4, .span-sm-4, .span-md-4, .span-lg-4, .span-xs-5, .span-sm-5, .span-md-5, .span-lg-5, .span-xs-6, .span-sm-6, .span-md-6, .span-lg-6, .span-xs-7, .span-sm-7, .span-md-7, .span-lg-7, .span-xs-8, .span-sm-8, .span-md-8, .span-lg-8, .span-xs-9, .span-sm-9, .span-md-9, .span-lg-9, .span-xs-10, .span-sm-10, .span-md-10, .span-lg-10, .span-xs-11, .span-sm-11, .span-md-11, .span-lg-11, .span-xs-12, .span-sm-12, .span-md-12, .span-lg-12 {
+.span-xs-1, .span-sm-1, .span-md-1, .span-lg-1, .span-xlg-1, .span-xs-2, .span-sm-2, .span-md-2, .span-lg-2, .span-xlg-2, .span-xs-3, .span-sm-3, .span-md-3, .span-lg-3, .span-xlg-3, .span-xs-4, .span-sm-4, .span-md-4, .span-lg-4, .span-xlg-4, .span-xs-5, .span-sm-5, .span-md-5, .span-lg-5, .span-xlg-5, .span-xs-6, .span-sm-6, .span-md-6, .span-lg-6, .span-xlg-6, .span-xs-7, .span-sm-7, .span-md-7, .span-lg-7, .span-xlg-7, .span-xs-8, .span-sm-8, .span-md-8, .span-lg-8, .span-xlg-8, .span-xs-9, .span-sm-9, .span-md-9, .span-lg-9, .span-xlg-9, .span-xs-10, .span-sm-10, .span-md-10, .span-lg-10, .span-xlg-10, .span-xs-11, .span-sm-11, .span-md-11, .span-lg-11, .span-xlg-11, .span-xs-12, .span-sm-12, .span-md-12, .span-lg-12, .span-xlg-12 {
   float: left;
   min-height: 0.0625rem;
   padding-left: 0.625rem;
@@ -687,6 +687,45 @@ th {
     width: 91.6666666667%;
   }
   .span-lg-12 {
+    width: 100%;
+  }
+}
+
+@media (min-width: 87.5rem) {
+  .span-xlg-1 {
+    width: 8.3333333333%;
+  }
+  .span-xlg-2 {
+    width: 16.6666666667%;
+  }
+  .span-xlg-3 {
+    width: 25%;
+  }
+  .span-xlg-4 {
+    width: 33.3333333333%;
+  }
+  .span-xlg-5 {
+    width: 41.6666666667%;
+  }
+  .span-xlg-6 {
+    width: 50%;
+  }
+  .span-xlg-7 {
+    width: 58.3333333333%;
+  }
+  .span-xlg-8 {
+    width: 66.6666666667%;
+  }
+  .span-xlg-9 {
+    width: 75%;
+  }
+  .span-xlg-10 {
+    width: 83.3333333333%;
+  }
+  .span-xlg-11 {
+    width: 91.6666666667%;
+  }
+  .span-xlg-12 {
     width: 100%;
   }
 }
@@ -2591,8 +2630,6 @@ img {
  * =========================================== */
 /*
  * [1] foundation.zurb.com
- * [2] Twitter bootstrap
- * [3] Inuit css framework
  * ==================================== */
 .flex-video {
   position: relative;
@@ -2722,12 +2759,12 @@ table td {
 }
 
 .cd-modal-content .page-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
   margin-bottom: 3.75rem;
   position: relative;
   text-align: center;
-  text-decoration: underline;
+  text-shadow: 0rem 0.1875rem 0.0625rem rgba(0, 0, 0, 0.3);
   z-index: 1;
 }
 
@@ -2737,9 +2774,32 @@ table td {
   z-index: 2;
 }
 
+.cd-modal-content .page-content li,
 .cd-modal-content .page-content p {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.cd-modal-content .page-content p {
   margin-bottom: 1.875rem;
+}
+
+.cd-modal-content .page-content ol,
+.cd-modal-content .page-content ul {
+  padding-left: 2.5rem;
+}
+
+.cd-modal-content .page-content ul li {
+  list-style-type: disc;
+}
+
+.cd-modal-content .page-content ol li {
+  list-style-type: decimal;
+}
+
+.cd-modal-content .page-content li {
+  list-style-type: disc;
+  margin-bottom: 0.625rem;
 }
 
 .cd-modal-content .article-content {
@@ -2747,19 +2807,20 @@ table td {
   line-height: 1;
 }
 
-.cd-modal-content .article-content img {
-  display: block;
-  margin: 0.625rem 0;
-  max-width: 100%;
-}
-
 @media screen and (min-width: 48rem) {
+  .cd-modal-content .page-title {
+    font-size: 2.5rem;
+  }
   .cd-modal-content .icon-bg .icon {
     width: 28.125rem;
   }
   .cd-modal-content .article-content {
     font-size: 1.5rem;
     line-height: 1.5;
+  }
+  .cd-modal-content .page-content li,
+  .cd-modal-content .page-content p {
+    font-size: 1.5rem;
   }
 }
 
@@ -2897,9 +2958,9 @@ Modal Window
 
 .cd-modal .modal-close {
   top: 1.25rem;
-  right: 5%;
   /* image replacement */
   position: absolute;
+  right: 5%;
   /* Force hardware acceleration*/
   transform: translateZ(0);
   visibility: hidden;
@@ -2988,13 +3049,38 @@ Modal Window
   text-align: center;
 }
 
+.cd-modal-content .dyn-content .wp-img img {
+  height: auto;
+  margin-bottom: 0.625rem;
+  max-width: 100%;
+}
+
 .cd-modal-content .dyn-content .wp-img .aligncenter {
   display: inline-block;
+}
+
+.cd-modal-content .dyn-content .wp-img .alignnone,
+.cd-modal-content .dyn-content .wp-img .alignright,
+.cd-modal-content .dyn-content .wp-img .alignleft {
+  margin-right: 0.625rem;
+}
+
+.cd-modal-content .dyn-content .wp-img .alignnone:last-child,
+.cd-modal-content .dyn-content .wp-img .alignright:last-child,
+.cd-modal-content .dyn-content .wp-img .alignleft:last-child {
+  margin-right: 0;
 }
 
 @media screen and (min-width: 48rem) {
   .cd-modal-content {
     padding: 4em 10% 4em;
+  }
+}
+
+@media screen and (min-width: 75rem) {
+  .cd-modal-content .dyn-content .wp-video {
+    margin: 0 auto;
+    width: 75%;
   }
 }
 

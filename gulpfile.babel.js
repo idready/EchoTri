@@ -64,7 +64,7 @@ gulp.task('wp-styles', () => {
 
   console.log('copied stylesheet file for WP');
   return gulp.src('app/styles/home.css')
-    .pipe(gulp.dest('app/wp/wp-content/themes/echotri/css/'));
+    .pipe(gulp.dest('app/wp/wp-content/themes/echotri/css/home.css'));
 
 });
 

@@ -46,7 +46,8 @@ $bp-screen-size: (
 	bp-xs-screen: 'xs',
 	bp-sm-screen: 'sm',
 	bp-md-screen: 'md',
-	bp-lg-screen: 'lg'
+    bp-lg-screen: 'lg',
+	bp-xlg-screen: 'xlg'
 );
 
 // default Breakpoints, but remember that you are advised to add more when content breaks
@@ -55,6 +56,7 @@ $bp-xs-screen: 480px !default;
 $bp-sm-screen: 768px !default;
 $bp-md-screen: 992px !default;
 $bp-lg-screen: 1200px !default;
+$bp-xlg-screen: 1400px !default;
 
 
 /* Font-size
