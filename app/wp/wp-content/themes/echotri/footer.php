@@ -40,6 +40,9 @@
             <div class="cd-modal-dyn-content"></div>
         </div> <!-- cd-modal-content -->
 
+        <!-- MessageNotifier -->
+        <div my-feedback-notifier data-feedback-timeout="1500">
+        </div>
         <a href="#" class="modal-close" title="Fermer">
             <span class="icon-elt" ng-click="closeModal($event)">
                 <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-close" /></svg>

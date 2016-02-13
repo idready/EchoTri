@@ -1,0 +1,33 @@
+
+/* ===========================================
+ * Specific rules for Feedback notify component
+ * =========================================== */
+
+
+.feedback-notify {
+
+    background: rgba($dark-color, 0.9);
+    height: 100%; // Test viewport dimension for IE
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    width: 100%; // Test viewport dimension for IE
+    z-index: -1;
+
+    &.visible {
+
+        opacity: 1;
+        z-index: 2;
+    }
+
+    // states
+    .loading,
+    .complete {
+
+        @include vertical-center();
+
+        left: 0;
+        text-align: center;
+        right: 0;
+    }
+}

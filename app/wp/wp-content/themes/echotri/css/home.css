@@ -2798,8 +2798,26 @@ table td {
 }
 
 .cd-modal-content .page-content li {
-  list-style-type: disc;
   margin-bottom: 0.625rem;
+}
+
+.cd-modal-content .page-content .errors-block {
+  padding-left: 0;
+}
+
+.cd-modal-content .page-content .errors-block li {
+  list-style-type: none;
+}
+
+.cd-modal-content .page-content .errors-block .icon-error {
+  display: inline-block;
+}
+
+.cd-modal-content .page-content .errors-block .icon {
+  fill: #F04124;
+  height: 1.25rem;
+  margin-right: 0.625rem;
+  width: 1.25rem;
 }
 
 .cd-modal-content .article-content {
@@ -2824,8 +2842,26 @@ table td {
   }
 }
 
+.cd-modal a {
+  color: #232323;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.cd-modal a:hover {
+  text-decoration: underline;
+}
+
 .cd-modal.secondary .cd-svg-bg svg > path {
   fill: #afb61a;
+}
+
+.cd-modal.tertiary a {
+  color: #0c2631;
+}
+
+.cd-modal.tertiary a:hover {
+  color: #07161c;
 }
 
 .cd-modal.tertiary .cd-svg-bg svg > path {
@@ -2880,6 +2916,34 @@ table td {
 
 .footer .footer-cpr {
   padding: 1.875rem 0 1.25rem;
+}
+
+/* ===========================================
+ * Specific rules for Feedback notify component
+ * =========================================== */
+.feedback-notify {
+  background: rgba(35, 35, 35, 0.9);
+  height: 100%;
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.feedback-notify.visible {
+  opacity: 1;
+  z-index: 2;
+}
+
+.feedback-notify .loading,
+.feedback-notify .complete {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  text-align: center;
+  right: 0;
 }
 
 /* Page rule here
@@ -3193,8 +3257,32 @@ Modal Window
   width: 100%;
 }
 
+.contact-form textarea {
+  padding-right: 2.5rem;
+}
+
 .contact-form .input-block {
+  margin-bottom: 1.25rem;
   position: relative;
+}
+
+.contact-form .input-block.input-is-valid {
+  margin-bottom: 3.125rem;
+}
+
+.contact-form .input-block .icon-input-check {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+  top: 0.625rem;
+}
+
+.contact-form .input-block .icon-input-check .icon {
+  fill: #43AC6A;
+  height: 1.25rem;
+  width: 1.25rem;
 }
 
 .contact-form .input-block .placeholder-rbm {
@@ -3220,6 +3308,16 @@ Modal Window
 
 .contact-form .errors-block {
   color: #F04124;
+  height: 0;
+  opacity: 0;
+}
+
+.contact-form .errors-block li {
+  list-style-type: none;
+}
+
+.contact-form .errors-block.animated {
+  height: auto;
   margin-bottom: 1.25rem;
 }
 

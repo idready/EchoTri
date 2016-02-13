@@ -41,10 +41,12 @@ myApp.constant('MY_EVENTS', {
     'MODAL_CLOSE_COMPLETED': 'modal_close_completed',
     'MODAL_PATH_OPEN_COMPLETED': 'modal_path_open_completed',
     'MODAL_PATH_CLOSE_COMPLETED': 'modal_path_close_completed',
-    'MODAL_LOAD_DATAS': 'modal_load_datas'
+    'MODAL_LOAD_DATAS': 'modal_load_datas',
+    'FEEDBACK_NOTIFY_INIT': 'MessageNotify:init',
+    'FEEDBACK_NOTIFY_LOADING': 'MessageNotify:loading',
+    'FEEDBACK_NOTIFY_COMPLETE': 'MessageNotify:complete'
 });
 
 
 myApp.config(function(){});
 myApp.run(function(){});
-

@@ -38,7 +38,7 @@
     $headers .= "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-Type: text/html; charset=UTF-8" . "\r\n";
 
-    if( mail($to, $subject, $body, $headers) ) {
+    if( !mail($to, $subject, $body, $headers) ) {
 
       echo json_encode(array('message' => 'Votre message a été envoyé avec succès.', 'status' => true));
     } else {

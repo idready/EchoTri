@@ -1,0 +1,11 @@
+<div class="feedback-notify" ng-class="{'visible': state.isVisible}">
+    <pre>
+        {{state}};
+    </pre>
+    <div class="loading ng-hide" ng-show="state.isLoading">
+        <p>Loading.....</p>
+    </div>
+    <div class="complete ng-hide" ng-show="state.isComplete">
+        <p>Complete.....</p>
+    </div>
+</div>

@@ -92,6 +92,7 @@
 /* Modal
  * ==================================== */
 
+// @TODO: Move all modal content on a single component and avoid rules scatter
 .cd-modal-content {
 
     // Icon used as background
@@ -144,9 +145,27 @@
         ul li {list-style-type: disc;}
         ol li {list-style-type: decimal;}
         li {
-
-            list-style-type: disc;
             margin-bottom: 10px;
+        }
+
+        .errors-block {
+
+            padding-left: 0;
+            
+            li {list-style-type: none;}
+
+            .icon-error {
+
+                display: inline-block;
+            }
+
+            .icon {
+
+                fill: $alert-color;
+                height: 20px;
+                margin-right: 10px;
+                width: 20px;
+            }
         }
 
     }
@@ -188,6 +207,17 @@
 
 .cd-modal {
 
+    a {
+
+      color: $dark-color;
+      display: inline-block;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
     &.secondary {
 
         .cd-svg-bg {
@@ -197,7 +227,16 @@
         }
     }
 
-     &.tertiary {
+    &.tertiary {
+
+        //Adjust link color for each theme
+        a {
+          color: darken($info-color, 65%);
+
+          &:hover {
+            color: darken($info-color, 70%);
+          }
+        }
 
         .cd-svg-bg {
             svg > path {

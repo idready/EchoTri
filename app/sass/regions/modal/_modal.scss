@@ -7,6 +7,7 @@
  * Edited some code to fit my framework
  * ==================================== */
 
+// @TODO: Split the components correctly and isolate modal and wp styles
 
 // Dynamically added class to remove double scroll
 .no-overflow {
@@ -312,11 +313,37 @@ Modal Window
         width: 100%;
     }
 
-    textarea {}
+    textarea {
+
+        padding-right: 40px; // Room vor validation icon which width is 20px
+    }
 
     .input-block {
 
+        margin-bottom: 20px;
         position: relative;
+
+        // Leave enough space for fake placeholder label
+        &.input-is-valid {
+
+            margin-bottom: 50px;
+        }
+
+        .icon-input-check {
+
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            opacity: 0;
+            transition: $default-transition;
+            top: 10px;
+
+            .icon {
+                fill: $success-color;
+                height: 20px;
+                width: 20px;
+            }
+        }
 
         .placeholder-rbm {
 
@@ -346,13 +373,22 @@ Modal Window
     .invalid-field {}
     .errors-block {
 
-        color: $alert-color;
+      color: $alert-color;
+      height: 0;
+
+      opacity: 0;
+
+      li {
+        list-style-type: none;
+      }
+
+      &.animated {
+
+        height: auto;
         margin-bottom: 20px;
-
-        li {
-
-        }
+      }
     }
+
 
     // Responsiveness spices
     @include mq('sm') {

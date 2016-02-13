@@ -64,8 +64,7 @@ gulp.task('wp-styles', () => {
 
   console.log('copied stylesheet file for WP');
   return gulp.src('app/styles/home.css')
-    .pipe(gulp.dest('app/wp/wp-content/themes/echotri/css/home.css'));
-
+    .pipe($.copy('app/wp/wp-content/themes/echotri/css/', {prefix: 2}));
 });
 
 gulp.task('lint', lint('app/scripts/**/*.js'));
@@ -110,6 +109,7 @@ gulp.task('main-scripts', function() {
       'app/scripts/filters/filters.js',
       'app/scripts/directives/myModalLink.js',
       'app/scripts/directives/myModalDialog.js',
+      'app/scripts/directives/myFeedbackNotifier.js',
       'app/scripts/controllers/HomeCtrl.js',
       'app/scripts/controllers/ModalCtrl.js',
       'app/scripts/controllers/ContactFormCtrl.js',
@@ -174,7 +174,8 @@ gulp.task('svgstore', () => {
         inlineSvg: false
     }))
     .pipe($.rename('svg-defs.svg'))
-    .pipe(gulp.dest('app/images/svg/'));
+    .pipe(gulp.dest('app/images/svg/'))
+    .pipe($.copy('app/wp/wp-content/themes/echotri/images/'));
 });
 
 gulp.task('fonts', () => {
@@ -216,7 +217,8 @@ gulp.task('serve', ['styles', 'fonts'], () => {
     ]).on('change', reload);
 
     gulp.watch('app/scripts/**/*.js', ['scripts']);
-    gulp.watch('app/sass/**/*.scss', ['styles', 'wp-styles']);
+    gulp.watch('app/sass/**/*.scss', ['styles']);
+    gulp.watch('app/styles/**/*.css', ['wp-styles']);
     gulp.watch('app/images/svg-src/{,*/}*.svg', ['svgstore']);
     gulp.watch('app/fonts/**/*', ['fonts']);
     gulp.watch('bower.json', ['wiredep', 'fonts']);
