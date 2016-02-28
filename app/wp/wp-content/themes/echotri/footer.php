@@ -33,7 +33,6 @@
         </div>
         <div class="cd-modal-content">
 
-            <!-- {{isLoading}} -->
             <div class="ng-hide" ng-show="isLoading">
                 Chargement en cours.....
             </div>

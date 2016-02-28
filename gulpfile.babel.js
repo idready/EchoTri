@@ -38,7 +38,7 @@ gulp.task('styles', () => {
             precision: 10,
             includePaths: ['.']
         }).on('error', $.sass.logError))
-        .pipe($.autoprefixer({browsers: ['last 1 version']}))
+        .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
         .pipe($.sourcemaps.write())
         .pipe($.pxtorem(pxtoremOptions, postcssOptions))
         .pipe(gulp.dest('app/styles'))
@@ -175,7 +175,7 @@ gulp.task('svgstore', () => {
     }))
     .pipe($.rename('svg-defs.svg'))
     .pipe(gulp.dest('app/images/svg/'))
-    .pipe($.copy('app/wp/wp-content/themes/echotri/images/'));
+    .pipe($.copy('app/wp/wp-content/themes/echotri/images/', {prefix: 2}));
 });
 
 gulp.task('fonts', () => {

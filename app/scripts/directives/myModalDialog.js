@@ -18,7 +18,7 @@ myApp.directive('myModalDialog', ['MY_EVENTS', '$rootScope', '$compile', '$http'
                 // Make sure it runs on Wordpress context only and avoid http request for modal with defined template url
                 if (typeof ajaxurl !== 'undefined' && scope.pagetemplate == 'default') {
 
-                    // Note: when dealing with WP use params instead of data for $http
+                    // Note: when dealing with WP use params instead of data as argument for $http service
                     var requestPost = $http({method: 'POST', url: ajaxurl,  params: { action: 'get_articles', post_id: attrs.postid }});
                     requestPost.then(
                         function(response){

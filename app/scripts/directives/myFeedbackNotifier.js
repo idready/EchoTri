@@ -15,12 +15,12 @@ myApp.directive('myFeedbackNotifier', ['MY_EVENTS', '$rootScope', '$timeout', fu
             //Initial state
             scope.init = function(){
 
-                console.log('Init');
                 scope.state = {
 
                     isVisible: false,
                     isLoading: false,
-                    isComplete: false
+                    isComplete: false,
+                    isFeedbackSuccessful: false
                 };
             };
 
@@ -39,24 +39,22 @@ myApp.directive('myFeedbackNotifier', ['MY_EVENTS', '$rootScope', '$timeout', fu
                 console.info('Notify Loading');
             });
 
-            $rootScope.$on(MY_EVENTS.FEEDBACK_NOTIFY_COMPLETE, function(){
+            $rootScope.$on(MY_EVENTS.FEEDBACK_NOTIFY_COMPLETE, function(evt, datas){
 
                 scope.state = {
 
-                    isVisible: true,
+                    isVisible:true,
                     isLoading: false,
-                    isComplete: true
+                    isComplete: true,
+                    isFeedbackSuccessful: datas.feedbackSuccess
                 };
-                console.info('Notify complete');
-                //Dispatch an event to close modal or close modal directly here
-                if(angular.isDefined(attrs.feedbackTimeout) && typeof parseInt(attrs.feedbackTimeout, 10) === 'number') {
 
-                    $timeout(function(){
-
-                        $rootScope.$broadcast(MY_EVENTS.MODAL_CLOSE);
-                    }, attrs.feedbackTimeout);
-                }
             });
+
+            scope.dismiss = function(){
+
+                $rootScope.$broadcast(MY_EVENTS.MODAL_CLOSE);
+            };
 
         }
 

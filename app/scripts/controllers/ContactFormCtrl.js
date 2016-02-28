@@ -3,13 +3,12 @@
 
 myApp.controller('ContactFormCtrl', ['$scope', '$rootScope', '$timeout', '$http', 'MY_EVENTS', function($scope, $rootScope, $timeout, $http, MY_EVENTS) {
 
-    console.log('formctrl');
-
     $scope.form = {
 
         handle: false,
         submit: false
     };
+
     //Reset feedback notifier
     $rootScope.$emit(MY_EVENTS.FEEDBACK_NOTIFY_INIT);
 
@@ -59,7 +58,13 @@ myApp.controller('ContactFormCtrl', ['$scope', '$rootScope', '$timeout', '$http'
 
                     console.log('Datas: ', datas);
                     $scope.form.handle = false;
-                    $rootScope.$emit(MY_EVENTS.FEEDBACK_NOTIFY_COMPLETE);
+
+                    $timeout(function(){
+
+                        $rootScope.$emit(MY_EVENTS.FEEDBACK_NOTIFY_COMPLETE, {'feedbackSuccess': datas.data.status});
+
+                    }, 3000);
+
                 },
                 function(error){
 
