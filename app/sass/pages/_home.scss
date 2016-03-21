@@ -34,37 +34,37 @@
     transition: font-size $animation-duration;
   }
 
-  .icon-elt {
+    .icon-elt {
 
-    .icon {
+        .icon {
 
-      max-height: 150px;
-      max-width: 250px;
-    }
-  }
-
-  .info-section__item {
-
-    // [1] In case a link is used for this element
-    // [2] Important to set a color since svg inherit their background color from it
-
-    color: $white; // [2]
-    display: block; // [1]
-    margin-bottom: 30px;
-    text-decoration: none; // [1]
-
-    // Section item label
-    .info-section__item-label {
-
-      font-size: 18px;
-      margin-top: 10px;
+          max-height: 150px;
+          max-width: 250px;
+        }
     }
 
-    &:hover {
+    .info-section__item {
 
-      text-decoration: none; // [1]
+        // [1] In case a link is used for this element
+        // [2] Important to set a color since svg inherit their background color from it
+
+        color: $white; // [2]
+        display: block; // [1]
+        margin-bottom: 30px;
+        text-decoration: none; // [1]
+
+        // Section item label
+        .info-section__item-label {
+
+          font-size: 18px;
+          margin-top: 10px;
+        }
+
+        &:hover {
+
+          text-decoration: none; // [1]
+        }
     }
-  }
 
     // Specificity
     &.missions,

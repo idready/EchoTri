@@ -1,0 +1,363 @@
+
+/* ===========================================
+ * Modal parts
+ * =========================================== */
+
+
+// Custom selection colors
+@include selection-color($primary-color, $white);
+
+/* Modal
+ * Modal Content and themes
+ * ==================================== */
+
+.cd-modal-content {
+
+    // Icon used as background for the modal
+    .icon-bg .icon {
+
+        height: 450px;
+        left: 0;
+        margin: 0 auto;
+        right: 0;
+        opacity: 0.15;
+        top: -20px;
+        position: absolute;
+        width: auto;
+        z-index: 0;
+    }
+
+    .page-title {
+
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 60px;
+        position: relative;
+        text-align: center;
+        text-shadow: 0px 3px 1px rgba(0,0,0,0.3);
+        z-index: 1;
+    }
+
+    .page-content {
+
+        position: relative;
+        text-align: left;
+        z-index: 2;
+
+        li,
+        p {
+
+            font-size: 20px;
+            transition: $default-transition;
+        }
+
+        p {
+            margin-bottom: 30px;
+        }
+
+        // Style list
+        ol,
+        ul {padding-left: 40px;}
+
+        ul li {list-style-type: disc;}
+        ol li {list-style-type: decimal;}
+        li {
+            margin-bottom: 10px;
+        }
+
+        .errors-block {
+
+            padding-left: 0;
+
+            li {list-style-type: none;}
+
+            .icon-error {
+
+                display: inline-block;
+            }
+
+            .icon {
+
+                fill: $alert-color;
+                height: 20px;
+                margin-right: 10px;
+                width: 20px;
+            }
+        }
+
+    }
+    // WP
+    .article-content {
+
+        font-size: 18px;
+        line-height: 1;
+    }
+
+    // Responsiveness
+    @include mq('sm') {
+
+        .page-title {
+
+            font-size: 40px;
+        }
+        .icon-bg .icon {
+
+            width: 450px;
+        }
+        // WP
+        .article-content {
+
+            font-size: 24px;
+            line-height: 1.5;
+        }
+
+        .page-content {
+
+            li,
+            p {
+                font-size: 24px;
+            }
+        }
+    }
+
+}
+
+.cd-modal {
+
+    a {
+
+      color: $dark-color;
+      display: inline-block;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &.secondary {
+
+        .cd-svg-bg {
+            svg > path {
+                fill: lighten($secondary-color, 5%);
+            }
+        }
+    }
+
+    &.tertiary {
+
+        //Adjust link color for each theme
+        a {
+          color: darken($info-color, 65%);
+
+          &:hover {
+            color: darken($info-color, 70%);
+          }
+        }
+
+        .cd-svg-bg {
+            svg > path {
+                fill: lighten(mix($primary-color, $secondary-color), 5%);
+            }
+        }
+    }
+}
+
+// Theming
+.cd-cover-layer {
+
+    &.primary {
+
+        background: $primary-color;
+    }
+
+    &.secondary {
+
+        background: $secondary-color;
+    }
+
+    &.tertiary {
+
+        background: mix($primary-color, $secondary-color);
+    }
+}
+
+// Contact form
+.contact-form {
+
+    // common
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    button[type="submit"],
+    textarea {
+        font-size: 25px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea {
+
+        @include placeholder-color($white);
+
+        background: transparent;
+        border-color: $white;
+        border-style: solid;
+        border-width: 0 0 3px 0;
+        color: $white;
+        display: block;
+
+        margin-bottom: 20px;
+        width: 100%;
+
+        &:focus,
+        &:active {
+
+            outline: 0;
+        }
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+
+        display: block;
+        transition: $default-transition;
+        width: 100%;
+    }
+
+    textarea {
+
+        padding-right: 40px; // Room vor validation icon which width is 20px
+    }
+
+    .input-block {
+
+        margin-bottom: 20px;
+        position: relative;
+
+        // Leave enough space for fake placeholder label
+        &.input-is-valid {
+
+            margin-bottom: 50px;
+        }
+
+        .icon-input-check {
+
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            opacity: 0;
+            transition: $default-transition;
+            top: 10px;
+
+            .icon {
+                fill: $success-color;
+                height: 20px;
+                width: 20px;
+            }
+        }
+
+        .placeholder-rbm {
+
+            color: $primary-color;
+            opacity: 0;
+            position: absolute;
+            transition: all 0.4s ease-in;
+            text-transform: uppercase;
+            top: 20px;
+            visibility: hidden;
+            width: auto;
+
+        }
+
+        input + .placeholder-rbm.visible-pld {
+
+            top: -20px;
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    // Error messages
+    .valid-field {
+        color: $success-color;
+    }
+    .invalid-field {}
+    .errors-block {
+
+      color: $alert-color;
+      height: 0;
+      opacity: 0;
+
+      li {
+        list-style-type: none;
+      }
+
+      &.animated {
+
+        height: auto;
+        margin-bottom: 20px;
+      }
+    }
+
+
+    // Responsiveness spices
+    @include mq('sm') {
+
+        // common
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        button[type="submit"],
+        textarea {
+            font-size: 30px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+
+            margin-bottom: 30px;
+        }
+
+    }
+
+}
+
+// Contact infos
+.contact-infos {
+
+    .cd-modal & {
+
+        p { // Wordpress made me sin °__°
+
+            font-size: 20px;
+            margin: 10px 0 20px;
+
+            strong {
+
+                font-size: 22px;
+            }
+        }
+    }
+
+    .angular-google-map {
+
+        margin-bottom: 40px;
+    }
+
+    .angular-google-map-container {
+
+        height: 445px;
+    }
+
+    .location-map-title {
+
+        color: $secondary-color;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+}

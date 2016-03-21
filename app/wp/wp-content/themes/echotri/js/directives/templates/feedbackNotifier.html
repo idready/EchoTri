@@ -1,19 +1,21 @@
 <div class="feedback-notify" ng-class="{'visible': state.isVisible}">
 
     <!-- Contextual close button -->
-    <a href="#" class="close" title="Fermer" ng-class="{state.isFeedbackSuccessful && state.isComplete: 'fadeInDown animated'}" ng-if="state.isFeedbackSuccessful && state.isComplete">
+    <a href="#" class="close" title="Fermer" ng-class="{'fadeInDown animated': state.isFeedbackSuccessful && state.isComplete}" ng-if="state.isFeedbackSuccessful && state.isComplete">
         <span class="icon-elt" ng-click="dismiss($event)">
             <svg class="icon"><use xlink:href="/images/svg/svg-defs.svg#shapes-close" /></svg>
         </span>
     </a>
 
-    <a href="#" class="close" title="Fermer" ng-class="{!state.isFeedbackSuccessful && state.isComplete: 'fadeInDown animated'}" ng-if="!state.isFeedbackSuccessful && state.isComplete">
+    <a href="#" class="close" title="Fermer" ng-class="{'fadeInDown animated': state.isFeedbackSuccessful && state.isComplete}" ng-if="!state.isFeedbackSuccessful && state.isComplete">
         <span class="icon-elt" ng-click="init($event)">
             <svg class="icon"><use xlink:href="/images/svg/svg-defs.svg#shapes-close" /></svg>
         </span>
     </a>
 
-    <div class="loading" ng-if="state.isLoading" ng-class="{'fadeOutDownBig animated': state.isComplete, }">
+    <div class="loading" ng-if="state.isLoading">
+    <!--@TOOD: Why transition fake absolute vertical positioning  -->
+    <!-- <div class="loading" ng-if="state.isLoading" ng-class="{'fadeOutDownBig animated': state.isComplete }"> -->
         <span class="elt-icon">
             <svg class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 493.595 493.595">
                 <path d="M487.077,83.395c-6.435-8.772-16.579-13.751-27.136-13.75c-2.73,0-5.488,0.333-8.216,1.02L25.442,177.971
@@ -27,7 +29,9 @@
         </span>
         <h4 class="feedback-notify__title">Envoi du message en cours...</h4>
     </div>
-    <div class="complete ng-hide" ng-show="state.isComplete" ng-class="{'fadeInLeft animated': state.isComplete}">
+    <div class="complete ng-hide" ng-show="state.isComplete">
+    <!-- <div class="complete ng-hide" ng-show="state.isComplete" ng-class="{'fadeInLeft animated': state.isComplete}"> -->
+    <!--@TOOD: Why transition fake absolute vertical positioning  -->
         <span class="elt-icon">
             <svg class="icon ng-hide" ng-show="state.isFeedbackSuccessful"><use xlink:href="/images/svg/svg-defs.svg#shapes-receiving-email" /></svg>
             <svg class="icon ng-hide" ng-show="!state.isFeedbackSuccessful"><use xlink:href="/images/svg/svg-defs.svg#shapes-error" /></svg>
