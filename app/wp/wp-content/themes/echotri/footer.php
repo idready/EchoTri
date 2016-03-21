@@ -14,10 +14,10 @@
       <footer class="footer">
           <ul class="footer-links">
               <li class="footer-links__item">
-                <?php //Get this dynamically ?>
+                <?php //Get this id dynamically ?>
                 <a href="#" my-modal-link data-modal-event="modal-trigger" page-type="secondary" data-type="cd-modal-trigger" data-posticon="people-us" data-postId="84">Qui sommes nous ?</a>
               </li>
-              <li class="footer-links__item"><a href="#">Blog</a></li>
+              <?php /* <li class="footer-links__item"><a href="#">Blog</a></li> */ ?>
               <li class="footer-links__item"><a target="_blank" rel="noopener" href="https://www.facebook.com/EchoTri-545067608842775/">Facebook</a></li>
           </ul>
           <p class="footer-cpr">EchoTri tous droits reservés 2015</p>
