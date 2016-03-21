@@ -16,23 +16,23 @@
 
 .info-section {
 
-  @include clearfix();
+    @include clearfix();
 
-  border-top-width: 2px;
-  border-top-style: solid;
-  color: $white;
-  padding: 35px 20px 70px;
-  position: relative;
-  text-align: center;
-
-  .title {
-
-    display: inline-block;
-    font-size: 24px;
-    margin-bottom: 30px;
+    border-top-width: 2px;
+    border-top-style: solid;
+    color: $white;
+    padding: 35px 20px 70px;
     position: relative;
-    transition: font-size $animation-duration;
-  }
+    text-align: center;
+
+    .title {
+
+        display: inline-block;
+        font-size: 24px;
+        margin-bottom: 30px;
+        position: relative;
+        transition: font-size $animation-duration;
+    }
 
     .icon-elt {
 
@@ -43,6 +43,26 @@
         }
     }
 
+    //Add appears
+    .info-section__item {
+
+        &.visible {
+
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .no-js & {
+
+        .info-section__item {
+
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+
     .info-section__item {
 
         // [1] In case a link is used for this element
@@ -51,7 +71,10 @@
         color: $white; // [2]
         display: block; // [1]
         margin-bottom: 30px;
+        transition: all $animation-duration * 1.3;
+        transform: translateY(-50px);
         text-decoration: none; // [1]
+        opacity: 0;
 
         // Section item label
         .info-section__item-label {
@@ -64,6 +87,7 @@
 
           text-decoration: none; // [1]
         }
+
     }
 
     // Specificity
@@ -219,6 +243,25 @@
 
         font-size: 32px;
       }
+
+    }
+
+    // Targeted medium breakpoint for better readability
+    @media screen and (min-width: rem(650px)) and (max-width: $bp-sm-screen) {
+
+        .info-section__item {
+
+            width: 50%;
+
+            .info-section__item-label {
+
+                font-size: 16px;
+                height: 50px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+        }
     }
 
     @include mq('xs') {

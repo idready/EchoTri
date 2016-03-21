@@ -89,7 +89,8 @@ gulp.task('scripts', ['header-scripts', 'main-scripts'], () => {
 });
 
 gulp.task('main-scripts', function() {
-  return gulp.src([
+    return gulp.src([
+      'app/scripts/components/bower_components/in-viewport/build/in-viewport.min.js',
       'app/scripts/components/bower_components/lazysizes/plugins/bgset/ls.bgset.min.js',
       'app/scripts/components/bower_components/lazysizes/plugins/optimumx/ls.optimumx.min.js',
       'app/scripts/components/bower_components/lazysizes/plugins/respimg/ls.respimg.min.js',
@@ -157,7 +158,7 @@ gulp.task('svgstore', () => {
     .pipe($.svgmin(function (file) {
 
         var prefix = path.basename(file.relative, path.extname(file.relative));
-        console.log(file);
+        // console.log(file);
         return {
             plugins: [{
               removeViewBox: false,
