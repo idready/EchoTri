@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
         setTimeout(function(){
 
-            console.log(el, ' is in viewport : ',isInViewport);
+            // console.log(el, ' is in viewport : ',isInViewport);
             if (isInViewport) {
 
             } else {
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 
     function isVisible(el) {
-        console.log('Watching: '+el);
+        // console.log('Watching: '+el);
         el.classList.add('visible');
     }
 
