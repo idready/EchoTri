@@ -16,7 +16,7 @@ Vagrantfile
 npm-debug.log
 
 app/scripts/components
-app/styles/*.css
+app/styles/
 app/test
 
 scssReport.*
@@ -26,6 +26,7 @@ app/wp/wp-config.php
 
 # ignore all files starting with .
 app/wp/.*
+app/wp/wp-content/.*
 
 # ignore all files that start with ~
 app/wp/~*
