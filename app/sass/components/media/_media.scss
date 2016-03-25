@@ -1,0 +1,11 @@
+
+/* ===========================================
+ * Different media properties
+ * =========================================== */
+
+@include exports(medias) {
+
+    @import 'particles/images';
+    @import 'particles/videos';
+
+}

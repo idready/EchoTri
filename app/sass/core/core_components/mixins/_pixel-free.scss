@@ -1,0 +1,40 @@
+
+/* ===========================================
+ * @mixin: Related with px, the main goal is to avoid px use
+ * =========================================== */
+
+/* Rem font-size with px fallback;
+ * ==================================== */
+
+@mixin rem-font-size($font-size){
+  font-size: $font-size * 1px;
+  font-size: ($font-size / $base-font-size) * 1rem;
+}
+
+
+/* ParseInt
+ * ==================================== */
+
+@function parseInt($n) {
+  @return $n / ($n * 0 + 1);
+}
+
+
+/* Return a Rem size basd on $base-font-size: see variables file to edit
+ * ==================================== */
+
+@function rem($value) {
+
+  $root: parseInt($base-font-size);
+  $val: parseInt($value);
+  $return: ();
+
+  @if unit($value) == "px" {
+    $return: append($return, $val / $root * 1rem);
+  } @else {
+    $return: append($return, ($val * $root * 1px));
+  }
+
+  @return $return;
+}
+

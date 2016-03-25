@@ -1,0 +1,27 @@
+
+@include exports(list) {
+
+    /* ===========================================
+     * Different lists properties
+     * =========================================== */
+
+    /* List type
+     * [1] foundation.zurb.com
+     * [2] Twitter bootstrap
+     * [3] Inuit css framework
+     * ==================================== */
+
+    ul {
+    	list-style: none;
+    }
+
+    // [3] Remove extra vertical marging for nested list.
+    li {
+
+        > ul,
+        > ol {
+            margin-bottom: 0;
+        }
+    }
+
+} // Include component if required.

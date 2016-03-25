@@ -1,0 +1,130 @@
+
+/* ===========================================
+ * Specific rules for Feedback notify component
+ * =========================================== */
+
+
+.feedback-notify {
+
+    background: rgba($dark-color, 0.9);
+    height: 100%; // Test viewport dimension for IE
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    width: 100%; // Test viewport dimension for IE
+    z-index: -1;
+
+    &.visible {
+
+        opacity: 1;
+        z-index: 2;
+    }
+
+    .feedback-notify__title {
+
+        color: $white;
+        font-size: 20px;
+        margin-top: 20px;
+    }
+
+    .close {
+
+        position: absolute;
+        top: 20px;
+        right: 5%;
+
+        .icon-elt {
+
+            height: 40px;
+            width: 40px;
+        }
+
+        .icon {
+
+            fill: $secondary-color;
+            height: 100%;
+            transition: $default-transition;
+            width: 100%;
+
+            &:hover {
+                transform: rotate(90deg) scale(1.2);
+            }
+        }
+    }
+
+    // states
+    .loading,
+    .complete {
+
+        @include vertical-center();
+
+        left: 0;
+        text-align: center;
+        right: 0;
+
+        .elt-icon {
+
+            display: inline-block;
+
+            .icon {
+
+                fill: $secondary-color;
+                min-width: 80%;
+            }
+        }
+    }
+
+    .loading {
+
+        .elt-icon {
+
+            display: inline-block;
+
+            .icon {
+
+                height: auto;
+                max-width: 80%;
+                width: 200px;
+
+                path {
+
+                    animation: loading-icon 3s linear 0s infinite alternate-reverse;
+                    fill: none;
+                    stroke: $secondary-color;
+                    stroke-width: 10px;
+                    stroke-dasharray: 2645 2645;
+                    stroke-dashoffset: 2645;
+                }
+            }
+
+            @keyframes loading-icon {
+
+                0% {
+                    stroke-dashoffset: 0;
+                }
+                100% {
+
+                    stroke-dashoffset: 2644px;
+                }
+            }
+        }
+
+    }
+
+    .complete {
+
+        .icon {
+
+            height: 150px;
+            width: 200px;
+        }
+    }
+
+    @include mq('sm') {
+
+        .feedback-notify__title {
+
+            font-size: 35px;
+        }
+    }
+}

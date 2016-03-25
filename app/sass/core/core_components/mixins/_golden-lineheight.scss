@@ -1,0 +1,29 @@
+
+/* ===========================================
+ * @Mixin Golden Line-Height
+ * =========================================== */
+
+/* Golden lineheight based on : Chris Pearson article
+ *
+ * Define golden line-height mixin which define line-height by using:
+ * 1. Line-width (Paragraph width)
+ * 2. Font-size
+ * ==================================== */
+ 
+/* Calculate Line-height */
+/* $baseLineHeight is calculated thanks to Golden Ratio rules,
+ * read more here: http://www.pearsonified.com/typography/
+ * and especially this link for calculations details :
+ * http://www.pearsonified.com/2011/12/golden-ratio-typography.php
+*/
+
+@mixin lineHeight($theFontSize, $lineWidth) {
+
+  $phi: 1.6180339887; // The Golden Number
+  $fontSize: parseInt($theFontSize); // Avoid errors
+  $ajustedLineHeight: ( $phi - 1/(2 * $phi) * ( 1 - ( $lineWidth/( ($fontSize * $phi) * ($fontSize * $phi) ) ) ) ); // The ajusted line-height width line-width (your container's width)
+  $baseLineHeight: round($fontSize * $ajustedLineHeight); // Corrected line-height for the Web (pixels troubles)
+
+  line-height: ( parseInt($baseLineHeight) / parseInt($fontSize) );
+
+}

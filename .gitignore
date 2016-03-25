@@ -4,7 +4,72 @@ dist
 .sass-cache
 bower_components
 test/bower_components
+private
 
 # custom
+.vagrant
+Vagrantfile
+
+.gitattributes
+.jshintrc
+.yo-rc.json
+npm-debug.log
+
 app/scripts/components
-app/styles/*.css
+app/styles/
+app/test
+
+scssReport.*
+
+#wp source: https://gist.github.com/salcode/9940509
+app/wp/wp-config.php
+
+# ignore all files starting with .
+app/wp/.*
+app/wp/wp-content/.*
+
+# ignore all files that start with ~
+app/wp/~*
+
+# ignore OS generated files
+app/wp/ehthumbs.db
+app/wp/Thumbs.db
+
+# ignore log files and databases
+app/wp*.log
+app/wp*.sql
+app/wp*.sqlite
+
+# ignore compiled files
+app/wp*.com
+app/wp*.class
+app/wp*.dll
+app/wp*.exe
+app/wp*.o
+app/wp*.so
+
+# ignore packaged files
+app/wp/*.7z
+app/wp/*.dmg
+app/wp/*.gz
+app/wp/*.iso
+app/wp/*.jar
+app/wp/*.rar
+app/wp/*.tar
+app/wp/*.zip
+
+# ignore everything in the "wp-content" directory, except:
+# "mu-plugins" directory
+# "plugins" directory
+# "themes" directory
+#app/wp/wp-content/*
+app/wp/!wp-content/mu-plugins/
+app/wp/!wp-content/plugins/
+app/wp/!wp-content/themes/
+app/wp/!wp-content/upgrade/
+
+# ignore these plugins
+app/wp/wp-content/plugins/hello.php
+
+# ignore specific themes
+app/wp/wp-content/themes/twenty*/

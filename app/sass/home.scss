@@ -1,0 +1,64 @@
+
+/* ===========================================
+ * Here is a generic page and how basic import is done.
+ * Import order matters due to some variables used on some components
+ * =========================================== */
+
+/* Config: the config will decide  which part to include or not
+ * You can even create your own config per page if you wish and import it here
+ * ==================================== */
+// Change any value in this map from "true" to "false" to disable that component's CSS class output. You'll still be able to use the component's mixins, but none of our pre-written classes will be in your CSS.
+
+$include-css: (
+  animations: true,
+  animations-vendor-prefixes: false,
+  accordion: true,
+  action-sheet: true,
+  block-list: true,
+  button: true,
+  button-group: true,
+  card: true,
+  coloring: true,
+  extras: true,
+  form: true,
+  grid: true,
+  iconic: true,
+  label: true,
+  badge: true,
+  list: true,
+  medias: true,
+  menu-bar: true,
+  modal: true,
+  motion: true,
+  notification: true,
+  off-canvas: true,
+  panel: true,
+  popup: true,
+  switch: true,
+  table: true,
+  tabs: true,
+  title-bar: true,
+  typography: true,
+  utilities: true,
+);
+
+
+/* Core
+ * ==================================== */
+@import 'core/core';
+
+/* Components
+ * ==================================== */
+@import 'components/components';
+
+/* Regions
+ * ==================================== */
+@import 'regions/regions';
+
+/* Page rule here
+ * ==================================== */
+@import 'pages/home';
+
+/* Shame file here, since IE specic must surely override all other rules
+ * ==================================== */
+@import 'shame/shame';

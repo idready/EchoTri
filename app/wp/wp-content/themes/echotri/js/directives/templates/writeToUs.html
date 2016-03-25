@@ -1,0 +1,93 @@
+<!-- The page icon -->
+<span class="elt-icon icon-bg">
+    <svg class="icon"><use xlink:href="/images/svg/svg-defs.svg#shapes-envelope" /></svg>
+</span>
+<h3 class="page-title">Nous écrire</h3>
+<div class="page-content" ng-controller="ContactFormCtrl">
+
+    <form action="/" method="Post" id="echo-form" name="echoForm" class="contact-form" ng-model="formContact" ng-submit="formSubmit($event)" novalidate>
+        <!-- Company Field -->
+        <div class="input-block">
+            <button ng-click="fillForm($event)" class="button">Fill</button>
+        </div>
+        <div class="input-block" ng-class="{'input-is-valid': echoForm.company.$valid}">
+            <input type="text" ng-disabled="form.handle" ng-model="guest.company" name="company" id="company" ng-class="{'invalid-field': echoForm.company.$invalid && echoForm.company.$touched}" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[a-zA-Z-'` ŠšÐdŽžCcÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿRr\D]+$/" placeholder="Votre entreprise*" required>
+            <label for="company" class="placeholder-rbm" ng-class="{'visible-pld': guest.company.length}">Votre entreprise*</label>
+            <span class="elt-icon icon-input-check fadeInRight" ng-class="{'animated': echoForm.company.$valid}">
+                <svg class="icon"><use xlink:href="/images/svg/svg-defs.svg#shapes-input-check" /></svg>
+            </span>
+        </div>
+        <!-- Field Errors -->
+        <ul class="errors-block fadeInRight" ng-messages="echoForm.company.$error" ng-class="{'animated': (form.submit && echoForm.company.$invalid) || (echoForm.company.$invalid && echoForm.company.$dirty)}" role="alert" ng-messages-multiple>
+            <div ng-messages-include="{{templateUrl | cleanhtml}}error-messages.html"></div>
+        </ul>
+
+        <!-- Social Ent Field -->
+        <div class="input-block" ng-class="{'input-is-valid': echoForm.rs.$valid}">
+            <input type="text" ng-disabled="form.handle" ng-model="guest.rs" name="rs" id="rs" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[a-zA-Z-'` ŠšÐdŽžCcÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿRr\D]+$/" placeholder="Votre raison sociale*" required>
+            <label for="rs" class="placeholder-rbm" ng-class="{'visible-pld': guest.rs.length}">Votre raison sociale*</label>
+            <span class="elt-icon icon-input-check fadeInRight" ng-class="{'animated': echoForm.rs.$valid}">
+                <svg class="icon"><use xlink:href="/images/svg/svg-defs.svg#shapes-input-check" /></svg>
+            </span>
+        </div>
+        <!-- Field Errors -->
+        <ul class="errors-block fadeInRight" ng-messages="echoForm.rs.$error" ng-class="{'animated': (form.submit && echoForm.rs.$invalid) || (echoForm.rs.$invalid && echoForm.rs.$dirty)}" role="alert" ng-messages-multiple>
+            <div ng-messages-include="{{templateUrl | cleanhtml}}error-messages.html"></div>
+        </ul>
+
+        <!-- Name Field -->
+        <div class="input-block" ng-class="{'input-is-valid': echoForm.name.$valid}">
+            <input type="text" ng-disabled="form.handle" ng-model="guest.name" name="name" id="name" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[a-zA-Z-'` ŠšÐdŽžCcÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿRr\D]+$/" placeholder="Votre nom*" required>
+            <label for="name" class="placeholder-rbm" ng-class="{'visible-pld': guest.name.length}">Votre nom*</label>
+            <span class="elt-icon icon-input-check fadeInRight" ng-class="{'animated': echoForm.name.$valid}">
+                <svg class="icon"><use xlink:href="/images/svg/svg-defs.svg#shapes-input-check" /></svg>
+            </span>
+        </div>
+        <!-- Field Errors -->
+        <ul class="errors-block fadeInRight" ng-messages="echoForm.name.$error" ng-class="{'animated': (form.submit && echoForm.name.$invalid) || (echoForm.name.$invalid && echoForm.name.$dirty)}" role="alert" ng-messages-multiple>
+            <div ng-messages-include="{{templateUrl | cleanhtml}}error-messages.html"></div>
+        </ul>
+
+        <!-- First Name Field -->
+        <div class="input-block" ng-class="{'input-is-valid': echoForm.firstName.$valid}">
+            <input type="text" ng-disabled="form.handle" ng-model="guest.firstName" name="firstName" id="firstNname" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[a-zA-Z-'` ŠšÐdŽžCcÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿRr\D]+$/" placeholder="Votre prénom">
+            <label for="firstName" class="placeholder-rbm" ng-class="{'visible-pld': guest.firstName.length}">Votre prénom</label>
+            <span class="elt-icon icon-input-check fadeInRight" ng-class="{'animated': echoForm.firstName.$dirty && echoForm.firstName.$valid}">
+                <svg class="icon"><use xlink:href="/images/svg/svg-defs.svg#shapes-input-check" /></svg>
+            </span>
+        </div>
+        <!-- Field Errors -->
+        <ul class="errors-block fadeInRight" ng-messages="echoForm.firstName.$error" ng-class="{'animated': (form.submit && echoForm.firstName.$invalid) || (echoForm.firstName.$invalid && echoForm.firstName.$dirty)}" role="alert" ng-messages-multiple>
+            <div ng-messages-include="{{templateUrl | cleanhtml}}error-messages.html"></div>
+        </ul>
+        <!-- ng-pattern="/^(([a-zA-Z]|[0-9])|([-]|[_]|[.]))+[@](([a-zA-Z0-9])|([-])){2,63}[.](([a-zA-Z0-9]){2,63})+$/gi" -->
+        <!-- ng-pattern="/[a-zA-Z0-9]+(?:(\.|_)[A-Za-z0-9!#$%&'*+/=?^`{|}~-]+)*@(?!([a-zA-Z0-9]*\.[a-zA-Z0-9]*\.[a-zA-Z0-9]*\.))(?:[A-Za-z0-9](?:[a-zA-Z0-9-]*[A-Za-z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?/g" -->
+        <!-- Email Field -->
+        <div class="input-block" ng-class="{'input-is-valid': echoForm.email.$valid}">
+            <input type="email" ng-disabled="form.handle" ng-model="guest.email" ng-minlength="5"  name="email" id="email"  placeholder="Votre email*" ng-model-options="{ allowInvalid: true }" ng-pattern="/^([\w\.\-_]+)?\w+@[\w-_]+(\.\w+){1,}$/gmi" required>
+            <label for="email" class="placeholder-rbm" ng-class="{'visible-pld': guest.email.length}">Votre email <span class="ng-hide" ng-show="echoForm.email.$valid && echoForm.email.$dirty">est valide </span>*</label>
+            <span class="elt-icon icon-input-check fadeInRight" ng-class="{'animated': echoForm.email.$valid}">
+                <svg class="icon"><use xlink:href="/images/svg/svg-defs.svg#shapes-input-check" /></svg>
+            </span>
+        </div>
+        <!-- Field Errors -->
+        <ul class="errors-block fadeInRight" ng-messages="echoForm.email.$error" ng-class="{'animated': (form.submit && echoForm.email.$invalid) || (echoForm.email.$invalid && echoForm.email.$dirty)}" role="alert" ng-messages-multiple>
+            <div ng-messages-include="{{templateUrl | cleanhtml}}error-messages.html"></div>
+        </ul>
+        <div class="input-block">
+            <textarea name="message" id="message" ng-disabled="form.handle" ng-model="guest.message" cols="30" rows="4" ng-minlength="30" placeholder="Votre message*" required></textarea>
+            <span class="elt-icon icon-input-check fadeInRight" ng-class="{'animated': echoForm.message.$valid}">
+                <svg class="icon"><use xlink:href="/images/svg/svg-defs.svg#shapes-input-check" /></svg>
+            </span>
+        </div>
+        <!-- Field Errors -->
+        <ul class="errors-block fadeInRight" ng-messages="echoForm.message.$error" ng-class="{'animated': (form.submit && echoForm.message.$invalid) || (echoForm.message.$invalid && echoForm.message.$dirty)}" role="alert" ng-messages-multiple>
+            <div ng-messages-include="{{templateUrl | cleanhtml}}error-messages.html">
+            </div>
+            <!-- @TODO: override this message for this field only -->
+            <!-- <li ng-message="minlength">Ce champ requiert au moins 30 caractères.</li> -->
+        </ul>
+        <button type="submit" class="button">Envoyer</button>
+    </form>
+
+</div>

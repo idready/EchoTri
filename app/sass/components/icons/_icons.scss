@@ -1,0 +1,18 @@
+
+/* ===========================================
+ * Icons properties
+ * =========================================== */
+
+.icon-elt {
+
+    display: inline-block;
+
+    .icon {
+
+        display: inline-block;
+        fill: currentColor;
+        height: 64px;
+        transition: $default-transition;
+        width: 64px;
+    }
+}

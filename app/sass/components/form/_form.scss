@@ -1,0 +1,100 @@
+
+/* ===========================================
+ * Form with its particles
+ * =========================================== */
+
+
+/* Import differents particles
+ * ==================================== */
+
+
+@include exports(form) {
+
+
+  @import 'particles/inputs';
+  @import 'particles/textarea';
+
+  /* basic form style
+   * [1] foundation.zurb.com
+   * [2] Twitter bootstrap
+   * ==================================== */
+
+  // [2]
+  fieldset {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    // Chrome and Firefox set a `min-width: min-content;` on fieldsets,
+    // so we reset that to ensure it behaves more like a standard block element.
+    // See https://github.com/twbs/bootstrap/issues/12359.
+    min-width: 0;
+  }
+
+  legend {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-bottom: $line-height-computed;
+    font-size: ($base-font-size * 1.5);
+    line-height: inherit;
+    color: $legend-color;
+    border: 0;
+    border-bottom: rem(1px) solid $legend-border-color;
+  }
+
+  // [1]
+  textarea {
+
+    border: rem(1px) solid $input-color;
+    height: auto;
+    width: 100%;
+    min-height: rem(50px);
+  }
+
+  // [2]
+  select {
+
+    	background: $input-background;
+    	border-radius: 0;
+    	color: $input-color;
+  	display: block;
+  	margin: 0 0 $global-padding 0;
+  	min-height: $base-font-size * 2;
+    	width: 100%;
+    	-webkit-font-smoothing: antialiased;
+    	vertical-align: middle;
+  	-webkit-appearance: none;
+       -moz-appearance: none;
+
+      &:focus {
+  	    background: $input-background-focus;
+  	    border: $input-border-focus;
+  	    color: $input-color-focus;
+  	    outline: 0;
+  	}
+
+  	&:hover {
+      	background: $input-background-hover;
+      	border: $input-border-hover;
+      	color: $input-color-hover;
+  	}
+
+  	label > & {
+  	    margin-top: $base-font-size / 2;
+  	}
+  }
+
+  // [1]
+  label {
+    display: block;
+    font-size: $form-label-fontsize;
+    margin-bottom: $base-font-size / 2;
+    color: $form-label-color;
+
+    > input, > textarea {
+      margin-top: $base-font-size / 2;
+    }
+  }
+
+} // Include component if required.
+

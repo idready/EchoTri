@@ -1,0 +1,74 @@
+
+/* ===========================================
+ * Specific rules for Grids
+ * =========================================== */
+
+/* Grid with Flexbox
+ * ==================================== */
+
+/* Grid without Flexbox
+ * ==================================== */
+
+/*** Mixins for grid columns ***/
+
+@mixin make-grid-columns($i: 1, $list: ".#{$grid-class-name}-xs-#{$i}, .#{$grid-class-name}-sm-#{$i}, .#{$grid-class-name}-md-#{$i}, .#{$grid-class-name}-lg-#{$i}, .#{$grid-class-name}-xlg-#{$i}") {
+  @for $i from (1 + 1) through $grid-columns {
+    $list: "#{$list}, .#{$grid-class-name}-xs-#{$i}, .#{$grid-class-name}-sm-#{$i}, .#{$grid-class-name}-md-#{$i}, .#{$grid-class-name}-lg-#{$i}, .#{$grid-class-name}-xlg-#{$i}";
+  }
+  #{$list} {
+    float: left;
+    min-height: rem(1px); // Prevent columns from collapsing when empty
+    padding-left:  rem($grid-gutter / 2);
+    padding-right: rem($grid-gutter / 2);
+    position: relative;
+
+  }
+
+}
+
+/*** Mixins for grid column type calculation ***/
+
+@mixin calc-grid-column($screen-type, $columns: 12) {
+
+    @for $i from 1 through $columns {
+
+        .#{$grid-class-name}-#{$screen-type}-#{$i} {
+            width: ($grid-one-col * $i);
+        }
+    }
+}
+
+@include make-grid-columns();
+
+
+/*** Mixins for each screen size ***/
+
+// @for $i from 1 through length($bp-screen-size) {
+	// @TODO: optimize the code below in a loop
+// }
+
+@include calc-grid-column (xs, $grid-columns);
+
+@media (min-width: rem($bp-sm-screen)) {
+    @include calc-grid-column (sm, $grid-columns);
+}
+
+@media (min-width: rem($bp-md-screen)) {
+    @include calc-grid-column (md, $grid-columns);
+}
+
+@media (min-width: rem($bp-lg-screen)) {
+    @include calc-grid-column (lg, $grid-columns);
+}
+
+@media (min-width: rem($bp-xlg-screen)) {
+    @include calc-grid-column (xlg, $grid-columns);
+}
+
+/** Viewport bugfix for IE10 on Windows 8 & W8 Phone (< update 3) **/
+
+@-webkit-viewport   { width: device-width; }
+@-moz-viewport      { width: device-width; }
+@-ms-viewport       { width: device-width; }
+@-o-viewport        { width: device-width; }
+@viewport           { width: device-width; }

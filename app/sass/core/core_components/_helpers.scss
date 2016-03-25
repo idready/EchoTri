@@ -1,0 +1,170 @@
+
+/* ===========================================
+ * Helper classes
+ * =========================================== */
+
+/* Clearfix
+ * ==================================== */
+
+@mixin clearfix() {
+
+  *zoom: 1; /* Hack IE7 */
+
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+/* Useful functions from foundation.zurb.com
+ * ==================================== */
+
+$include-css: () !default;
+$modules: () !default;
+
+/// Checks if a module is in use.
+@function using($name) {
+  // Import from global scope
+  $include-css: $include-css !global;
+  $module-key: map-get($include-css, $name);
+
+  @if $module-key == true or $module-key == null {
+    @return true;
+  }
+  @else {
+    @return false;
+  }
+}
+
+/// Checks if a module's CSS has already been exported.
+@function imported($name) {
+  // Import from global scope
+  $modules: $modules !global;
+  // Check if the module is already on the imported list
+  @if type-of(index($modules, $name)) == 'number' {
+    @return true;
+  }
+  @else {
+    @return false;
+  }
+}
+
+/// Outputs the chunk of content passed if component $name hasn't yet been output.
+/// This prevents code duplication by keeping track of which components have already been output.
+///
+/// @param {string} $name - Name of component to output
+///
+/// @output The content passed, if the component has not yet been exported.
+@mixin exports($name) {
+  // Check if the module has already been imported
+  @if not(imported($name)) {
+    // Check if the module should be used
+    @if using($name) {
+      $modules: append($modules, $name) !global;
+      @content;
+    }
+  }
+}
+
+/// Smart Scale
+/// Scales a color to be lighter if it's light, or darker if it's dark. Use this function to "fade" a color appropriate to its lightness.
+///
+/// @param {color} $color - Color to scale.
+/// @param {percentage} $scale - Amount to scale up or down.
+/// @param {percentage} $threshold - Threshold of lightness to check against.
+///
+/// @return A scaled color.
+@function smartscale($color, $scale: 5%, $threshold: 60%) {
+  @if lightness($color) > $threshold {
+    $scale: -$scale;
+  }
+  @return scale-color($color, $lightness: $scale);
+}
+
+
+/// Is It Light?
+/// Checks the lightness of $color, and if it passes the $threshold of lightness, it returns the `$yes` color. Otherwise, it returns the `$no` color. Use this function to dynamically output a foreground color based on a given background color.
+///
+/// @param {color} $color - Color to check the lightness of.
+/// @param {color} $yes - Color to return if $color is light.
+/// @param {color} $no - Color to return if $color is dark.
+/// @param {percentage} $threshold - Threshold of lightness to check against.
+///
+/// @return The $yes color or $no color.
+@function isitlight($color, $yes: #000, $no: #fff, $threshold: 60%) {
+  @if (lightness($color) > $threshold) {
+    @return $yes;
+  }
+  @else {
+    @return $no;
+  }
+}
+
+
+/// Get Side
+/// Determine a top/right/bottom/right value on a padding, margin, etc. property, no matter how many values were passed in. Use this function if you need to know the specific side of a value, but don't know if the value is using shorthand.
+///
+/// @param {list|number} $val - Value to analyze. Should be a shorthand sizing property, e.g. "1em 2em 1em"
+/// @param {keyword} $side - Side to return. Should be top, right, bottom, or left.
+///
+/// @return A single value based on `$val` and `$side`.
+@function get-side($val, $side) {
+  $length: length($val);
+
+  @if $length == 1 {
+    @return $val;
+  }
+  @if $length == 2 {
+    @return map-get((
+      top: nth($val, 1),
+      bottom: nth($val, 1),
+      left: nth($val, 2),
+      right: nth($val, 2),
+    ), $side);
+  }
+  @if $length == 3 {
+    @return map-get((
+      top: nth($val, 1),
+      left: nth($val, 2),
+      right: nth($val, 2),
+      bottom: nth($val, 3),
+    ), $side);
+  }
+  @if $length == 4 {
+    @return map-get((
+      top: nth($val, 1),
+      right: nth($val, 2),
+      bottom: nth($val, 3),
+      left: nth($val, 4),
+    ), $side);
+  }
+}
+
+/// Vertically centers the element inside of its first non-static parent,
+/// @link http://www.sitepoint.com/centering-with-sass/ Centering With Sass
+@mixin vertical-center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/// Horizontally centers the element inside of its first non-static parent,
+/// @link http://www.sitepoint.com/centering-with-sass/ Centering With Sass
+@mixin horizontal-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/// Absolutely centers the element inside of its first non-static parent,
+/// @link http://www.sitepoint.com/centering-with-sass/ Centering With Sass
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

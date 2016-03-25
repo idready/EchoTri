@@ -1,0 +1,90 @@
+
+/* ===========================================
+ * Specific rules for Header
+ * =========================================== */
+
+/* Specific rule section
+ * ==================================== */
+
+.hero-cover {
+
+    background-size: cover;
+    height: 300px;
+    min-height: 300px;
+    text-align: center;
+    position: relative;
+
+    &::after {
+
+        background: $black;
+        content: '';
+        height: 100%;
+        left: 0;
+        opacity: 0.45;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
+    //@TODO: To use for all icons everywhere
+    .icon-elt {
+
+        display: inline-block;
+        margin-bottom: 30px;
+        max-width: 300px;
+        min-width: 280px;
+
+        .icon {
+
+            display: block;
+            height: 100%;
+            transition: $default-transition;
+            width: 100%;
+        }
+    }
+
+    // Logo and Text above the overlay
+    .icon-elt,
+    .header-text {
+
+        position: relative;
+        z-index: 1;
+    }
+
+    // Header text
+
+    .header-text {
+
+        font-size: 16px;
+        transition: $default-transition;
+    }
+
+    // Responsiveness spices
+    @include mq('xs') {
+
+        .icon-elt {
+            min-width: 350px;
+        }
+
+        .header-text {
+            font-size: 20px;
+        }
+    }
+
+    @include mq('md') {
+
+        min-height: 450px;
+
+        .icon-elt {
+
+            margin-bottom: 110px;
+            min-width: 400px;
+        }
+
+        .header-text {
+            font-size: 28px;
+        }
+    }
+
+
+}
