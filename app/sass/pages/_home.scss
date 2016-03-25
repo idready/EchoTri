@@ -53,6 +53,28 @@
         }
     }
 
+    $sections: (0: 'missions', 1: 'activity', 2: 'contact');
+    $max-items: 10;
+
+    // @each $index, $section in $sections {
+    //
+    //     .#{$section} & {
+    //
+    //         @for $i from 2 through $max-items {
+    //
+    //             .visible.info-section__item:nth-child(#{$i}) {
+    //
+    //                 animation-delay: 0.3s * $i;
+    //                 display: none;
+    //                 @if ($i == 1) {
+    //                     color: red;
+    //                 }
+    //             }
+    //
+    //         }
+    //     }
+    // }
+
     .no-js & {
 
         .info-section__item {
