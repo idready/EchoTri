@@ -1,9 +1,15 @@
 console.log('\'Allo \'Allo!');
 
+window.lazySizesConfig = window.lazySizesConfig || {};
+window.lazySizesConfig.init = false;
+
 document.addEventListener('DOMContentLoaded', function(){
 
     console.log('load svg4everybody');
     svg4everybody();
+
+    // Lazysizes
+    lazySizes.init();
 
     //Hunt element to dispplay only if visible on viewport
     var sections = document.querySelectorAll('.info-section__item');

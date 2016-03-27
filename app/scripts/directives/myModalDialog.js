@@ -1,7 +1,7 @@
 
 'use strict';
 
-myApp.directive('myModalDialog', ['MY_EVENTS', '$rootScope', '$compile', '$http', function(MY_EVENTS, $rootScope, $compile, $http) {
+myApp.directive('myModalDialog', ['MY_EVENTS', '$rootScope', '$compile', '$http', 'DIRECTIVE_TEMPLATES', function(MY_EVENTS, $rootScope, $compile, $http, DIRECTIVE_TEMPLATES) {
 
     return {
 

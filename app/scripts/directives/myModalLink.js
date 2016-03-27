@@ -2,7 +2,7 @@
 'use strict';
 
 // @TODO: comment all function with angular doc way.
-myApp.directive('myModalLink', ['MY_EVENTS', 'DIRECTIVE_TEMPLATES', '$document', '$timeout', '$http', '$compile', '$rootScope', function(MY_EVENTS, DIRECTIVE_TEMPLATES, $document, $timeout, $http, $compile, $rootScope) {
+myApp.directive('myModalLink', ['MY_EVENTS', 'DIRECTIVE_TEMPLATES', '$document', '$timeout', '$http', '$compile',  '$rootScope', function(MY_EVENTS, DIRECTIVE_TEMPLATES, $document, $timeout, $http, $compile, $rootScope) {
 
     return {
 
@@ -200,6 +200,9 @@ myApp.directive('myModalLink', ['MY_EVENTS', 'DIRECTIVE_TEMPLATES', '$document',
                 angular.element(document.querySelector('.cd-modal-dyn-content')).empty();
             }
 
+            scope.trustSrc = function(src) {
+                return $sce.trustAsResourceUrl(src);
+            }
             $rootScope.$on(MY_EVENTS.MODAL_CLOSE, function (evt){
 
                 scope.closeModal();
