@@ -5,8 +5,7 @@ window.lazySizesConfig.init = false;
 
 document.addEventListener('DOMContentLoaded', function(){
 
-    console.log('load svg4everybody');
-    svg4everybody();
+
 
     // Lazysizes
     lazySizes.init();
@@ -40,6 +39,9 @@ document.addEventListener('DOMContentLoaded', function(){
         // console.log('Watching: '+el);
         el.classList.add('visible');
     }
+
+    console.log('load svg4everybody');
+    svg4everybody();
 
     // function test(callback, time) {
     //
