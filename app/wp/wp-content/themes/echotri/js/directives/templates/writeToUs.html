@@ -8,9 +8,9 @@
 
     <form action="/" method="Post" id="echo-form" name="echoForm" class="contact-form" ng-model="formContact" ng-submit="formSubmit($event)" novalidate>
         <!-- Company Field -->
-        <div class="input-block">
+        <!-- <div class="input-block">
             <button ng-click="fillForm($event)" class="button">Fill</button>
-        </div>
+        </div> -->
         <div class="input-block" ng-class="{'input-is-valid': echoForm.company.$valid}">
             <input type="text" ng-disabled="form.handle" ng-model="guest.company" name="company" id="company" ng-class="{'invalid-field': echoForm.company.$invalid && echoForm.company.$touched}" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[a-zA-Z-'` ŠšÐdŽžCcÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿRr\D]+$/" placeholder="Votre entreprise*" required>
             <label for="company" class="placeholder-rbm" ng-class="{'visible-pld': guest.company.length}">Votre entreprise*</label>
