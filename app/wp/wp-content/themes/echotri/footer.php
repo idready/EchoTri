@@ -10,8 +10,8 @@
  */
 ?>
 
-	  <!-- oter -->
-      <footer class="footer">
+	   <!-- Footer -->
+        <footer class="footer">
           <ul class="footer-links">
               <li class="footer-links__item">
                 <?php //Get this id dynamically ?>
@@ -21,7 +21,7 @@
               <li class="footer-links__item"><a target="_blank" rel="noopener" href="https://www.facebook.com/EchoTri-545067608842775/">Facebook</a></li>
           </ul>
           <p class="footer-cpr">EchoTri tous droits reservés 2015</p>
-      </footer>
+        </footer>
 
     </main>
 
@@ -47,12 +47,13 @@
         </div>
         <a href="#" class="modal-close" title="Fermer">
             <span class="icon-elt" ng-click="closeModal($event)">
-                <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-close" /></svg>
+                <span my-svg-file svg-icon-id="close"></span>
+                <!-- <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-close" /></svg> -->
             </span>
         </a>
     </div> <!-- cd-modal -->
 
-    <div class="cd-cover-layer"></div> <!-- .cd-cover-layer -->
+    <div class="cd-cover-layer"></div><!-- .cd-cover-layer -->
 
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>

@@ -8,6 +8,7 @@ import {stream as wiredep} from 'wiredep';
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 var path = require('path');
+var argv = require('yargs').argv;
 
 var pxtoremOptions = {
     root_value: 16,
@@ -89,6 +90,7 @@ gulp.task('scripts', ['header-scripts', 'main-scripts'], () => {
 });
 
 gulp.task('main-scripts', function() {
+
     return gulp.src([
       'app/scripts/components/bower_components/in-viewport/build/in-viewport.min.js',
       'app/scripts/components/bower_components/lazysizes/plugins/bgset/ls.bgset.min.js',
@@ -111,14 +113,16 @@ gulp.task('main-scripts', function() {
       'app/scripts/directives/myModalLink.js',
       'app/scripts/directives/myModalDialog.js',
       'app/scripts/directives/myFeedbackNotifier.js',
+      'app/scripts/directives/svg.js',
       'app/scripts/controllers/HomeCtrl.js',
       'app/scripts/controllers/ModalCtrl.js',
       'app/scripts/controllers/ContactFormCtrl.js',
       'app/scripts/controllers/GoogleMapsCtrl.js',
       'app/scripts/main.js'
     ])
-    .pipe($.concat({ path: 'all.js'}))
-    .pipe($.uglify())
+    .pipe($.concat({path: 'all.js'}))
+    .pipe($.if(!argv.dev, $.uglify()))
+    // .pipe($.uglify())
     // .pipe(gulp.dest('app/'));
     .pipe(gulp.dest('app/wp/wp-content/themes/echotri/js'));
 });
@@ -130,8 +134,7 @@ gulp.task('header-scripts', function() {
       'app/scripts/components/bower_components/angular/angular.js'
     ])
     .pipe($.concat({ path: 'header-all.js'}))
-    .pipe($.uglify())
-    // .pipe(gulp.dest('app/'));
+    .pipe($.if(!argv.dev, $.uglify()))
     .pipe(gulp.dest('app/wp/wp-content/themes/echotri/js'));
 });
 
