@@ -7,8 +7,8 @@ myApp.directive('myModalLink', ['MY_EVENTS', 'DIRECTIVE_TEMPLATES', '$document',
     return {
 
         scope: {
-            pageType: '@pageType',
-            pageTemplate: '@pageTemplate'
+            'pageType': '@' ,
+            'pageTemplate': '@'
         },
         reastrict: 'AE',
         // transclude: true,

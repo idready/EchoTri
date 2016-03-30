@@ -113,13 +113,14 @@ gulp.task('main-scripts', function() {
       'app/scripts/directives/myModalLink.js',
       'app/scripts/directives/myModalDialog.js',
       'app/scripts/directives/myFeedbackNotifier.js',
+      'app/scripts/directives/svg.js',
       'app/scripts/controllers/HomeCtrl.js',
       'app/scripts/controllers/ModalCtrl.js',
       'app/scripts/controllers/ContactFormCtrl.js',
       'app/scripts/controllers/GoogleMapsCtrl.js',
       'app/scripts/main.js'
     ])
-    .pipe($.concat({ path: 'all.js'}))
+    .pipe($.concat({path: 'all.js'}))
     .pipe($.if(!argv.dev, $.uglify()))
     // .pipe($.uglify())
     // .pipe(gulp.dest('app/'));

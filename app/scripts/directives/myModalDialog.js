@@ -8,7 +8,7 @@ myApp.directive('myModalDialog', ['MY_EVENTS', '$rootScope', '$compile', '$http'
         scope: {
             pagetemplate: '@'
         },
-        reastrict: 'AE',
+        restrict: 'AE',
         // transclude: true,
         link: function(scope, element, attrs) {
 
