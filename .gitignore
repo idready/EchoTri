@@ -68,6 +68,8 @@ app/wp/!wp-content/plugins/
 app/wp/!wp-content/themes/
 app/wp/!wp-content/upgrade/
 
+app/wp/wp-content/plugins/
+
 # ignore these plugins
 app/wp/wp-content/plugins/hello.php
 
