@@ -38,7 +38,6 @@
 	<?php wp_head(); ?>
 
 	<?php /* Variables for Js */ ?>
-
 	<script>
 
 		var CONFIG_VARS =  {

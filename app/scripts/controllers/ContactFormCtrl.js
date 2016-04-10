@@ -31,6 +31,7 @@ myApp.controller('ContactFormCtrl', ['$scope', '$rootScope', '$timeout', '$http'
             company: "Company",
             email: "emailMe@yo.frd",
             firstName: "firstName",
+            telephone: "+33705060408",
             message: "An integer between 2 and 36 that represents the radix (the base in mathematical numeral systems) of the above mentioned string. Specify 10 for the decimal numeral system commonly used by humans. Always specify this parameter to eliminate reader confusion and to guarantee predictable behavior. Different implementations produce different results when a radix is not specified, usually defaulting the value to 10.",
             name: "Name",
             rs: "Company raison"

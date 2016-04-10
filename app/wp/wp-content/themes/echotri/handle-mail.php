@@ -6,6 +6,7 @@
 
     $name = htmlentities( strip_tags($_REQUEST['name']) );
     $firstName = htmlentities( strip_tags($_REQUEST['firstName']) );
+    $telephone = htmlentities( strip_tags($_REQUEST['telephone']) );
     $email = htmlentities( strip_tags($_REQUEST['email']) );
     $rs = htmlentities( strip_tags($_REQUEST['rs']) );
     $company = htmlentities( strip_tags($_REQUEST['company']) );
@@ -26,6 +27,7 @@
         <p>Information sur l\'exp&eacute;diteur du message</p>
         <p>Nom: <strong>'.$name.'</strong></p>
         <p>Pr&eacute;nom: <strong>'.$firstName.'</strong></p>
+        <p>T&eacute;l&eacute;phone: <strong>'.$telephone.'</strong></p>
         <p>Email: <strong>'.$email.'</p>
         <p>Son message:<br /><br /> <strong>'.$message.'</strong></p>
       </body>
