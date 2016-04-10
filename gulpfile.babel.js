@@ -156,30 +156,32 @@ gulp.task('images', () => {
 
 gulp.task('svgstore', () => {
 
-  return gulp.src('app/images/svg-src/{,*//*}*.svg')
-    .pipe($.rename({prefix: 'shapes-'}))
-    .pipe($.svgmin(function (file) {
+    // @TODO: Write a Task that register all svg in json file :D
+    return gulp.src('app/images/svg-src/{,*//*}*.svg')
+        .pipe($.copy('app/wp/wp-content/themes/echotri/icons/', {prefix: 2}))
+        .pipe($.rename({prefix: 'shapes-'}))
+        .pipe($.svgmin(function (file) {
 
-        var prefix = path.basename(file.relative, path.extname(file.relative));
-        // console.log(file);
-        return {
-            plugins: [{
-              removeViewBox: false,
-              removeUselessStrokeAndFill: false,
-              cleanupIDs: {
-                prefix: prefix + '-',
-                minify: true
-              },
-              removeDoctype: true
-            }]
-        }
-    }))
-    .pipe($.svgstore({
-        inlineSvg: false
-    }))
-    .pipe($.rename('svg-defs.svg'))
-    .pipe(gulp.dest('app/images/svg/'))
-    .pipe($.copy('app/wp/wp-content/themes/echotri/images/', {prefix: 2}));
+            var prefix = path.basename(file.relative, path.extname(file.relative));
+            // console.log(file);
+            return {
+                plugins: [{
+                  removeViewBox: false,
+                  removeUselessStrokeAndFill: false,
+                  cleanupIDs: {
+                    prefix: prefix + '-',
+                    minify: true
+                  },
+                  removeDoctype: true
+                }]
+            }
+        }))
+        .pipe($.svgstore({
+            inlineSvg: false
+        }))
+        .pipe($.rename('svg-defs.svg'))
+        .pipe(gulp.dest('app/images/svg/'))
+        .pipe($.copy('app/wp/wp-content/themes/echotri/images/', {prefix: 2}));
 });
 
 gulp.task('fonts', () => {

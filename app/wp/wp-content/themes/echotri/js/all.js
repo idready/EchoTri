@@ -1369,10 +1369,7 @@ myApp.controller('ContactFormCtrl', ['$scope', '$rootScope', '$timeout', '$http'
     // Testing
     $scope.fillForm  = function (evt){
 
-        if (typeof evt !== undefined) {
-
-            evt.preventDefault();
-        }
+        if (typeof evt !== undefined) evt.preventDefault();
 
         $scope.guest = {
             company: "Company",
@@ -1387,10 +1384,7 @@ myApp.controller('ContactFormCtrl', ['$scope', '$rootScope', '$timeout', '$http'
 
     $scope.formSubmit = function (evt) {
 
-        if (typeof evt !== undefined) {
-
-            evt.preventDefault();
-        }
+        if (typeof evt !== undefined) evt.preventDefault();
 
         $scope.form.submit = true;
         console.log($scope.echoForm.$name+ ' is Valid:' +$scope.echoForm.$valid);
