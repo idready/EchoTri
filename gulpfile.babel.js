@@ -163,7 +163,7 @@ gulp.task('svgstore', () => {
         .pipe($.svgmin(function (file) {
 
             var prefix = path.basename(file.relative, path.extname(file.relative));
-            // console.log(file);
+            console.log(file);
             return {
                 plugins: [{
                   removeViewBox: false,
@@ -183,6 +183,11 @@ gulp.task('svgstore', () => {
         .pipe(gulp.dest('app/images/svg/'))
         .pipe($.copy('app/wp/wp-content/themes/echotri/images/', {prefix: 2}));
 });
+
+// gulp.task('copySVG', () => {
+//
+//     return gulp.src('app/images/svg/')
+// };
 
 gulp.task('fonts', () => {
   return gulp.src(require('main-bower-files')({
