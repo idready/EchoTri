@@ -46,33 +46,18 @@
             <!-- Infos item -->
             <?php
 
-                function getDirContents($dir, &$results = array()){
+                $file = '/var/www/wp/wp-content/themes/echotri/images/icons.json';
+                if (file_exists($file)) {
 
-                    $files = scandir($dir);
-
-                    foreach($files as $key => $value){
-                        $path = realpath($dir.DIRECTORY_SEPARATOR.$value);
-                        if(!is_dir($path)) {
-                            $file = explode('/', $path);
-                            $results[] = $file[sizeof($file) - 1];
-                        } else if($value != "." && $value != "..") {
-                            getDirContents($path, $results);
-                            $file = explode('/', $path);
-                            $results[] = $file[sizeof($file) - 1];
-                        }
-                    }
-
-                    return $results;
+                    $icons_names = file($file);
+                    $icons = json_decode($icons_names[0], true);
                 }
 
-                $icons = getDirContents('/var/www/wp/wp-content/themes/echotri/icons/svg-src/');
-
-                //Loop through icons
                 if (sizeof($icons) > 0):
             ?>
             <?php
 
-                $ignoreIcons = array ('logo-echotri.svg', 'input-check.svg', 'error.svg', 'envelope.svg', 'location-point.svg', 'close.svg');
+                $ignoreIcons = array ('logo-echotri', 'input-check', 'error', 'envelope', 'location-point', 'close');
                 foreach ($icons as $key => $value):
 
                     if (in_array($value, $ignoreIcons)) {
@@ -80,14 +65,13 @@
                     }
             ?>
                 <div class="info-section__item span-xs-12 span-sm-3">
-                    <?php  $svgFile =  explode('.svg', $value); ?>
                     <span class="icon-elt">
-                        <span my-svg-file svg-icon-id="<?php echo $svgFile[0]; ?>"></span>
+                        <span my-svg-file svg-icon-id="<?php echo $value; ?>"></span>
                     </span>
-                    <h3 class="info-section__item-label"><?php echo $svgFile[0]; ?></h3>
+                    <h3 class="info-section__item-label"><?php echo $value; ?></h3>
                 </div>
             <?php endforeach; ?>
-            <?php endif; ?>
+            <?php endif;  ?>
 
       </section>
       <section class="info-section contact">
@@ -97,18 +81,12 @@
             <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" page-type="secondary" page-template="writeToUs" class="span-xs-12 span-sm-6 info-section__item">
                 <span class="icon-elt">
                     <span my-svg-file svg-icon-id="envelope"></span>
-                    <?php /*
-                    <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-envelope" /></svg>
-                    */  ?>
                 </span>
                 <h3 class="info-section__item-label">Nous écrire</h3>
             </a>
             <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" page-type="secondary" page-template="reachUs" class="span-xs-12 span-sm-6 info-section__item">
                 <span class="icon-elt">
                     <span my-svg-file svg-icon-id="location-point"></span>
-                    <?php /*
-                    <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-location-point" /></svg>
-                    */  ?>
                 </span>
                 <h3 class="info-section__item-label">Nos coordonnées</h3>
             </a>

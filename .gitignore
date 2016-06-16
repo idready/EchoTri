@@ -64,9 +64,10 @@ app/wp/*.zip
 # "themes" directory
 #app/wp/wp-content/*
 app/wp/!wp-content/mu-plugins/
-app/wp/!wp-content/plugins/
+app/wp/wp-content/plugins/
 app/wp/!wp-content/themes/
 app/wp/!wp-content/upgrade/
+app/wp/wp-content/languages/
 app/wp/wp-includes/
 app/wp/wp-admin/*
 app/wp/wp-content/uploads/
