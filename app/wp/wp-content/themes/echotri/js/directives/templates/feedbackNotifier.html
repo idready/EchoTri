@@ -3,14 +3,12 @@
     <!-- Contextual close button -->
     <a href="#" class="close" title="Fermer" ng-class="{'fadeInDown animated': state.isFeedbackSuccessful && state.isComplete}" ng-if="state.isFeedbackSuccessful && state.isComplete">
         <span class="icon-elt" ng-click="dismiss($event)">
-            <!-- <svg class="icon"><use xlink:href="{{'/images/svg/svg-defs.svg#shapes-close' | cleanHtml : true}}" /></svg> -->
             <span my-svg-file svg-icon-id="close"></span>
         </span>
     </a>
 
     <a href="#" class="close" title="Fermer" ng-class="{'fadeInDown animated': state.isFeedbackSuccessful && state.isComplete}" ng-if="!state.isFeedbackSuccessful && state.isComplete">
         <span class="icon-elt" ng-click="init($event)">
-            <!-- <svg class="icon"><use xlink:href="{{'/images/svg/svg-defs.svg#shapes-close' | cleanHtml : true}}" /></svg> -->
             <span my-svg-file svg-icon-id="close"></span>
         </span>
     </a>
@@ -37,8 +35,6 @@
         <span class="elt-icon">
             <span class="icon ng-hide" ng-show="state.isFeedbackSuccessful" my-svg-file svg-icon-id="receiving-email"></span>
             <span class="icon ng-hide" ng-show="!state.isFeedbackSuccessful" my-svg-file svg-icon-id="error"></span>
-            <!-- <svg class="icon ng-hide" ng-show="state.isFeedbackSuccessful"><use xlink:href="{{'/images/svg/svg-defs.svg#shapes-receiving-email' | cleanHtml : true}}" /></svg> -->
-            <!-- <svg class="icon ng-hide" ng-show="!state.isFeedbackSuccessful"><use xlink:href="{{'/images/svg/svg-defs.svg#shapes-error' | cleanHtml : true}}" /></svg> -->
         </span>
         <h4 class="feedback-notify__title">
             <span class="ng-hide" ng-show="state.isFeedbackSuccessful">Merci, nous avons reçu votre message.</span>
