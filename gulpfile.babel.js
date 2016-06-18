@@ -158,9 +158,7 @@ gulp.task('images', () => {
 
 gulp.task('svgstore', ['svgJson'], () => {
 
-    // @TODO: Write a Task that register all svg in json file :D
     return gulp.src('app/images/svg-src/{,*//*}*.svg')
-        // .pipe($.copy('app/wp/wp-content/themes/echotri/icons/', {prefix: 2}))
         .pipe($.rename({prefix: 'shapes-'}))
         .pipe($.svgmin(function (file) {
 
@@ -186,28 +184,21 @@ gulp.task('svgstore', ['svgJson'], () => {
         .pipe($.copy('app/wp/wp-content/themes/echotri/images/', {prefix: 2}));
 });
 
-// gulp.task('copySVG', () => {
-//
-//     return gulp.src('app/images/svg/')
-// };
-
 gulp.task('svgJson', ()=>{
 
     fs.readdir('app/images/svg-src/', (err, data) => {
         if (err) throw err;
 
-        var arr = [];
-        var test = {};
+        var iconsList = {};
         for (var i = 0; i < data.length; i++) {
-            test[i] = data[i].replace('.svg', '');
-            arr.push({[i]: data[i].replace('.svg', '')});
+            iconsList[i] = data[i].replace('.svg', '');
         }
 
         fs.unlink('app/wp/wp-content/themes/echotri/images/icons.json', ()=>{
             console.log('Deleted the previous svg JSON file');
         });
 
-        fs.appendFile('app/wp/wp-content/themes/echotri/images/icons.json', JSON.stringify(test), {encoding: 'utf-8', flag: 'a'}, (err) => {
+        fs.appendFile('app/wp/wp-content/themes/echotri/images/icons.json', JSON.stringify(iconsList), {encoding: 'utf-8', flag: 'a'}, (err) => {
             if (err) throw err;
             console.log('Successfuly created the new svg file!');
         });
