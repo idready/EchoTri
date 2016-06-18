@@ -7,7 +7,10 @@ import {stream as wiredep} from 'wiredep';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
+const fs = require('fs');
+
 var path = require('path');
+var argv = require('yargs').argv;
 
 var pxtoremOptions = {
     root_value: 16,
@@ -89,6 +92,7 @@ gulp.task('scripts', ['header-scripts', 'main-scripts'], () => {
 });
 
 gulp.task('main-scripts', function() {
+
     return gulp.src([
       'app/scripts/components/bower_components/in-viewport/build/in-viewport.min.js',
       'app/scripts/components/bower_components/lazysizes/plugins/bgset/ls.bgset.min.js',
@@ -111,14 +115,16 @@ gulp.task('main-scripts', function() {
       'app/scripts/directives/myModalLink.js',
       'app/scripts/directives/myModalDialog.js',
       'app/scripts/directives/myFeedbackNotifier.js',
+      'app/scripts/directives/svg.js',
       'app/scripts/controllers/HomeCtrl.js',
       'app/scripts/controllers/ModalCtrl.js',
       'app/scripts/controllers/ContactFormCtrl.js',
       'app/scripts/controllers/GoogleMapsCtrl.js',
       'app/scripts/main.js'
     ])
-    .pipe($.concat({ path: 'all.js'}))
-    .pipe($.uglify())
+    .pipe($.concat({path: 'all.js'}))
+    .pipe($.if(!argv.dev, $.uglify()))
+    // .pipe($.uglify())
     // .pipe(gulp.dest('app/'));
     .pipe(gulp.dest('app/wp/wp-content/themes/echotri/js'));
 });
@@ -130,8 +136,7 @@ gulp.task('header-scripts', function() {
       'app/scripts/components/bower_components/angular/angular.js'
     ])
     .pipe($.concat({ path: 'header-all.js'}))
-    .pipe($.uglify())
-    // .pipe(gulp.dest('app/'));
+    .pipe($.if(!argv.dev, $.uglify()))
     .pipe(gulp.dest('app/wp/wp-content/themes/echotri/js'));
 });
 
@@ -151,32 +156,62 @@ gulp.task('images', () => {
     .pipe(gulp.dest('dist/images'));
 });
 
-gulp.task('svgstore', () => {
+gulp.task('svgstore', ['svgJson'], () => {
 
-  return gulp.src('app/images/svg-src/{,*//*}*.svg')
-    .pipe($.rename({prefix: 'shapes-'}))
-    .pipe($.svgmin(function (file) {
+    // @TODO: Write a Task that register all svg in json file :D
+    return gulp.src('app/images/svg-src/{,*//*}*.svg')
+        // .pipe($.copy('app/wp/wp-content/themes/echotri/icons/', {prefix: 2}))
+        .pipe($.rename({prefix: 'shapes-'}))
+        .pipe($.svgmin(function (file) {
 
-        var prefix = path.basename(file.relative, path.extname(file.relative));
-        // console.log(file);
-        return {
-            plugins: [{
-              removeViewBox: false,
-              removeUselessStrokeAndFill: false,
-              cleanupIDs: {
-                prefix: prefix + '-',
-                minify: true
-              },
-              removeDoctype: true
-            }]
+            var prefix = path.basename(file.relative, path.extname(file.relative));
+            console.log(prefix);
+            return {
+                plugins: [{
+                  removeViewBox: false,
+                  removeUselessStrokeAndFill: false,
+                  cleanupIDs: {
+                    prefix: prefix + '-',
+                    minify: true
+                  },
+                  removeDoctype: true
+                }]
+            }
+        }))
+        .pipe($.svgstore({
+            inlineSvg: false
+        }))
+        .pipe($.rename('svg-defs.svg'))
+        .pipe(gulp.dest('app/images/svg/'))
+        .pipe($.copy('app/wp/wp-content/themes/echotri/images/', {prefix: 2}));
+});
+
+// gulp.task('copySVG', () => {
+//
+//     return gulp.src('app/images/svg/')
+// };
+
+gulp.task('svgJson', ()=>{
+
+    fs.readdir('app/images/svg-src/', (err, data) => {
+        if (err) throw err;
+
+        var arr = [];
+        var test = {};
+        for (var i = 0; i < data.length; i++) {
+            test[i] = data[i].replace('.svg', '');
+            arr.push({[i]: data[i].replace('.svg', '')});
         }
-    }))
-    .pipe($.svgstore({
-        inlineSvg: false
-    }))
-    .pipe($.rename('svg-defs.svg'))
-    .pipe(gulp.dest('app/images/svg/'))
-    .pipe($.copy('app/wp/wp-content/themes/echotri/images/', {prefix: 2}));
+
+        fs.unlink('app/wp/wp-content/themes/echotri/images/icons.json', ()=>{
+            console.log('Deleted the previous svg JSON file');
+        });
+
+        fs.appendFile('app/wp/wp-content/themes/echotri/images/icons.json', JSON.stringify(test), {encoding: 'utf-8', flag: 'a'}, (err) => {
+            if (err) throw err;
+            console.log('Successfuly created the new svg file!');
+        });
+    });
 });
 
 gulp.task('fonts', () => {

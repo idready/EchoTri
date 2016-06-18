@@ -1,9 +1,15 @@
 console.log('\'Allo \'Allo!');
 
+window.lazySizesConfig = window.lazySizesConfig || {};
+window.lazySizesConfig.init = false;
+
 document.addEventListener('DOMContentLoaded', function(){
 
     console.log('load svg4everybody');
     svg4everybody();
+
+    // Lazysizes
+    lazySizes.init();
 
     //Hunt element to dispplay only if visible on viewport
     var sections = document.querySelectorAll('.info-section__item');
@@ -20,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
         setTimeout(function(){
 
-            console.log(el, ' is in viewport : ',isInViewport);
+            // console.log(el, ' is in viewport : ',isInViewport);
             if (isInViewport) {
 
             } else {
@@ -31,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 
     function isVisible(el) {
-        console.log('Watching: '+el);
+        // console.log('Watching: '+el);
         el.classList.add('visible');
     }
 
