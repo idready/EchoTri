@@ -28,7 +28,7 @@
     ?>
 
     <?php get_header(); ?>
-    <!-- Add your site or application content here -->
+    <!-- Header -->
     <header class="header">
         <div class="hero-cover lazyload" data-bgset="<?php echo get_template_directory_uri() ?>/images/hero-cover.jpg 4000w" data-sizes="auto">
             <span class="icon-elt"><svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-logo-echotri" /></svg></span>
