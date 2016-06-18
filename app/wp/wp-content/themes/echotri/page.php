@@ -21,9 +21,10 @@ get_header(); ?>
 
 
       <!-- Add your site or application content here -->
+      <?php //@TODO: Transform this to a single block ?>
       <header class="header">
             <div class="hero-cover lazyload" data-bgset="<?php echo get_template_directory_uri() ?>/images/hero-cover.jpg 4000w" data-sizes="auto">
-                <span class="icon-elt"><svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-logo-echotri" /></svg></span>
+                <span class="icon-elt"><span my-svg-file svg-icon-id="logo-echotri"></span></span>
                 <p class="header-text">Insertion, Collection, Tri, Valorisation...</p>
                 <p class="header-text">Papiers, cartons et autres</p>
             </div>
@@ -58,7 +59,7 @@ get_header(); ?>
                     <!-- Infos item -->
                     <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" data-posticon="<?php echo strtolower(the_field('icone_article')) ?>" data-postId="<?php the_ID() ?>" class="info-section__item span-xs-12 span-sm-4 span-md-3">
                         <span class="icon-elt">
-                            <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-<?php echo strtolower(the_field('icone_article')) ?>" /></svg>
+                            <span my-svg-file svg-icon-id="<?php echo strtolower(the_field('icone_article')) ?>"></span>
                         </span>
                         <h3 class="info-section__item-label"><?php the_title() ?></h3>
                     </a>
@@ -101,7 +102,7 @@ get_header(); ?>
                     <!-- Infos item -->
                     <a href="#" my-modal-link data-modal-event="modal-trigger" page-type="tertiary" data-type="cd-modal-trigger" data-posticon="<?php echo strtolower(the_field('icone_article')) ?>" data-postId="<?php the_ID() ?>" class="info-section__item span-xs-12 span-sm-3">
                         <span class="icon-elt">
-                            <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-<?php echo strtolower(the_field('icone_article')) ?>" /></svg>
+                            <span my-svg-file svg-icon-id="<?php echo strtolower(the_field('icone_article')) ?>"></span>
                         </span>
                         <h3 class="info-section__item-label"><?php the_title() ?></h3>
                     </a>
@@ -116,6 +117,7 @@ get_header(); ?>
             ?>
 
           </section>
+          <?php //@TODO: Transform this to a single block ?>
           <section class="info-section contact">
 
             <header><h2 class="title">Contact</h2></header>

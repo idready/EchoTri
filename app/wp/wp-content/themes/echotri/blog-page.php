@@ -105,9 +105,6 @@ get_header(); ?>
                     <a href="#" my-modal-link data-modal-event="modal-trigger" page-type="tertiary" data-type="cd-modal-trigger" data-posticon="<?php echo strtolower(the_field('icone_article')) ?>" data-postId="<?php the_ID() ?>" class="info-section__item span-xs-12 span-sm-3">
                         <span class="icon-elt">
                             <span my-svg-file svg-icon-id="<?php echo strtolower(the_field('icone_article')) ?>"></span>
-                            <?php /*
-                            <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-<?php echo strtolower(the_field('icone_article')) ?>" /></svg>
-                            */  ?>
                         </span>
                         <h3 class="info-section__item-label"><?php the_title() ?></h3>
                     </a>
@@ -129,18 +126,12 @@ get_header(); ?>
                 <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" page-type="secondary" page-template="writeToUs" class="span-xs-12 span-sm-6 info-section__item">
                     <span class="icon-elt">
                         <span my-svg-file svg-icon-id="envelope"></span>
-                        <?php /*
-                        <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-envelope" /></svg>
-                        */  ?>
                     </span>
                     <h3 class="info-section__item-label">Nous écrire</h3>
                 </a>
                 <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" page-type="secondary" page-template="reachUs" class="span-xs-12 span-sm-6 info-section__item">
                     <span class="icon-elt">
                         <span my-svg-file svg-icon-id="location-point"></span>
-                        <?php /*
-                        <svg class="icon"><use xlink:href="<?php echo get_template_directory_uri() ?>/images/svg/svg-defs.svg#shapes-location-point" /></svg>
-                        */  ?>
                     </span>
                     <h3 class="info-section__item-label">Nos coordonnées</h3>
                 </a>

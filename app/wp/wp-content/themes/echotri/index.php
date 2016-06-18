@@ -17,50 +17,84 @@
 
 get_header(); ?>
 
-<?php echo 'Silence is golden heh?' ?>
-<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+	<!-- Header -->
+	<?php //@TODO: Transform this to a single block ?>
+	<header class="header">
+		<div class="hero-cover lazyload" data-bgset="<?php echo get_template_directory_uri() ?>/images/blog-header.jpg 5400w" data-sizes="auto">
+			<span class="icon-elt">
+				<span my-svg-file svg-icon-id="logo-echotri"></span>
+			</span>
+			<p class="header-text">Insertion, Collection, Tri, Valorisation...</p>
+			<p class="header-text">Papiers, cartons et autres</p>
+		</div>
+	</header>
+	<!-- Main cotent -->
+	<section>
 
-		<?php if ( have_posts() ) : ?>
-
-			<?php if ( is_home() && ! is_front_page() ) : ?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-			<?php endif; ?>
+		<section class="info-section activity">
+			<header><h2 class="title">Nos Articles</h2></header>
 
 			<?php
-			// Start the loop.
-			while ( have_posts() ) : the_post();
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
+                $args = array(
+                    'post_type' => 'post',
+                    'category_name' => 'Blog',
+                    'posts_per_page' => 10,
+                    'order' => 'ASC',
+                );
 
-			// End the loop.
-			endwhile;
+                $my_query = new WP_Query($args);
 
-			// Previous/next page navigation.
-			the_posts_pagination( array(
-				'prev_text'          => __( 'Previous page', 'twentysixteen' ),
-				'next_text'          => __( 'Next page', 'twentysixteen' ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentysixteen' ) . ' </span>',
-			) );
+                if($my_query->have_posts()):
+                ?>
 
-		// If no content, include the "No posts found" template.
-		else :
-			get_template_part( 'template-parts/content', 'none' );
+                <?php
+                // Loop
+                while ($my_query->have_posts() ) : $my_query->the_post();
+                ?>
 
-		endif;
-		?>
+					<section class="article-posts" <?php post_class(); ?>>
+						<header>
+							<?php the_title( '<h4 class="article-posts__title">', '</h4>' ); ?>
+							<div class="article-posts__infos">
+								<?php the_category(', ') ?>
+								<?php the_time('jS F Y') ?>
+							</div>
+							<div class="article-posts__content">
+								<?php // the_content(); ?>
+							</div>
+						</header>
+					</section>
+                    <h3 class="info-section__item-label"></h3>
 
-		</main><!-- .site-main -->
-	</div><!-- .content-area -->
+                <?php
 
+                endwhile;
+                endif;
+
+                // Reset
+                wp_reset_postdata();
+                ?>
+		</section>
+		<?php //@TODO: Transform this to a single block ?>
+		<section class="info-section contact">
+
+			<header><h2 class="title">Contact</h2></header>
+			<div class="content clearfix">
+				<a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" page-type="secondary" page-template="writeToUs" class="span-xs-12 span-sm-6 info-section__item">
+					<span class="icon-elt">
+						<span my-svg-file svg-icon-id="envelope"></span>
+					</span>
+					<h3 class="info-section__item-label">Nous écrire</h3>
+				</a>
+				<a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" page-type="secondary" page-template="reachUs" class="span-xs-12 span-sm-6 info-section__item">
+					<span class="icon-elt">
+						<span my-svg-file svg-icon-id="location-point"></span>
+					</span>
+					<h3 class="info-section__item-label">Nos coordonnées</h3>
+				</a>
+			</div>
+		</section>
+	</section>
 
 <?php get_footer(); ?>
-
-

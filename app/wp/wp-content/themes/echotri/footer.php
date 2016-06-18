@@ -10,7 +10,7 @@
  */
 ?>
 
-	  <!-- oter -->
+	  <!-- Footer -->
       <footer class="footer">
           <ul class="footer-links">
               <li class="footer-links__item">
