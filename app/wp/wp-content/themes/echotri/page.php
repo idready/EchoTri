@@ -31,92 +31,92 @@ get_header(); ?>
       </header>
       <!-- Main cotent -->
       <section>
-          <section class="info-section activity">
+            <section class="info-section activity">
+                <div class="info-section__content">
+                    <header><h2 class="title">Domaines d'intervention</h2></header>
 
-            <header><h2 class="title">Domaines d'intervention</h2></header>
+                    <?php
 
-            <?php
+                        $args = array(
+                            'post_type' => 'post',
+                            'category_name' => 'domaines_interventions',
+                            'posts_per_page' => 10,
+                            'meta_key' => 'position_lien',
+                            'orderby' => 'meta_value_num',
+                            'order' => 'ASC',
+                        );
 
-                $args = array(
-                    'post_type' => 'post',
-                    'category_name' => 'domaines_interventions',
-                    'posts_per_page' => 10,
-                    'meta_key' => 'position_lien',
-                    'orderby' => 'meta_value_num',
-                    'order' => 'ASC',
-                );
+                        $my_query = new WP_Query($args);
 
-                $my_query = new WP_Query($args);
+                        if($my_query->have_posts()):
+                        ?>
 
-                if($my_query->have_posts()):
-                ?>
+                        <?php
+                        // Loop
+                        while ($my_query->have_posts() ) : $my_query->the_post();
+                        ?>
 
-                <?php
-                // Loop
-                while ($my_query->have_posts() ) : $my_query->the_post();
-                ?>
+                            <!-- Infos item -->
+                            <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" data-posticon="<?php echo strtolower(the_field('icone_article')) ?>" data-postId="<?php the_ID() ?>" class="info-section__item span-xs-12 span-sm-4 span-md-3">
+                                <span class="icon-elt">
+                                    <span my-svg-file svg-icon-id="<?php echo strtolower(the_field('icone_article')) ?>"></span>
+                                </span>
+                                <h3 class="info-section__item-label"><?php the_title() ?></h3>
+                            </a>
 
+                        <?php
+
+                        endwhile;
+                        endif;
+
+                        // Reset
+                        wp_reset_postdata();
+                        ?>
+                </div>
+            </section>
+            <section class="info-section missions">
+                <div class="info-section__content">
+                    <header><h2 class="title">Missions sociales</h2></header>
                     <!-- Infos item -->
-                    <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" data-posticon="<?php echo strtolower(the_field('icone_article')) ?>" data-postId="<?php the_ID() ?>" class="info-section__item span-xs-12 span-sm-4 span-md-3">
-                        <span class="icon-elt">
-                            <span my-svg-file svg-icon-id="<?php echo strtolower(the_field('icone_article')) ?>"></span>
-                        </span>
-                        <h3 class="info-section__item-label"><?php the_title() ?></h3>
-                    </a>
+                    <?php
 
-                <?php
+                        $args = array(
+                            'post_type' => 'post',
+                            'category_name' => 'missions_sociales',
+                            'posts_per_page' => 10,
+                            'meta_key' => 'position_lien',
+                            'orderby' => 'meta_value_num',
+                            'order' => 'ASC',
+                        );
 
-                endwhile;
-                endif;
+                        $my_query = new WP_Query($args);
 
-                // Reset
-                wp_reset_postdata();
-                ?>
+                        if($my_query->have_posts()):
+                        ?>
 
-          </section>
-          <section class="info-section missions">
+                        <?php
+                        // Loop
+                        while ($my_query->have_posts() ) : $my_query->the_post();
+                        ?>
 
-            <header><h2 class="title">Missions sociales</h2></header>
-            <!-- Infos item -->
-            <?php
+                            <!-- Infos item -->
+                            <a href="#" my-modal-link data-modal-event="modal-trigger" page-type="tertiary" data-type="cd-modal-trigger" data-posticon="<?php echo strtolower(the_field('icone_article')) ?>" data-postId="<?php the_ID() ?>" class="info-section__item span-xs-12 span-sm-3">
+                                <span class="icon-elt">
+                                    <span my-svg-file svg-icon-id="<?php echo strtolower(the_field('icone_article')) ?>"></span>
+                                </span>
+                                <h3 class="info-section__item-label"><?php the_title() ?></h3>
+                            </a>
 
-                $args = array(
-                    'post_type' => 'post',
-                    'category_name' => 'missions_sociales',
-                    'posts_per_page' => 10,
-                    'meta_key' => 'position_lien',
-                    'orderby' => 'meta_value_num',
-                    'order' => 'ASC',
-                );
+                        <?php
 
-                $my_query = new WP_Query($args);
+                        endwhile;
+                        endif;
 
-                if($my_query->have_posts()):
-                ?>
-
-                <?php
-                // Loop
-                while ($my_query->have_posts() ) : $my_query->the_post();
-                ?>
-
-                    <!-- Infos item -->
-                    <a href="#" my-modal-link data-modal-event="modal-trigger" page-type="tertiary" data-type="cd-modal-trigger" data-posticon="<?php echo strtolower(the_field('icone_article')) ?>" data-postId="<?php the_ID() ?>" class="info-section__item span-xs-12 span-sm-3">
-                        <span class="icon-elt">
-                            <span my-svg-file svg-icon-id="<?php echo strtolower(the_field('icone_article')) ?>"></span>
-                        </span>
-                        <h3 class="info-section__item-label"><?php the_title() ?></h3>
-                    </a>
-
-                <?php
-
-                endwhile;
-                endif;
-
-                // Reset
-                wp_reset_postdata();
-            ?>
-
-          </section>
+                        // Reset
+                        wp_reset_postdata();
+                    ?>
+                </div>
+            </section>
           <?php //@TODO: Transform this to a single block ?>
           <section class="info-section contact">
 
