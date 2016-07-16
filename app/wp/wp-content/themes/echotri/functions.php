@@ -71,4 +71,3 @@ function get_articles() {
 
     die();
 }
-

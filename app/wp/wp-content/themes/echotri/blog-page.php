@@ -9,7 +9,6 @@
  *
  * @link http://codex.wordpress.org/Template_Hierarchy
  *
- * Template Name: Page blog
  *
  * @package WordPress
  * @subpackage Echo_Tri

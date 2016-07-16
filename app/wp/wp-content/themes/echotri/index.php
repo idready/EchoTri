@@ -9,6 +9,8 @@
  *
  * @link http://codex.wordpress.org/Template_Hierarchy
  *
+ * Template Name: Page blog
+ *
  * @package WordPress
  * @subpackage Echo_Tri
  * @since EchoTri 1.0
@@ -30,7 +32,6 @@ get_header(); ?>
 	</header>
 	<!-- Main cotent -->
 	<section>
-
 		<section class="info-section missions">
 			<div class="info-section__content">
 				<header><h2 class="title">Nos Articles</h2></header>
@@ -75,6 +76,7 @@ get_header(); ?>
 									?>
 									<span class="category"><?php echo $comm_count; ?> Commentaire<? if($comm_count>1) echo 's' ?></span>
 								</div>
+								<!-- <pre><?php var_dump(wp_count_comments(array('ID' => $the_post_id))) ; ?></pre> -->
 								<div class="article-post__content"  itemprop="articleBody">
 									<?php the_excerpt(); ?>
 								</div>
