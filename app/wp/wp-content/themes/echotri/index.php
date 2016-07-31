@@ -60,7 +60,6 @@ get_header(); ?>
 							<article itemscope itemType="http://schema.org/BlogPosting">
 
 								<header class="article-post__header">
-									<?php //the_title( '<h2 class="article-posts__title">', '</h2>' ); ?>
 									<h2 itemprop="headline" class="article-post__title">
 										<a class="article-post__link" href="<?php echo the_permalink(); ?>"><?php the_title() ?></a>
 									</h2>
@@ -70,11 +69,10 @@ get_header(); ?>
 										<time datetime="<?php the_time('Y-m-d') ?>" itemprop="datePublished"><?php the_time('j F Y') ?></time>
 									</span>
 									<?php
-										$the_post_id = $my_query->post->ID;
-										$comm_query = array('post_type' => $the_post_id, 'count' => true);
-										$comm_count = (get_comments($comm_query) > 0) ? get_comments($comm_query) : 'Pas de';
+										$comments = get_comments_number($my_query->post->ID);
+										$comm_count = (((int) $comments) > 0) ? $comments : 'Pas de';
 									?>
-									<span class="category"><?php echo $comm_count; ?> Commentaire<? if($comm_count>1) echo 's' ?></span>
+									<span class="category"><?php echo $comm_count ?> Commentaire<? if($comm_count>1) echo 's' ?></span>
 								</div>
 								<!-- <pre><?php var_dump(wp_count_comments(array('ID' => $the_post_id))) ; ?></pre> -->
 								<div class="article-post__content"  itemprop="articleBody">

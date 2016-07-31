@@ -5210,6 +5210,104 @@ Modal Window
  * =========================================== */
 /* Specific rule section
  * ==================================== */
+.single-post .article-post .article-post__content a, .single-post .article-post .article-post__comments a {
+  color: #0c2631;
+}
+
+.single-post .article-post .article-post__content a:hover, .single-post .article-post .article-post__comments a:hover {
+  color: #07161c;
+}
+
+.single-post .article-post .article-post__content {
+  margin-top: 2.5rem;
+}
+
+.single-post .article-post .article-post__content h1 {
+  font-size: 1.375rem;
+}
+
+.single-post .article-post .article-post__content ul,
+.single-post .article-post .article-post__content ol {
+  display: inline-block;
+  list-style-type: disc;
+  margin-bottom: 1.25rem;
+  text-align: left;
+}
+
+.single-post .article-post .article-post__content hr {
+  border-style: ridge;
+}
+
+.single-post .article-post .article-post__content hr + h1 {
+  margin-top: 2.5rem;
+}
+
+.single-post .article-post .article-post__content p {
+  margin-bottom: 1.25rem;
+  text-align: justify;
+}
+
+.single-post .article-post .article-post__content a,
+.single-post .article-post .article-post__content ul,
+.single-post .article-post .article-post__content ol,
+.single-post .article-post .article-post__content p {
+  font-size: 1.125rem;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+}
+
+.single-post .article-post .article-post__content img {
+  height: auto;
+  margin-bottom: 0.625rem;
+  max-width: 100%;
+}
+
+@media screen and (min-width: 48rem) {
+  .single-post .article-post .article-post__content {
+    margin-top: 5rem;
+  }
+  .single-post .article-post .article-post__content a,
+  .single-post .article-post .article-post__content ul,
+  .single-post .article-post .article-post__content ol,
+  .single-post .article-post .article-post__content p {
+    font-size: 1.375rem;
+  }
+}
+
+.single-post .article-post .article-post__comments {
+  margin: 2.5rem auto 0;
+  max-width: 60rem;
+}
+
+.single-post .article-post .article-post__comments .comments-title {
+  margin-bottom: 1.25rem;
+}
+
+.single-post .article-post .article-post__comments .comment {
+  background: #8f4319;
+  margin-bottom: 0.625rem;
+  padding: 0.625rem;
+}
+
+.single-post .article-post .article-post__comments .comment.thread-even {
+  background: #ba5721;
+}
+
+.single-post .article-post .article-post__comments .comment img {
+  border: 0.0625rem solid grey;
+}
+
+.single-post .article-post .article-post__comments ol,
+.single-post .article-post .article-post__comments ul {
+  list-style-type: none;
+}
+
+@media screen and (min-width: 48rem) {
+  .single-post .article-post .article-post__comments {
+    margin-top: 5rem;
+  }
+}
+
 /* Page rule here
  * ==================================== */
 /* ===========================================

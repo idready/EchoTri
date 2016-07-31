@@ -41,15 +41,19 @@ get_header(); ?>
                                 <time datetime="<?php the_time('Y-m-d') ?>" itemprop="datePublished"><?php the_time('j F Y') ?></time>
                             </span>
                             <?php
-                                $comm_query = array('post_type' => the_ID(), 'count' => true);
-                                $comm_count = (get_comments($comm_query) > 0) ? get_comments($comm_query) : 'Pas de';
+                                $comm_count = (((int) get_comments_number()) > 0) ? get_comments_number() : 'Pas de';
                             ?>
                             <span class="category"><?php echo $comm_count; ?> Commentaire<? if($comm_count>1) echo 's' ?></span>
                         </div>
-                        <pre><?php //var_dump(wp_count_comments(array('ID' => the_ID()))) ; ?></pre>
                         <div class="article-post__content"  itemprop="articleBody">
                             <?php the_content(); ?>
                         </div>
+                        <?php
+                        // If comments are open or we have at least one comment, load up the comment template.
+            			if ( comments_open() || get_comments_number() ) :
+            				comments_template();
+                            endif;
+                        ?>
                     </article>
                 </section>
                 <?php endwhile; ?>
