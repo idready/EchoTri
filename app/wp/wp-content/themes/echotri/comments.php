@@ -24,7 +24,7 @@ if ( post_password_required() ) {
 	<?php if ( have_comments() ) : ?>
 		<h2 class="comments-title">
 			<?php
-				printf( _nx( 'Un commentaire', '%1$s commentaires', get_comments_number(), 'comments title'),
+				printf( _nx( 'Un commentaire sur ce sujet', '%1$s commentaires sur ce sujet', get_comments_number(), 'comments title'),
 					number_format_i18n( get_comments_number() ), get_the_title() );
 			?>
 		</h2>
@@ -45,7 +45,7 @@ if ( post_password_required() ) {
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
 	?>
-		<p class="no-comments"><?php _e( 'Comments are closed.'); ?></p>
+		<p class="no-comments"><?php _e( 'Commentaires fermés.'); ?></p>
 	<?php endif; ?>
 
 	<?php comment_form(); ?>

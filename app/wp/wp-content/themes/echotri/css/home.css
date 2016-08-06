@@ -3773,7 +3773,7 @@ body {
  * 2. From Foundation framework; remove old behavior for old browsers
  * @TODO: Add button-group and check border-radius
  * ==================================== */
-.button {
+.button, .single-post .article-post .article-post__comments .comment-form .submit {
   background-image: none;
   border: 0.0625rem solid transparent;
   cursor: pointer;
@@ -5210,12 +5210,16 @@ Modal Window
  * =========================================== */
 /* Specific rule section
  * ==================================== */
-.single-post .article-post .article-post__content a, .single-post .article-post .article-post__comments a {
+.single-post .article-post .article-post__content a, .single-post .article-post .article-post__comments .comment-meta a.comment-edit-link, .single-post .article-post .article-post__comments a {
   color: #0c2631;
 }
 
-.single-post .article-post .article-post__content a:hover, .single-post .article-post .article-post__comments a:hover {
+.single-post .article-post .article-post__content a:hover, .single-post .article-post .article-post__comments .comment-meta a.comment-edit-link:hover, .single-post .article-post .article-post__comments a:hover {
   color: #07161c;
+}
+
+.single-post .article-post .article-post__header .article-post__title {
+  color: #8f4319;
 }
 
 .single-post .article-post .article-post__content {
@@ -5284,22 +5288,209 @@ Modal Window
 }
 
 .single-post .article-post .article-post__comments .comment {
-  background: #8f4319;
+  background: #ba5721;
   margin-bottom: 0.625rem;
   padding: 0.625rem;
 }
 
-.single-post .article-post .article-post__comments .comment.thread-even {
-  background: #ba5721;
+.single-post .article-post .article-post__comments .comment .children .comment {
+  background: #8f4319;
 }
 
 .single-post .article-post .article-post__comments .comment img {
   border: 0.0625rem solid grey;
 }
 
+.single-post .article-post .article-post__comments .comment-body {
+  *zoom: 1;
+  /* Hack IE7 */
+  margin-bottom: 1.25rem;
+}
+
+.single-post .article-post .article-post__comments .comment-body:before, .single-post .article-post .article-post__comments .comment-body:after {
+  content: " ";
+  display: table;
+}
+
+.single-post .article-post .article-post__comments .comment-body:after {
+  clear: both;
+}
+
+.single-post .article-post .article-post__comments .comment-author {
+  float: left;
+}
+
+.single-post .article-post .article-post__comments .comment-author .url {
+  color: #ffffff;
+}
+
+.single-post .article-post .article-post__comments .comment-author .fn {
+  display: inline-block;
+  margin: 0 0.625rem;
+  vertical-align: top;
+}
+
+.single-post .article-post .article-post__comments .comment-author .says {
+  display: none;
+}
+
+.single-post .article-post .article-post__comments .comment-meta a {
+  color: #cbcbcb;
+}
+
+.single-post .article-post .article-post__comments .comment-meta + p {
+  float: left;
+  font-size: 1.25rem;
+  margin-top: 0.625rem;
+  padding-left: 4.375rem;
+  padding-right: 5%;
+  text-align: left;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+  width: 100%;
+}
+
+.single-post .article-post .article-post__comments .reply {
+  border-bottom: 0.0625rem dotted #000000;
+  float: right;
+  margin-top: 0.9375rem;
+}
+
+.single-post .article-post .article-post__comments .comment-respond {
+  margin-top: 1.25rem;
+}
+
+.single-post .article-post .article-post__comments .comment-respond .comment-reply-title {
+  font-size: 1.25rem;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+}
+
+.single-post .article-post .article-post__comments .comment-form .comment-notes {
+  margin-bottom: 1.25rem;
+}
+
+.single-post .article-post .article-post__comments .comment-form .required {
+  color: #8f4319;
+  display: inline-block;
+  font-size: 1.25rem;
+  line-height: 0;
+  margin-left: 0.3125rem;
+}
+
+.single-post .article-post .article-post__comments .comment-form input[type="text"],
+.single-post .article-post .article-post__comments .comment-form input[type="email"],
+.single-post .article-post .article-post__comments .comment-form input[type="password"],
+.single-post .article-post .article-post__comments .comment-form button[type="submit"],
+.single-post .article-post .article-post__comments .comment-form textarea {
+  font-size: 1.5625rem;
+}
+
+.single-post .article-post .article-post__comments .comment-form input[type="text"],
+.single-post .article-post .article-post__comments .comment-form input[type="email"],
+.single-post .article-post .article-post__comments .comment-form input[type="password"],
+.single-post .article-post .article-post__comments .comment-form textarea {
+  background: transparent;
+  border-color: #ffffff;
+  border-style: solid;
+  border-width: 0 0 0.1875rem 0;
+}
+
+.single-post .article-post .article-post__comments .comment-form input[type="text"]::-webkit-input-placeholder,
+.single-post .article-post .article-post__comments .comment-form input[type="email"]::-webkit-input-placeholder,
+.single-post .article-post .article-post__comments .comment-form input[type="password"]::-webkit-input-placeholder,
+.single-post .article-post .article-post__comments .comment-form textarea::-webkit-input-placeholder {
+  color: #ffffff;
+}
+
+.single-post .article-post .article-post__comments .comment-form input[type="text"]:-moz-placeholder,
+.single-post .article-post .article-post__comments .comment-form input[type="email"]:-moz-placeholder,
+.single-post .article-post .article-post__comments .comment-form input[type="password"]:-moz-placeholder,
+.single-post .article-post .article-post__comments .comment-form textarea:-moz-placeholder {
+  /* Firefox 18- */
+  color: #ffffff;
+}
+
+.single-post .article-post .article-post__comments .comment-form input[type="text"]::-moz-placeholder,
+.single-post .article-post .article-post__comments .comment-form input[type="email"]::-moz-placeholder,
+.single-post .article-post .article-post__comments .comment-form input[type="password"]::-moz-placeholder,
+.single-post .article-post .article-post__comments .comment-form textarea::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #ffffff;
+}
+
+.single-post .article-post .article-post__comments .comment-form input[type="text"]:-ms-input-placeholder,
+.single-post .article-post .article-post__comments .comment-form input[type="email"]:-ms-input-placeholder,
+.single-post .article-post .article-post__comments .comment-form input[type="password"]:-ms-input-placeholder,
+.single-post .article-post .article-post__comments .comment-form textarea:-ms-input-placeholder {
+  color: #ffffff;
+}
+
+.single-post .article-post .article-post__comments .comment-form input[type="text"]:focus,
+.single-post .article-post .article-post__comments .comment-form input[type="email"]:focus,
+.single-post .article-post .article-post__comments .comment-form input[type="password"]:focus,
+.single-post .article-post .article-post__comments .comment-form textarea:focus {
+  outline: none;
+}
+
+.single-post .article-post .article-post__comments .comment-form input[type="text"],
+.single-post .article-post .article-post__comments .comment-form input[type="email"],
+.single-post .article-post .article-post__comments .comment-form input[type="password"] {
+  color: #ffffff;
+  display: block;
+  width: 100%;
+}
+
+.single-post .article-post .article-post__comments .comment-form input[type="text"]:focus,
+.single-post .article-post .article-post__comments .comment-form input[type="email"]:focus,
+.single-post .article-post .article-post__comments .comment-form input[type="password"]:focus {
+  border-color: transparent;
+  border-bottom-color: #ffffff;
+  outline: none;
+}
+
+.single-post .article-post .article-post__comments .comment-form textarea {
+  background: #ffffff;
+  padding: 0.9375rem;
+}
+
+.single-post .article-post .article-post__comments .comment-form label {
+  font-size: 1rem;
+  margin: 1.875rem 0 0;
+  text-align: left;
+}
+
+.single-post .article-post .article-post__comments .comment-form .form-submit {
+  margin-top: 1.25rem;
+}
+
+.single-post .article-post .article-post__comments .comment-form .submit {
+  font-size: 0.9rem;
+  display: inline-block;
+  width: auto;
+  margin: 0 1rem 1rem 0;
+  background: #9aa017;
+  color: #fff;
+  font-size: 1.25rem;
+}
+
+.single-post .article-post .article-post__comments .comment-form .submit:hover, .single-post .article-post .article-post__comments .comment-form .submit:focus {
+  background: #858a14;
+  color: #fff;
+}
+
 .single-post .article-post .article-post__comments ol,
 .single-post .article-post .article-post__comments ul {
   list-style-type: none;
+}
+
+@media screen and (min-width: 30rem) {
+  .single-post .article-post .article-post__comments .comment-meta {
+    float: left;
+  }
+  .single-post .article-post .article-post__comments .comment-respond .comment-reply-title {
+    font-size: 1.375rem;
+  }
 }
 
 @media screen and (min-width: 48rem) {

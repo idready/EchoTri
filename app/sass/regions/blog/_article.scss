@@ -19,6 +19,14 @@
                 color: darken($info-color, 70%);
             }
         }
+
+        .article-post__header {
+
+            .article-post__title {
+                color: $primary-color;
+            }
+        }
+
         .article-post__content {
 
             margin-top: 40px;
@@ -106,16 +114,166 @@
 
             .comment {
 
-                background: $primary-color;
+                background: lighten($primary-color, 10%);
                 margin-bottom: 10px;
                 padding: 10px;
 
-                &.thread-even {
-                    background: lighten($primary-color, 10%);
+                .children .comment {
+                    background: $primary-color;
                 }
 
                 img {
                     border: 1px solid grey;
+                }
+            }
+
+            .comment-body {
+
+                @include clearfix();
+                margin-bottom: 20px;
+            }
+
+            // Metas
+            .comment-author {
+                float: left;
+            }
+
+            .comment-author {
+
+                .url {
+                    color: $white;
+                }
+                .fn {
+                    display: inline-block;
+                    margin: 0 10px;
+                    vertical-align: top;
+                }
+                .says {
+                    display: none;
+                }
+            }
+            .comment-meta {
+
+                a { // Shame on you wordpress, where is my class!!! o_o
+                    color: $gray-dark;
+
+                    &.comment-edit-link {
+
+                        @extend %link;
+                    }
+                }
+
+                // Comment content
+                + p {
+
+                    float: left;
+                    font-size: 20px;
+                    margin-top: 10px;
+                    padding-left: 70px; //60px which is the avatar image's width + 10px for the author name => 60+10
+                    padding-right: 5%;
+                    text-align: left;
+                    transition: $default-transition;
+                    width: 100%;
+                }
+            }
+
+            .reply {
+
+                border-bottom: 1px dotted $black;
+                float: right;
+                margin-top: 15px;
+            }
+
+            // Comment reply
+            .comment-respond {
+
+                margin-top: 20px;
+
+                .comment-reply-title {
+
+                    font-size: 20px;
+                    transition: $default-transition;
+                }
+            }
+
+            // Form
+            .comment-form {
+
+                .comment-notes {
+                    margin-bottom: 20px;
+                }
+
+                .required {
+
+                    color: $primary-color;
+                    display: inline-block;
+                    font-size: 20px;
+                    line-height: 0;
+                    margin-left: 5px;
+                }
+
+                // common
+                input[type="text"],
+                input[type="email"],
+                input[type="password"],
+                button[type="submit"],
+                textarea {
+                    font-size: 25px;
+                }
+
+                input[type="text"],
+                input[type="email"],
+                input[type="password"],
+                textarea {
+
+                    @include placeholder-color($white);
+
+                    background: transparent;
+                    border-color: $white;
+                    border-style: solid;
+                    border-width: 0 0 3px 0;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+                input[type="text"],
+                input[type="email"],
+                input[type="password"] {
+
+                    color: $white;
+                    display: block;
+                    width: 100%;
+
+                    &:focus {
+
+                        border-color: transparent;
+                        border-bottom-color: $white;
+                        outline: none;
+                    }
+                }
+
+                textarea {
+
+                    background: $white;
+                    padding: 15px;
+                }
+
+                label {
+
+                    font-size: 16px;
+                    margin: 30px 0 0;
+                    text-align: left;
+                }
+
+                .form-submit {
+                    margin-top: 20px;
+                }
+                .submit {
+
+                    @include button('md', false, $secondary-color, darken($secondary-color, 5%));
+                    font-size: 20px;
                 }
             }
 
@@ -129,11 +287,35 @@
             }
 
             //Responsiveness
+            @include mq('xs') {
+
+                .comment-meta {
+
+                    float: left;
+                }
+
+                // Comment reply
+                .comment-respond {
+
+                    .comment-reply-title {
+                        font-size: 22px;
+                    }
+                }
+
+                // Form
+                .comment-form {
+
+                }
+            }
+
             @include mq('sm') {
 
                 margin-top: 80px;
             }
+
         }
+
+
     }
 
 
