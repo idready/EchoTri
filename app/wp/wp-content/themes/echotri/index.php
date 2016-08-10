@@ -38,13 +38,15 @@ get_header(); ?>
 
 				<?php
 
+					$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 	                $args = array(
 	                    'post_type' => 'post',
 	                    'category_name' => 'Blog',
-	                    'posts_per_page' => 10,
+	                    'posts_per_page' => 5,
 	                    'order' => 'ASC',
+						'paged' => $paged
 	                );
-
+					// var_dump('Paged: '+$paged);
 	                $my_query = new WP_Query($args);
 
 	                if($my_query->have_posts()):
@@ -74,7 +76,6 @@ get_header(); ?>
 									?>
 									<span class="category"><?php echo $comm_count ?> Commentaire<? if($comm_count>1) echo 's' ?></span>
 								</div>
-								<!-- <pre><?php var_dump(wp_count_comments(array('ID' => $the_post_id))) ; ?></pre> -->
 								<div class="article-post__content"  itemprop="articleBody">
 									<?php the_excerpt(); ?>
 								</div>
@@ -84,10 +85,16 @@ get_header(); ?>
 	                endwhile;
 					echo '</div>';
 	                endif;
-
 	                // Reset
 	                wp_reset_postdata();
 	            ?>
+			</div>
+
+			<div class="nav-previous alignleft">
+				<a href="#"><?php next_posts_link( 'Older posts' ); ?></a>
+			</div>
+			<div class="nav-next alignright">
+				<a href="#"><?php previous_posts_link( 'Newer posts' ); ?></a>
 			</div>
 		</section>
 		<?php //@TODO: Transform this to a single block ?>

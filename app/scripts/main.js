@@ -41,16 +41,4 @@ document.addEventListener('DOMContentLoaded', function(){
         el.classList.add('visible');
     }
 
-    // function test(callback, time) {
-    //
-    //     console.log(callback);
-    //     console.log(time);
-    // }
-    // // setTimeout(function(){
-    // // //   watcher.dispose();
-    // //   console.log('Watcher', watcher);
-    // // //   clearTimeout(timer);
-    // //   console.info('myfancyDiv was visible '+count+' seconds in the last 10 seconds!');
-    // // }, 10000);
-
 });

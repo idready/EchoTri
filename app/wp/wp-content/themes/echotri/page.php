@@ -68,7 +68,6 @@ get_header(); ?>
 
                         endwhile;
                         endif;
-
                         // Reset
                         wp_reset_postdata();
                         ?>
@@ -108,7 +107,6 @@ get_header(); ?>
                             </a>
 
                         <?php
-
                         endwhile;
                         endif;
 
