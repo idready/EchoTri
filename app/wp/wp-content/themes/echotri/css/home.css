@@ -3702,7 +3702,6 @@ body {
 
 .swing.animated {
   -webkit-transform-origin: top center;
-      -ms-transform-origin: top center;
           transform-origin: top center;
   -webkit-animation-name: swing;
           animation-name: swing;
@@ -4226,6 +4225,10 @@ table td {
  * =========================================== */
 /* Specific rule section
  * ==================================== */
+.header {
+  overflow: hidden;
+}
+
 .hero-cover {
   background-size: cover;
   height: 18.75rem;
@@ -4291,6 +4294,36 @@ table td {
   }
   .hero-cover .header-text {
     font-size: 1.75rem;
+  }
+}
+
+@-webkit-keyframes scale_cover {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  70% {
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+  }
+  100% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+  }
+}
+
+@keyframes scale_cover {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  70% {
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+  }
+  100% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
   }
 }
 
@@ -4799,7 +4832,6 @@ Modal Window
   visibility: hidden;
   opacity: 0;
   -webkit-transform: scale(0);
-      -ms-transform: scale(0);
           transform: scale(0);
   -webkit-transition: -webkit-transform .3s 0s, visibility 0s .3s, opacity .3s 0s;
           transition: transform .3s 0s, visibility 0s .3s, opacity .3s 0s;
@@ -4827,7 +4859,6 @@ Modal Window
 
 .cd-modal .modal-close .icon-elt .icon:hover {
   -webkit-transform: rotate(90deg) scale(1.2);
-      -ms-transform: rotate(90deg) scale(1.2);
           transform: rotate(90deg) scale(1.2);
 }
 
@@ -4843,7 +4874,6 @@ Modal Window
   -webkit-transition: -webkit-transform .3s 0s, visibility 0s 0s, opacity .3s 0s;
           transition: transform .3s 0s, visibility 0s 0s, opacity .3s 0s;
   -webkit-transform: scale(1);
-      -ms-transform: scale(1);
           transform: scale(1);
 }
 
@@ -4854,7 +4884,6 @@ Modal Window
   padding: 3em 5% 4em;
   opacity: 0;
   -webkit-transform: translateY(3.125rem);
-      -ms-transform: translateY(3.125rem);
           transform: translateY(3.125rem);
   -webkit-transition: opacity 0.3s 0s, -webkit-transform 0.3s 0s;
           transition: opacity 0.3s 0s, transform 0.3s 0s;
@@ -4871,7 +4900,6 @@ Modal Window
 .modal-is-visible .cd-modal-content {
   opacity: 1;
   -webkit-transform: translateY(0);
-      -ms-transform: translateY(0);
           transform: translateY(0);
   -webkit-overflow-scrolling: touch;
   -webkit-transition: opacity 0.3s 0.3s, -webkit-transform 0.3s 0.3s;
@@ -4949,7 +4977,6 @@ Modal Window
 
 .feedback-notify .close .icon:hover {
   -webkit-transform: rotate(90deg) scale(1.2);
-      -ms-transform: rotate(90deg) scale(1.2);
           transform: rotate(90deg) scale(1.2);
 }
 
@@ -4958,7 +4985,6 @@ Modal Window
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
           transform: translateY(-50%);
   left: 0;
   text-align: center;
@@ -5111,7 +5137,6 @@ Modal Window
   visibility: hidden;
   opacity: 0;
   -webkit-transform: scale(0);
-      -ms-transform: scale(0);
           transform: scale(0);
   -webkit-transition: -webkit-transform .3s 0s, visibility 0s .3s, opacity .3s 0s;
           transition: transform .3s 0s, visibility 0s .3s, opacity .3s 0s;
@@ -5139,7 +5164,6 @@ Modal Window
 
 .cd-modal .modal-close .icon-elt .icon:hover {
   -webkit-transform: rotate(90deg) scale(1.2);
-      -ms-transform: rotate(90deg) scale(1.2);
           transform: rotate(90deg) scale(1.2);
 }
 
@@ -5155,7 +5179,6 @@ Modal Window
   -webkit-transition: -webkit-transform .3s 0s, visibility 0s 0s, opacity .3s 0s;
           transition: transform .3s 0s, visibility 0s 0s, opacity .3s 0s;
   -webkit-transform: scale(1);
-      -ms-transform: scale(1);
           transform: scale(1);
 }
 
@@ -5166,7 +5189,6 @@ Modal Window
   padding: 3em 5% 4em;
   opacity: 0;
   -webkit-transform: translateY(3.125rem);
-      -ms-transform: translateY(3.125rem);
           transform: translateY(3.125rem);
   -webkit-transition: opacity 0.3s 0s, -webkit-transform 0.3s 0s;
           transition: opacity 0.3s 0s, transform 0.3s 0s;
@@ -5183,7 +5205,6 @@ Modal Window
 .modal-is-visible .cd-modal-content {
   opacity: 1;
   -webkit-transform: translateY(0);
-      -ms-transform: translateY(0);
           transform: translateY(0);
   -webkit-overflow-scrolling: touch;
   -webkit-transition: opacity 0.3s 0.3s, -webkit-transform 0.3s 0.3s;
@@ -5258,14 +5279,12 @@ Modal Window
 .info-section .info-section__item.visible {
   opacity: 1;
   -webkit-transform: translateY(0);
-      -ms-transform: translateY(0);
           transform: translateY(0);
 }
 
 .no-js .info-section .info-section__item {
   opacity: 1;
   -webkit-transform: translateY(0);
-      -ms-transform: translateY(0);
           transform: translateY(0);
 }
 
@@ -5276,7 +5295,6 @@ Modal Window
   -webkit-transition: all 0.39s;
           transition: all 0.39s;
   -webkit-transform: translateY(-3.125rem);
-      -ms-transform: translateY(-3.125rem);
           transform: translateY(-3.125rem);
   text-decoration: none;
   opacity: 0;
@@ -5301,7 +5319,6 @@ Modal Window
   -webkit-transition: -webkit-transform 0.3s;
           transition: transform 0.3s;
   -webkit-transform: scale(1);
-      -ms-transform: scale(1);
           transform: scale(1);
   width: 6.25rem;
 }
@@ -5313,7 +5330,6 @@ Modal Window
 
 .info-section.missions .info-section__item:hover .icon, .info-section.activity .info-section__item:hover .icon {
   -webkit-transform: scale(1.3);
-      -ms-transform: scale(1.3);
           transform: scale(1.3);
 }
 
@@ -5358,7 +5374,6 @@ Modal Window
   position: relative;
   top: 50%;
   -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
           transform: translateY(-50%);
   -webkit-transition: top 0.3s, bottom 0.3s;
           transition: top 0.3s, bottom 0.3s;
@@ -5377,7 +5392,6 @@ Modal Window
   -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
           transition: opacity 0.3s, transform 0.3s;
   -webkit-transform: scale(1.4);
-      -ms-transform: scale(1.4);
           transform: scale(1.4);
   width: 100%;
 }
@@ -5402,7 +5416,6 @@ Modal Window
 .info-section.contact .info-section__item:hover .icon-elt::after {
   opacity: 1;
   -webkit-transform: scale(1);
-      -ms-transform: scale(1);
           transform: scale(1);
 }
 
