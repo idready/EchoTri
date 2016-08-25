@@ -20,16 +20,9 @@
 get_header(); ?>
 
 	<!-- Header -->
-	<?php //@TODO: Transform this to a single block ?>
-	<header class="header">
-		<div class="hero-cover lazyload" data-bgset="<?php echo get_template_directory_uri() ?>/images/blog-header-<?php echo rand(1, 4); ?>.jpg 5400w" data-sizes="auto">
-			<span class="icon-elt">
-				<span my-svg-file svg-icon-id="logo-echotri"></span>
-			</span>
-			<p class="header-text">Insertion, Collection, Tri, Valorisation...</p>
-			<p class="header-text">Papiers, cartons et autres</p>
-		</div>
-	</header>
+	<?php
+		echo get_template_part( 'template-parts/header' );
+	?>
 	<!-- Main cotent -->
 	<section>
 		<section class="info-section missions">
@@ -92,38 +85,11 @@ get_header(); ?>
 	            ?>
 			</div>
 
-			<?php  ?>
-			<?php if ($my_query->max_num_pages > 1) { // check if the max number of pages is greater than 1  ?>
-			<nav class="prev-next-posts">
-				<div class="prev-posts-link">
-					<?php //echo get_next_posts_link( 'Older Entries', $my_query->max_num_pages ); // display older posts link ?>
-				</div>
-				<div class="next-posts-link">
-					<?php //echo get_previous_posts_link( 'Newer Entries' ); // display newer posts link ?>
-				</div>
-			</nav>
-			<?php } ?>
-
 		</section>
-		<?php //@TODO: Transform this to a single block ?>
-		<section class="info-section contact">
-
-			<header><h2 class="title">Contact</h2></header>
-			<div class="content clearfix">
-				<a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" page-type="secondary" page-template="writeToUs" class="span-xs-12 span-sm-6 info-section__item">
-					<span class="icon-elt">
-						<span my-svg-file svg-icon-id="envelope"></span>
-					</span>
-					<h3 class="info-section__item-label">Nous écrire</h3>
-				</a>
-				<a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" page-type="secondary" page-template="reachUs" class="span-xs-12 span-sm-6 info-section__item">
-					<span class="icon-elt">
-						<span my-svg-file svg-icon-id="location-point"></span>
-					</span>
-					<h3 class="info-section__item-label">Nos coordonnées</h3>
-				</a>
-			</div>
-		</section>
+		<!-- Footer -->
+		<?php
+			echo get_template_part( 'template-parts/footer' );
+		?>
 	</section>
 
 <?php get_footer(); ?>
