@@ -17,13 +17,13 @@
                 <?php //Get this id dynamically ?>
                 <a href="#" my-modal-link data-modal-event="modal-trigger" page-type="secondary" data-type="cd-modal-trigger" data-posticon="people-us" data-postId="84">Qui sommes nous ?</a>
               </li>
-              <?php if(!is_home()): ?>
+              <?php if(!is_home() || is_single()): ?>
               <li class="footer-links__item">
                 <?php //Get this id dynamically ?>
                 <a href="<?php echo home_url() .'/blog/'?>">Blog</a>
               </li>
               <?php endif; ?>
-              <?php /* Only accepts connected users and different page from the one we want to display */ 
+              <?php /* Only accepts connected users and different page from the one we want to display */
                 if ( is_user_logged_in() && !is_page_template('icons.php')):
               ?>
               <li class="footer-links__item">

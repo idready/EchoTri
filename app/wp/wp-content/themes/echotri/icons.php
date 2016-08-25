@@ -28,14 +28,11 @@
     ?>
 
     <?php get_header(); ?>
+
     <!-- Header -->
-    <header class="header">
-        <div class="hero-cover lazyload" data-bgset="<?php echo get_template_directory_uri() ?>/images/hero-cover.jpg 4000w" data-sizes="auto">
-            <span class="icon-elt"><span my-svg-file svg-icon-id="logo-echotri"></span></span>
-            <p class="header-text">Insertion, Collection, Tri, Valorisation...</p>
-            <p class="header-text">Papiers, cartons et autres</p>
-        </div>
-    </header>
+	<?php
+		echo get_template_part( 'template-parts/header' );
+	?>
     <!-- Main cotent -->
     <section>
 
@@ -74,25 +71,10 @@
             <?php endif;  ?>
 
       </section>
-      <?php //@TODO: Transform this to a single block ?>
-      <section class="info-section contact">
-
-        <header><h2 class="title">Contact</h2></header>
-        <div class="content clearfix">
-            <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" page-type="secondary" page-template="writeToUs" class="span-xs-12 span-sm-6 info-section__item">
-                <span class="icon-elt">
-                    <span my-svg-file svg-icon-id="envelope"></span>
-                </span>
-                <h3 class="info-section__item-label">Nous écrire</h3>
-            </a>
-            <a href="#" my-modal-link data-modal-event="modal-trigger" data-type="cd-modal-trigger" page-type="secondary" page-template="reachUs" class="span-xs-12 span-sm-6 info-section__item">
-                <span class="icon-elt">
-                    <span my-svg-file svg-icon-id="location-point"></span>
-                </span>
-                <h3 class="info-section__item-label">Nos coordonnées</h3>
-            </a>
-        </div>
-      </section>
+      <!-- Footer -->
+      <?php
+        echo get_template_part( 'template-parts/footer' );
+      ?>
     </section>
 
 
