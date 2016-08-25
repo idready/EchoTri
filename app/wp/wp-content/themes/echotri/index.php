@@ -46,16 +46,13 @@ get_header(); ?>
 	                    'order' => 'ASC',
 						'paged' => $paged
 	                );
-					// var_dump('Paged: '+$paged);
 	                $my_query = new WP_Query($args);
-
-	                if($my_query->have_posts()):
 	                ?>
 
 	                <?php
 	                // Loop
 					echo '<div class="article-posts">';
-	                while ($my_query->have_posts() ) : $my_query->the_post();
+	                if($my_query->have_posts()): while ($my_query->have_posts()) : $my_query->the_post();
 	                ?>
 
 						<section class="article-post" <?php post_class(); ?>>
@@ -85,17 +82,35 @@ get_header(); ?>
 	                endwhile;
 					echo '</div>';
 	                endif;
+
+					//pagination here
+					// if (function_exists(custom_pagination)) {
+						custom_pagination($my_query->max_num_pages,"",$paged);
+					// }
 	                // Reset
 	                wp_reset_postdata();
 	            ?>
 			</div>
 
+			<?php /* Pagination */ ?>
+			<!-- <?php var_dump(paginate_links( $args )); ?>
 			<div class="nav-previous alignleft">
-				<a href="#"><?php next_posts_link( 'Older posts' ); ?></a>
+				<a href="#"><?php echo get_next_posts_link( 'Older posts' ); ?></a>
 			</div>
 			<div class="nav-next alignright">
-				<a href="#"><?php previous_posts_link( 'Newer posts' ); ?></a>
-			</div>
+				<a href="#"><?php echo get_next_posts_link( 'Newer posts' ); ?></a>
+			</div> -->
+			<?php if ($my_query->max_num_pages > 1) { // check if the max number of pages is greater than 1  ?>
+			<nav class="prev-next-posts">
+				<div class="prev-posts-link">
+					<?php echo get_next_posts_link( 'Older Entries', $my_query->max_num_pages ); // display older posts link ?>
+				</div>
+				<div class="next-posts-link">
+					<?php echo get_previous_posts_link( 'Newer Entries' ); // display newer posts link ?>
+				</div>
+			</nav>
+			<?php } ?>
+
 		</section>
 		<?php //@TODO: Transform this to a single block ?>
 		<section class="info-section contact">

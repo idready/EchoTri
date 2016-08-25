@@ -72,32 +72,60 @@ function get_articles() {
     die();
 }
 
-if( !function_exists( 'theme_pagination' ) ) {
+function custom_pagination($numpages = '', $pagerange = '', $paged='') {
 
-    function theme_pagination() {
-
-    	global $wp_query, $wp_rewrite;
-    	$wp_query->query_vars['paged'] > 1 ? $current = $wp_query->query_vars['paged'] : $current = 1;
-
-    	$pagination = array(
-    		'base' => @add_query_arg('page','%#%'),
-    		'format' => '',
-    		'total' => $wp_query->max_num_pages,
-    		'current' => $current,
-    	        'show_all' => false,
-    	        'end_size'     => 1,
-    	        'mid_size'     => 2,
-    		'type' => 'list',
-    		'next_text' => '»',
-    		'prev_text' => '«'
-    	);
-
-    	if( $wp_rewrite->using_permalinks() )
-    		$pagination['base'] = user_trailingslashit( trailingslashit( remove_query_arg( 's', get_pagenum_link( 1 ) ) ) . 'page/%#%/', 'paged' );
-
-    	if( !empty($wp_query->query_vars['s']) )
-    		$pagination['add_args'] = array( 's' => str_replace( ' ' , '+', get_query_var( 's' ) ) );
-
-    	echo str_replace('page/1/','', paginate_links( $pagination ) );
+    if (empty($pagerange)) {
+        $pagerange = 2;
     }
+
+    /**
+    * This first part of our function is a fallback
+    * for custom pagination inside a regular loop that
+    * uses the global $paged and global $wp_query variables.
+    *
+    * It's good because we can now override default pagination
+    * in our theme, and use this function in default quries
+    * and custom queries.
+    */
+    global $paged;
+        if (empty($paged)) {
+        $paged = 1;
+    }
+    if ($numpages == '') {
+        global $wp_query;
+        $numpages = $wp_query->max_num_pages;
+        if(!$numpages) {
+            $numpages = 1;
+        }
+    }
+
+    /**
+    * We construct the pagination arguments to enter into our paginate_links
+    * function.
+    */
+    $pagination_args = array(
+        'base'            => get_pagenum_link(1) . '%_%',
+        'format'          => 'page/%#%',
+        'total'           => $numpages,
+        'current'         => $paged,
+        'show_all'        => False,
+        'end_size'        => 1,
+        'mid_size'        => $pagerange,
+        'prev_next'       => True,
+        'prev_text'       => __('&laquo;'),
+        'next_text'       => __('&raquo;'),
+        'type'            => 'plain',
+        'add_args'        => false,
+        'add_fragment'    => ''
+    );
+
+    $paginate_links = paginate_links($pagination_args);
+
+    if ($paginate_links) {
+        echo "<nav class='custom-pagination'>";
+            //echo "<span class='page-numbers page-num'>Page " . $paged . " of " . $numpages . "</span> ";
+            echo $paginate_links;
+        echo "</nav>";
+    }
+
 }
