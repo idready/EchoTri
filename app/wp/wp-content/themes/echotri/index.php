@@ -83,7 +83,7 @@ get_header(); ?>
 					echo '</div>';
 	                endif;
 
-					//pagination here
+					/* Pagination */
 					// if (function_exists(custom_pagination)) {
 						custom_pagination($my_query->max_num_pages,"",$paged);
 					// }
@@ -92,21 +92,14 @@ get_header(); ?>
 	            ?>
 			</div>
 
-			<?php /* Pagination */ ?>
-			<!-- <?php var_dump(paginate_links( $args )); ?>
-			<div class="nav-previous alignleft">
-				<a href="#"><?php echo get_next_posts_link( 'Older posts' ); ?></a>
-			</div>
-			<div class="nav-next alignright">
-				<a href="#"><?php echo get_next_posts_link( 'Newer posts' ); ?></a>
-			</div> -->
+			<?php  ?>
 			<?php if ($my_query->max_num_pages > 1) { // check if the max number of pages is greater than 1  ?>
 			<nav class="prev-next-posts">
 				<div class="prev-posts-link">
-					<?php echo get_next_posts_link( 'Older Entries', $my_query->max_num_pages ); // display older posts link ?>
+					<?php //echo get_next_posts_link( 'Older Entries', $my_query->max_num_pages ); // display older posts link ?>
 				</div>
 				<div class="next-posts-link">
-					<?php echo get_previous_posts_link( 'Newer Entries' ); // display newer posts link ?>
+					<?php //echo get_previous_posts_link( 'Newer Entries' ); // display newer posts link ?>
 				</div>
 			</nav>
 			<?php } ?>

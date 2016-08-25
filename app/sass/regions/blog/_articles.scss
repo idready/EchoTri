@@ -164,3 +164,26 @@
     }
 
 }
+
+.custom-pagination {
+
+    .page-numbers {
+
+        background: $primary-color;
+        color: $secondary-color;
+        display: inline-block;
+        font-size: 18px;
+        padding: 7px;
+        transition: $default-transition;
+
+        &:hover,
+        &.current {
+            color: $white;
+        }
+
+        @include mq('sm') {
+
+            font-size: 22px;
+        }
+    }
+}

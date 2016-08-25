@@ -72,6 +72,7 @@ function get_articles() {
     die();
 }
 
+//Source: http://callmenick.com/post/custom-wordpress-loop-with-pagination thx
 function custom_pagination($numpages = '', $pagerange = '', $paged='') {
 
     if (empty($pagerange)) {
