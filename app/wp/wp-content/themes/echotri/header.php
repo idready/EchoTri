@@ -38,6 +38,7 @@
 	<?php wp_head(); ?>
 
 	<?php /* Variables for Js */ ?>
+
 	<script>
 
 		var CONFIG_VARS =  {
@@ -53,3 +54,4 @@
 <![endif]-->
 
 	<main role="main" class="wrapper lazyload" data-bgset="<?php echo get_template_directory_uri() ?>/images/polygon-650.png 3000w" data-sizes="auto">
+
