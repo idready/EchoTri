@@ -9,6 +9,8 @@
  *
  * @link http://codex.wordpress.org/Template_Hierarchy
  *
+ * Template Name: Page blog
+ *
  * @package WordPress
  * @subpackage Echo_Tri
  * @since EchoTri 1.0
@@ -17,50 +19,77 @@
 
 get_header(); ?>
 
-<?php echo 'Silence is golden heh?' ?>
-<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+	<!-- Header -->
+	<?php
+		echo get_template_part( 'template-parts/header' );
+	?>
+	<!-- Main cotent -->
+	<section>
+		<section class="info-section missions">
+			<div class="info-section__content">
+				<header><h2 class="title">Nos Articles</h2></header>
 
-		<?php if ( have_posts() ) : ?>
+				<?php
 
-			<?php if ( is_home() && ! is_front_page() ) : ?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-			<?php endif; ?>
+					$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+	                $args = array(
+	                    'post_type' => 'post',
+	                    'category_name' => 'Blog',
+	                    'posts_per_page' => 5,
+	                    'order' => 'ASC',
+						'paged' => $paged
+	                );
+	                $my_query = new WP_Query($args);
+	                ?>
 
-			<?php
-			// Start the loop.
-			while ( have_posts() ) : the_post();
+	                <?php
+	                // Loop
+					echo '<div class="article-posts">';
+	                if($my_query->have_posts()): while ($my_query->have_posts()) : $my_query->the_post();
+	                ?>
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
+						<section class="article-post" <?php post_class(); ?>>
+							<article itemscope itemType="http://schema.org/BlogPosting">
 
-			// End the loop.
-			endwhile;
+								<header class="article-post__header">
+									<h2 itemprop="headline" class="article-post__title">
+										<a class="article-post__link" href="<?php echo the_permalink(); ?>"><?php the_title() ?></a>
+									</h2>
+								</header>
+								<div class="article-post__meta">
+									<span class="date">
+										<time datetime="<?php the_time('Y-m-d') ?>" itemprop="datePublished"><?php the_time('j F Y') ?></time>
+									</span>
+									<?php
+										$comments = get_comments_number($my_query->post->ID);
+										$comm_count = (((int) $comments) > 0) ? $comments : 'Pas de';
+									?>
+									<span class="category"><?php echo $comm_count ?> Commentaire<? if($comm_count>1) echo 's' ?></span>
+								</div>
+								<div class="article-post__content"  itemprop="articleBody">
+									<?php the_excerpt(); ?>
+								</div>
+							</article>
+						</section>
+	                <?php
+	                endwhile;
+					echo '</div>';
+	                endif;
 
-			// Previous/next page navigation.
-			the_posts_pagination( array(
-				'prev_text'          => __( 'Previous page', 'twentysixteen' ),
-				'next_text'          => __( 'Next page', 'twentysixteen' ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentysixteen' ) . ' </span>',
-			) );
+					/* Pagination */
+					// if (function_exists(custom_pagination)) {
+						custom_pagination($my_query->max_num_pages,"",$paged);
+					// }
+	                // Reset
+	                wp_reset_postdata();
+	            ?>
+			</div>
 
-		// If no content, include the "No posts found" template.
-		else :
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
+		</section>
+		<!-- Footer -->
+		<?php
+			echo get_template_part( 'template-parts/footer' );
 		?>
-
-		</main><!-- .site-main -->
-	</div><!-- .content-area -->
-
+	</section>
 
 <?php get_footer(); ?>
-
-

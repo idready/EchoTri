@@ -21,7 +21,6 @@
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php endif; ?>
 	<title><?php bloginfo( 'name' ); ?></title>
-	<!-- <title>EchoTri</title> -->
 
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
@@ -54,4 +53,3 @@
 <![endif]-->
 
 	<main role="main" class="wrapper lazyload" data-bgset="<?php echo get_template_directory_uri() ?>/images/polygon-650.png 3000w" data-sizes="auto">
-

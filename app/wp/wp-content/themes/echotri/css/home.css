@@ -3702,7 +3702,6 @@ body {
 
 .swing.animated {
   -webkit-transform-origin: top center;
-      -ms-transform-origin: top center;
           transform-origin: top center;
   -webkit-animation-name: swing;
           animation-name: swing;
@@ -3774,7 +3773,7 @@ body {
  * 2. From Foundation framework; remove old behavior for old browsers
  * @TODO: Add button-group and check border-radius
  * ==================================== */
-.button {
+.button, .single-post .article-post .article-post__comments .comment-form .submit {
   background-image: none;
   border: 0.0625rem solid transparent;
   cursor: pointer;
@@ -4226,6 +4225,10 @@ table td {
  * =========================================== */
 /* Specific rule section
  * ==================================== */
+.header {
+  overflow: hidden;
+}
+
 .hero-cover {
   background-size: cover;
   height: 18.75rem;
@@ -4287,10 +4290,40 @@ table td {
   }
   .hero-cover .icon-elt {
     margin-bottom: 6.875rem;
-    min-width: 25rem;
+    min-width: 32rem;
   }
   .hero-cover .header-text {
     font-size: 1.75rem;
+  }
+}
+
+@-webkit-keyframes scale_cover {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  70% {
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+  }
+  100% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+  }
+}
+
+@keyframes scale_cover {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  70% {
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+  }
+  100% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
   }
 }
 
@@ -4799,7 +4832,6 @@ Modal Window
   visibility: hidden;
   opacity: 0;
   -webkit-transform: scale(0);
-      -ms-transform: scale(0);
           transform: scale(0);
   -webkit-transition: -webkit-transform .3s 0s, visibility 0s .3s, opacity .3s 0s;
           transition: transform .3s 0s, visibility 0s .3s, opacity .3s 0s;
@@ -4827,7 +4859,6 @@ Modal Window
 
 .cd-modal .modal-close .icon-elt .icon:hover {
   -webkit-transform: rotate(90deg) scale(1.2);
-      -ms-transform: rotate(90deg) scale(1.2);
           transform: rotate(90deg) scale(1.2);
 }
 
@@ -4843,7 +4874,6 @@ Modal Window
   -webkit-transition: -webkit-transform .3s 0s, visibility 0s 0s, opacity .3s 0s;
           transition: transform .3s 0s, visibility 0s 0s, opacity .3s 0s;
   -webkit-transform: scale(1);
-      -ms-transform: scale(1);
           transform: scale(1);
 }
 
@@ -4854,7 +4884,6 @@ Modal Window
   padding: 3em 5% 4em;
   opacity: 0;
   -webkit-transform: translateY(3.125rem);
-      -ms-transform: translateY(3.125rem);
           transform: translateY(3.125rem);
   -webkit-transition: opacity 0.3s 0s, -webkit-transform 0.3s 0s;
           transition: opacity 0.3s 0s, transform 0.3s 0s;
@@ -4871,7 +4900,6 @@ Modal Window
 .modal-is-visible .cd-modal-content {
   opacity: 1;
   -webkit-transform: translateY(0);
-      -ms-transform: translateY(0);
           transform: translateY(0);
   -webkit-overflow-scrolling: touch;
   -webkit-transition: opacity 0.3s 0.3s, -webkit-transform 0.3s 0.3s;
@@ -4949,7 +4977,6 @@ Modal Window
 
 .feedback-notify .close .icon:hover {
   -webkit-transform: rotate(90deg) scale(1.2);
-      -ms-transform: rotate(90deg) scale(1.2);
           transform: rotate(90deg) scale(1.2);
 }
 
@@ -4958,7 +4985,6 @@ Modal Window
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
           transform: translateY(-50%);
   left: 0;
   text-align: center;
@@ -5022,6 +5048,474 @@ Modal Window
 @media screen and (min-width: 48rem) {
   .feedback-notify .feedback-notify__title {
     font-size: 2.1875rem;
+  }
+}
+
+/* ===========================================
+ * Blog ressources
+ * =========================================== */
+/* ===========================================
+ * Specific rules for Articles
+ * =========================================== */
+/* Specific rule section
+ * ==================================== */
+.article-post {
+  margin: 1.875rem 0;
+  padding: 0.625rem 1.25rem;
+  position: relative;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+}
+
+.article-post::after {
+  background: #9aa017;
+  bottom: -0.625rem;
+  content: '';
+  height: 0.0625rem;
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  width: 10%;
+}
+
+@media screen and (min-width: 20rem) {
+  .article-post::after {
+    width: 5%;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  .article-post {
+    margin: 1.25rem 0 5rem;
+  }
+}
+
+.article-post:last-child::after {
+  content: none;
+}
+
+.article-post .article-post__title,
+.article-post .article-post__content {
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+}
+
+.article-post__header {
+  margin: 0 0rem;
+}
+
+.article-post__header .article-post__link {
+  color: #8f4319;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+}
+
+.article-post__header .article-post__link:active, .article-post__header .article-post__link:visited {
+  color: #8e4319;
+}
+
+.article-post__header .article-post__link:hover {
+  color: #ffffff;
+}
+
+@media screen and (min-width: 48rem) {
+  .article-post__header .article-post__title {
+    font-size: 2rem;
+  }
+}
+
+.article-post__meta {
+  margin-bottom: 1.25rem;
+}
+
+.article-post__meta .date,
+.article-post__meta .category {
+  *zoom: 1;
+  /* Hack IE7 */
+  color: #fefefe;
+  display: block;
+  margin-bottom: 0.3125rem;
+  opacity: 0.8;
+}
+
+.article-post__meta .date:before, .article-post__meta .date:after,
+.article-post__meta .category:before,
+.article-post__meta .category:after {
+  content: " ";
+  display: table;
+}
+
+.article-post__meta .date:after,
+.article-post__meta .category:after {
+  clear: both;
+}
+
+.article-post__meta .date {
+  margin-right: 1.25rem;
+}
+
+@media screen and (min-width: 20rem) {
+  .article-post__meta .date,
+  .article-post__meta .category {
+    display: inline-block;
+    margin-bottom: 0;
+    -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+  }
+}
+
+@media screen and (min-width: 30rem) {
+  .article-post__meta .date {
+    margin-right: 2.5rem;
+  }
+  .article-post__meta .separator, .article-post__meta .date {
+    position: relative;
+  }
+  .article-post__meta .separator::after, .article-post__meta .date::after {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    background: #9aa017;
+    border-radius: 50%;
+    content: '';
+    height: 0.625rem;
+    position: absolute;
+    right: -1.875rem;
+    width: 0.625rem;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  .article-post__meta .date,
+  .article-post__meta .category {
+    font-size: 1.25rem;
+  }
+}
+
+.article-post__content {
+  margin: 0 auto;
+  max-width: 60rem;
+}
+
+@media screen and (min-width: 48rem) {
+  .article-post__content {
+    font-size: 1.375rem;
+  }
+}
+
+.custom-pagination .page-numbers {
+  background: #8f4319;
+  color: #9aa017;
+  display: inline-block;
+  font-size: 1.125rem;
+  padding: 0.4375rem;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+}
+
+.custom-pagination .page-numbers:hover, .custom-pagination .page-numbers.current {
+  color: #ffffff;
+}
+
+@media screen and (min-width: 48rem) {
+  .custom-pagination .page-numbers {
+    font-size: 1.375rem;
+  }
+}
+
+/* ===========================================
+ * Specific rules for Article
+ * =========================================== */
+/* Specific rule section
+ * ==================================== */
+.single-post .article-post .article-post__content a, .single-post .article-post .article-post__comments .comment-meta a.comment-edit-link, .single-post .article-post .article-post__comments a {
+  color: #0c2631;
+}
+
+.single-post .article-post .article-post__content a:hover, .single-post .article-post .article-post__comments .comment-meta a.comment-edit-link:hover, .single-post .article-post .article-post__comments a:hover {
+  color: #07161c;
+}
+
+.single-post .article-post .article-post__header .article-post__title {
+  color: #8f4319;
+}
+
+.single-post .article-post .article-post__content {
+  margin-top: 2.5rem;
+}
+
+.single-post .article-post .article-post__content h1 {
+  font-size: 1.375rem;
+}
+
+.single-post .article-post .article-post__content ul,
+.single-post .article-post .article-post__content ol {
+  display: inline-block;
+  list-style-type: disc;
+  margin-bottom: 1.25rem;
+  text-align: left;
+}
+
+.single-post .article-post .article-post__content hr {
+  border-style: ridge;
+}
+
+.single-post .article-post .article-post__content hr + h1 {
+  margin-top: 2.5rem;
+}
+
+.single-post .article-post .article-post__content p {
+  margin-bottom: 1.25rem;
+  text-align: justify;
+}
+
+.single-post .article-post .article-post__content a,
+.single-post .article-post .article-post__content ul,
+.single-post .article-post .article-post__content ol,
+.single-post .article-post .article-post__content p {
+  font-size: 1.125rem;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+}
+
+.single-post .article-post .article-post__content img {
+  height: auto;
+  margin-bottom: 0.625rem;
+  max-width: 100%;
+}
+
+@media screen and (min-width: 48rem) {
+  .single-post .article-post .article-post__content {
+    margin-top: 5rem;
+  }
+  .single-post .article-post .article-post__content a,
+  .single-post .article-post .article-post__content ul,
+  .single-post .article-post .article-post__content ol,
+  .single-post .article-post .article-post__content p {
+    font-size: 1.375rem;
+  }
+}
+
+.single-post .article-post .article-post__comments {
+  margin: 2.5rem auto 0;
+  max-width: 60rem;
+}
+
+.single-post .article-post .article-post__comments .comments-title {
+  margin-bottom: 1.25rem;
+}
+
+.single-post .article-post .article-post__comments .comment {
+  background: #ba5721;
+  margin-bottom: 0.625rem;
+  padding: 0.625rem;
+}
+
+.single-post .article-post .article-post__comments .comment .children .comment {
+  background: #8f4319;
+}
+
+.single-post .article-post .article-post__comments .comment img {
+  border: 0.0625rem solid grey;
+}
+
+.single-post .article-post .article-post__comments .comment-body {
+  *zoom: 1;
+  /* Hack IE7 */
+  margin-bottom: 1.25rem;
+}
+
+.single-post .article-post .article-post__comments .comment-body:before, .single-post .article-post .article-post__comments .comment-body:after {
+  content: " ";
+  display: table;
+}
+
+.single-post .article-post .article-post__comments .comment-body:after {
+  clear: both;
+}
+
+.single-post .article-post .article-post__comments .comment-author {
+  float: left;
+}
+
+.single-post .article-post .article-post__comments .comment-author .url {
+  color: #ffffff;
+}
+
+.single-post .article-post .article-post__comments .comment-author .fn {
+  display: inline-block;
+  margin: 0 0.625rem;
+  vertical-align: top;
+}
+
+.single-post .article-post .article-post__comments .comment-author .says {
+  display: none;
+}
+
+.single-post .article-post .article-post__comments .comment-meta a {
+  color: #cbcbcb;
+}
+
+.single-post .article-post .article-post__comments .comment-meta + p {
+  float: left;
+  font-size: 1.25rem;
+  margin-top: 0.625rem;
+  padding-left: 4.375rem;
+  padding-right: 5%;
+  text-align: left;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+  width: 100%;
+}
+
+.single-post .article-post .article-post__comments .reply {
+  border-bottom: 0.0625rem dotted #000000;
+  float: right;
+  margin-top: 0.9375rem;
+}
+
+.single-post .article-post .article-post__comments .comment-respond {
+  margin-top: 1.25rem;
+}
+
+.single-post .article-post .article-post__comments .comment-respond .comment-reply-title {
+  font-size: 1.25rem;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+}
+
+.single-post .article-post .article-post__comments .comment-form .comment-notes {
+  margin-bottom: 1.25rem;
+}
+
+.single-post .article-post .article-post__comments .comment-form .required {
+  color: #8f4319;
+  display: inline-block;
+  font-size: 1.25rem;
+  line-height: 0;
+  margin-left: 0.3125rem;
+}
+
+.single-post .article-post .article-post__comments .comment-form input[type="text"],
+.single-post .article-post .article-post__comments .comment-form input[type="email"],
+.single-post .article-post .article-post__comments .comment-form input[type="password"],
+.single-post .article-post .article-post__comments .comment-form button[type="submit"],
+.single-post .article-post .article-post__comments .comment-form textarea {
+  font-size: 1.5625rem;
+}
+
+.single-post .article-post .article-post__comments .comment-form input[type="text"],
+.single-post .article-post .article-post__comments .comment-form input[type="email"],
+.single-post .article-post .article-post__comments .comment-form input[type="password"],
+.single-post .article-post .article-post__comments .comment-form textarea {
+  background: transparent;
+  border-color: #ffffff;
+  border-style: solid;
+  border-width: 0 0 0.1875rem 0;
+}
+
+.single-post .article-post .article-post__comments .comment-form input[type="text"]::-webkit-input-placeholder,
+.single-post .article-post .article-post__comments .comment-form input[type="email"]::-webkit-input-placeholder,
+.single-post .article-post .article-post__comments .comment-form input[type="password"]::-webkit-input-placeholder,
+.single-post .article-post .article-post__comments .comment-form textarea::-webkit-input-placeholder {
+  color: #ffffff;
+}
+
+.single-post .article-post .article-post__comments .comment-form input[type="text"]:-moz-placeholder,
+.single-post .article-post .article-post__comments .comment-form input[type="email"]:-moz-placeholder,
+.single-post .article-post .article-post__comments .comment-form input[type="password"]:-moz-placeholder,
+.single-post .article-post .article-post__comments .comment-form textarea:-moz-placeholder {
+  /* Firefox 18- */
+  color: #ffffff;
+}
+
+.single-post .article-post .article-post__comments .comment-form input[type="text"]::-moz-placeholder,
+.single-post .article-post .article-post__comments .comment-form input[type="email"]::-moz-placeholder,
+.single-post .article-post .article-post__comments .comment-form input[type="password"]::-moz-placeholder,
+.single-post .article-post .article-post__comments .comment-form textarea::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #ffffff;
+}
+
+.single-post .article-post .article-post__comments .comment-form input[type="text"]:-ms-input-placeholder,
+.single-post .article-post .article-post__comments .comment-form input[type="email"]:-ms-input-placeholder,
+.single-post .article-post .article-post__comments .comment-form input[type="password"]:-ms-input-placeholder,
+.single-post .article-post .article-post__comments .comment-form textarea:-ms-input-placeholder {
+  color: #ffffff;
+}
+
+.single-post .article-post .article-post__comments .comment-form input[type="text"]:focus,
+.single-post .article-post .article-post__comments .comment-form input[type="email"]:focus,
+.single-post .article-post .article-post__comments .comment-form input[type="password"]:focus,
+.single-post .article-post .article-post__comments .comment-form textarea:focus {
+  outline: none;
+}
+
+.single-post .article-post .article-post__comments .comment-form input[type="text"],
+.single-post .article-post .article-post__comments .comment-form input[type="email"],
+.single-post .article-post .article-post__comments .comment-form input[type="password"] {
+  color: #ffffff;
+  display: block;
+  width: 100%;
+}
+
+.single-post .article-post .article-post__comments .comment-form input[type="text"]:focus,
+.single-post .article-post .article-post__comments .comment-form input[type="email"]:focus,
+.single-post .article-post .article-post__comments .comment-form input[type="password"]:focus {
+  border-color: transparent;
+  border-bottom-color: #ffffff;
+  outline: none;
+}
+
+.single-post .article-post .article-post__comments .comment-form textarea {
+  background: #ffffff;
+  padding: 0.9375rem;
+}
+
+.single-post .article-post .article-post__comments .comment-form label {
+  font-size: 1rem;
+  margin: 1.875rem 0 0;
+  text-align: left;
+}
+
+.single-post .article-post .article-post__comments .comment-form .form-submit {
+  margin-top: 1.25rem;
+}
+
+.single-post .article-post .article-post__comments .comment-form .submit {
+  font-size: 0.9rem;
+  display: inline-block;
+  width: auto;
+  margin: 0 1rem 1rem 0;
+  background: #9aa017;
+  color: #fff;
+  font-size: 1.25rem;
+}
+
+.single-post .article-post .article-post__comments .comment-form .submit:hover, .single-post .article-post .article-post__comments .comment-form .submit:focus {
+  background: #858a14;
+  color: #fff;
+}
+
+.single-post .article-post .article-post__comments ol,
+.single-post .article-post .article-post__comments ul {
+  list-style-type: none;
+}
+
+@media screen and (min-width: 30rem) {
+  .single-post .article-post .article-post__comments .comment-meta {
+    float: left;
+  }
+  .single-post .article-post .article-post__comments .comment-respond .comment-reply-title {
+    font-size: 1.375rem;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  .single-post .article-post .article-post__comments {
+    margin-top: 5rem;
   }
 }
 
@@ -5111,7 +5605,6 @@ Modal Window
   visibility: hidden;
   opacity: 0;
   -webkit-transform: scale(0);
-      -ms-transform: scale(0);
           transform: scale(0);
   -webkit-transition: -webkit-transform .3s 0s, visibility 0s .3s, opacity .3s 0s;
           transition: transform .3s 0s, visibility 0s .3s, opacity .3s 0s;
@@ -5139,7 +5632,6 @@ Modal Window
 
 .cd-modal .modal-close .icon-elt .icon:hover {
   -webkit-transform: rotate(90deg) scale(1.2);
-      -ms-transform: rotate(90deg) scale(1.2);
           transform: rotate(90deg) scale(1.2);
 }
 
@@ -5155,7 +5647,6 @@ Modal Window
   -webkit-transition: -webkit-transform .3s 0s, visibility 0s 0s, opacity .3s 0s;
           transition: transform .3s 0s, visibility 0s 0s, opacity .3s 0s;
   -webkit-transform: scale(1);
-      -ms-transform: scale(1);
           transform: scale(1);
 }
 
@@ -5166,7 +5657,6 @@ Modal Window
   padding: 3em 5% 4em;
   opacity: 0;
   -webkit-transform: translateY(3.125rem);
-      -ms-transform: translateY(3.125rem);
           transform: translateY(3.125rem);
   -webkit-transition: opacity 0.3s 0s, -webkit-transform 0.3s 0s;
           transition: opacity 0.3s 0s, transform 0.3s 0s;
@@ -5183,7 +5673,6 @@ Modal Window
 .modal-is-visible .cd-modal-content {
   opacity: 1;
   -webkit-transform: translateY(0);
-      -ms-transform: translateY(0);
           transform: translateY(0);
   -webkit-overflow-scrolling: touch;
   -webkit-transition: opacity 0.3s 0.3s, -webkit-transform 0.3s 0.3s;
@@ -5241,6 +5730,11 @@ Modal Window
   clear: both;
 }
 
+.info-section .info-section__content {
+  margin: 0 auto;
+  max-width: 87.5rem;
+}
+
 .info-section .title {
   display: inline-block;
   font-size: 1.5rem;
@@ -5258,14 +5752,12 @@ Modal Window
 .info-section .info-section__item.visible {
   opacity: 1;
   -webkit-transform: translateY(0);
-      -ms-transform: translateY(0);
           transform: translateY(0);
 }
 
 .no-js .info-section .info-section__item {
   opacity: 1;
   -webkit-transform: translateY(0);
-      -ms-transform: translateY(0);
           transform: translateY(0);
 }
 
@@ -5276,7 +5768,6 @@ Modal Window
   -webkit-transition: all 0.39s;
           transition: all 0.39s;
   -webkit-transform: translateY(-3.125rem);
-      -ms-transform: translateY(-3.125rem);
           transform: translateY(-3.125rem);
   text-decoration: none;
   opacity: 0;
@@ -5301,7 +5792,6 @@ Modal Window
   -webkit-transition: -webkit-transform 0.3s;
           transition: transform 0.3s;
   -webkit-transform: scale(1);
-      -ms-transform: scale(1);
           transform: scale(1);
   width: 6.25rem;
 }
@@ -5313,7 +5803,6 @@ Modal Window
 
 .info-section.missions .info-section__item:hover .icon, .info-section.activity .info-section__item:hover .icon {
   -webkit-transform: scale(1.3);
-      -ms-transform: scale(1.3);
           transform: scale(1.3);
 }
 
@@ -5358,7 +5847,6 @@ Modal Window
   position: relative;
   top: 50%;
   -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
           transform: translateY(-50%);
   -webkit-transition: top 0.3s, bottom 0.3s;
           transition: top 0.3s, bottom 0.3s;
@@ -5377,7 +5865,6 @@ Modal Window
   -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
           transition: opacity 0.3s, transform 0.3s;
   -webkit-transform: scale(1.4);
-      -ms-transform: scale(1.4);
           transform: scale(1.4);
   width: 100%;
 }
@@ -5402,7 +5889,6 @@ Modal Window
 .info-section.contact .info-section__item:hover .icon-elt::after {
   opacity: 1;
   -webkit-transform: scale(1);
-      -ms-transform: scale(1);
           transform: scale(1);
 }
 

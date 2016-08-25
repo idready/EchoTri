@@ -1,0 +1,907 @@
+@charset "UTF-8";
+/* ===========================================
+ * Here is a generic page and how basic import is done.
+ * Import order matters due to some variables used on some components
+ * =========================================== */
+/* Config: the config will decide  which part to include or not
+ * You can even create your own config per page if you wish and import it here
+ * ==================================== */
+/* Core
+ * ==================================== */
+/* ===========================================
+ * Framework's core components
+ * =========================================== */
+/* Normalize all elements
+ * ==================================== */
+/*! normalize.css v4.0.0 | MIT License | github.com/necolas/normalize.css */
+/**
+ * 1. Change the default font family in all browsers (opinionated).
+ * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
+ */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/**
+ * Remove the margin in all browsers (opinionated).
+ */
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in Edge, IE, and Firefox.
+ * 2. Add the correct display in IE.
+ */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+  /* 1 */
+  display: block;
+}
+
+/**
+ * Add the correct display in IE 9-.
+ */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in iOS 4-7.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Add the correct display in IE 10-.
+ * 1. Add the correct display in IE.
+ */
+template,
+[hidden] {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+
+/**
+ * Remove the outline on focused links when they are also active or hovered
+ * in all browsers (opinionated).
+ */
+a:active,
+a:hover {
+  outline-width: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * 1. Remove the bottom border in Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */
+}
+
+/**
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+ */
+b,
+strong {
+  font-weight: inherit;
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * Add the correct font style in Android 4.3-.
+ */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Add the correct background and color in IE 9-.
+ */
+mark {
+  background-color: #ff0;
+  color: #000;
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+img {
+  border-style: none;
+}
+
+/**
+ * Hide the overflow in IE.
+ */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/**
+ * Add the correct margin in IE 8.
+ */
+figure {
+  margin: 1em 2.5rem;
+}
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * Change font properties to `inherit` in all browsers (opinionated).
+ */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/**
+ * Restore the font weight unset by the previous rule.
+ */
+optgroup {
+  font-weight: bold;
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ * 2. Show the overflow in Edge, Firefox, and IE.
+ */
+button,
+input,
+select {
+  /* 2 */
+  overflow: visible;
+}
+
+/**
+ * Remove the margin in Safari.
+ * 1. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+select,
+textarea {
+  /* 1 */
+  margin: 0;
+}
+
+/**
+ * Remove the inheritence of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritence of text transform in Firefox.
+ */
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Change the cursor in all browsers (opinionated).
+ */
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  cursor: pointer;
+}
+
+/**
+ * Restore the default cursor to disabled elements unset by the previous rule.
+ */
+[disabled] {
+  cursor: default;
+}
+
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS.
+ */
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+input:-moz-focusring {
+  outline: 0.0625rem dotted ButtonText;
+}
+
+/**
+ * Change the border, margin, and padding in all browsers (opinionated).
+ */
+fieldset {
+  border: 0.0625rem solid #c0c0c0;
+  margin: 0 0.125rem;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */
+}
+
+/**
+ * Remove the default vertical scrollbar in IE.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-.
+ */
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the odd appearance of search inputs in Chrome and Safari.
+ */
+[type="search"] {
+  -webkit-appearance: textfield;
+}
+
+/**
+ * Remove the inner padding and cancel buttons in Chrome on OS X and
+ * Safari on OS X.
+ */
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/* Variables
+ * ==================================== */
+/* ===========================================
+ * Variables for components and more
+ * =========================================== */
+/* Exports
+ * source:
+ * [1] foundation.zurb.com
+ * [2] Twitter bootstrap
+ * ==================================== */
+/* Colors
+ * ==================================== */
+/* Grids
+ * ==================================== */
+/* Font-size
+ * ==================================== */
+/* Font-face names
+ * ==================================== */
+/* Animations
+ * ==================================== */
+/* Buttons
+ * ==================================== */
+/* Forms
+ * ==================================== */
+/* Mixins
+ * ==================================== */
+/* ===========================================
+ * Mixins
+ * =========================================== */
+/* Import mixins
+ * ==================================== */
+/* ===========================================
+ * @Mixin font-face
+ * =========================================== */
+/* Change this and add your own
+ * ==================================== */
+/* ===========================================
+ * @mixin: Keyframes
+ * =========================================== */
+/* Source: https://gist.github.com/ericam/1607696
+ * ==================================== */
+/* ===========================================
+ * @Mixin Golden Line-Height
+ * =========================================== */
+/* Golden lineheight based on : Chris Pearson article
+ *
+ * Define golden line-height mixin which define line-height by using:
+ * 1. Line-width (Paragraph width)
+ * 2. Font-size
+ * ==================================== */
+/* Calculate Line-height */
+/* $baseLineHeight is calculated thanks to Golden Ratio rules,
+ * read more here: http://www.pearsonified.com/typography/
+ * and especially this link for calculations details :
+ * http://www.pearsonified.com/2011/12/golden-ratio-typography.php
+*/
+/* ===========================================
+ * @mixin: media querie
+ * =========================================== */
+/* Simplest media querie mixin based on default breakpoints defined on variables and more
+ * ==================================== */
+/* ===========================================
+ * @mixin: Selection
+ * =========================================== */
+/* Change the selection background and color
+ * ==================================== */
+/* ===========================================
+ * @mixin: Related with px, the main goal is to avoid px use
+ * =========================================== */
+/* Rem font-size with px fallback;
+ * ==================================== */
+/* ParseInt
+ * ==================================== */
+/* Return a Rem size basd on $base-font-size: see variables file to edit
+ * ==================================== */
+/* ===========================================
+ * @mixin: Placeholder
+ * =========================================== */
+/* Change placeholder color
+ * ==================================== */
+/* ===========================================
+ * Helper classes
+ * =========================================== */
+/* Clearfix reset for Third party apps
+ * ==================================== */
+/* Vertically center element
+ * ==================================== */
+/*
+ * IE9+
+ *
+ * usage : @extend %vertical-align;
+ * This is used to avoid css rendering of the ruleset on css when extending;
+ * Source: http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
+ *
+ */
+/* Note: Add these properties on the parent element to avoid blurry effect */
+/* Helpers
+ * ==================================== */
+/* ===========================================
+ * Helper classes
+ * =========================================== */
+/* Clearfix
+ * ==================================== */
+/* Useful functions from foundation.zurb.com
+ * ==================================== */
+/* Grid
+ * ==================================== */
+/* ===========================================
+ * Specific rules for Grids
+ * =========================================== */
+/* Grid with Flexbox
+ * ==================================== */
+/* Grid without Flexbox
+ * ==================================== */
+/*** Mixins for grid columns ***/
+/*** Mixins for grid column type calculation ***/
+.span-xs-1, .span-sm-1, .span-md-1, .span-lg-1, .span-xlg-1, .span-xs-2, .span-sm-2, .span-md-2, .span-lg-2, .span-xlg-2, .span-xs-3, .span-sm-3, .span-md-3, .span-lg-3, .span-xlg-3, .span-xs-4, .span-sm-4, .span-md-4, .span-lg-4, .span-xlg-4, .span-xs-5, .span-sm-5, .span-md-5, .span-lg-5, .span-xlg-5, .span-xs-6, .span-sm-6, .span-md-6, .span-lg-6, .span-xlg-6, .span-xs-7, .span-sm-7, .span-md-7, .span-lg-7, .span-xlg-7, .span-xs-8, .span-sm-8, .span-md-8, .span-lg-8, .span-xlg-8, .span-xs-9, .span-sm-9, .span-md-9, .span-lg-9, .span-xlg-9, .span-xs-10, .span-sm-10, .span-md-10, .span-lg-10, .span-xlg-10, .span-xs-11, .span-sm-11, .span-md-11, .span-lg-11, .span-xlg-11, .span-xs-12, .span-sm-12, .span-md-12, .span-lg-12, .span-xlg-12 {
+  float: left;
+  min-height: 0.0625rem;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  position: relative;
+}
+
+/*** Mixins for each screen size ***/
+.span-xs-1 {
+  width: 8.3333333333%;
+}
+
+.span-xs-2 {
+  width: 16.6666666667%;
+}
+
+.span-xs-3 {
+  width: 25%;
+}
+
+.span-xs-4 {
+  width: 33.3333333333%;
+}
+
+.span-xs-5 {
+  width: 41.6666666667%;
+}
+
+.span-xs-6 {
+  width: 50%;
+}
+
+.span-xs-7 {
+  width: 58.3333333333%;
+}
+
+.span-xs-8 {
+  width: 66.6666666667%;
+}
+
+.span-xs-9 {
+  width: 75%;
+}
+
+.span-xs-10 {
+  width: 83.3333333333%;
+}
+
+.span-xs-11 {
+  width: 91.6666666667%;
+}
+
+.span-xs-12 {
+  width: 100%;
+}
+
+@media (min-width: 48rem) {
+  .span-sm-1 {
+    width: 8.3333333333%;
+  }
+  .span-sm-2 {
+    width: 16.6666666667%;
+  }
+  .span-sm-3 {
+    width: 25%;
+  }
+  .span-sm-4 {
+    width: 33.3333333333%;
+  }
+  .span-sm-5 {
+    width: 41.6666666667%;
+  }
+  .span-sm-6 {
+    width: 50%;
+  }
+  .span-sm-7 {
+    width: 58.3333333333%;
+  }
+  .span-sm-8 {
+    width: 66.6666666667%;
+  }
+  .span-sm-9 {
+    width: 75%;
+  }
+  .span-sm-10 {
+    width: 83.3333333333%;
+  }
+  .span-sm-11 {
+    width: 91.6666666667%;
+  }
+  .span-sm-12 {
+    width: 100%;
+  }
+}
+
+@media (min-width: 62rem) {
+  .span-md-1 {
+    width: 8.3333333333%;
+  }
+  .span-md-2 {
+    width: 16.6666666667%;
+  }
+  .span-md-3 {
+    width: 25%;
+  }
+  .span-md-4 {
+    width: 33.3333333333%;
+  }
+  .span-md-5 {
+    width: 41.6666666667%;
+  }
+  .span-md-6 {
+    width: 50%;
+  }
+  .span-md-7 {
+    width: 58.3333333333%;
+  }
+  .span-md-8 {
+    width: 66.6666666667%;
+  }
+  .span-md-9 {
+    width: 75%;
+  }
+  .span-md-10 {
+    width: 83.3333333333%;
+  }
+  .span-md-11 {
+    width: 91.6666666667%;
+  }
+  .span-md-12 {
+    width: 100%;
+  }
+}
+
+@media (min-width: 75rem) {
+  .span-lg-1 {
+    width: 8.3333333333%;
+  }
+  .span-lg-2 {
+    width: 16.6666666667%;
+  }
+  .span-lg-3 {
+    width: 25%;
+  }
+  .span-lg-4 {
+    width: 33.3333333333%;
+  }
+  .span-lg-5 {
+    width: 41.6666666667%;
+  }
+  .span-lg-6 {
+    width: 50%;
+  }
+  .span-lg-7 {
+    width: 58.3333333333%;
+  }
+  .span-lg-8 {
+    width: 66.6666666667%;
+  }
+  .span-lg-9 {
+    width: 75%;
+  }
+  .span-lg-10 {
+    width: 83.3333333333%;
+  }
+  .span-lg-11 {
+    width: 91.6666666667%;
+  }
+  .span-lg-12 {
+    width: 100%;
+  }
+}
+
+@media (min-width: 87.5rem) {
+  .span-xlg-1 {
+    width: 8.3333333333%;
+  }
+  .span-xlg-2 {
+    width: 16.6666666667%;
+  }
+  .span-xlg-3 {
+    width: 25%;
+  }
+  .span-xlg-4 {
+    width: 33.3333333333%;
+  }
+  .span-xlg-5 {
+    width: 41.6666666667%;
+  }
+  .span-xlg-6 {
+    width: 50%;
+  }
+  .span-xlg-7 {
+    width: 58.3333333333%;
+  }
+  .span-xlg-8 {
+    width: 66.6666666667%;
+  }
+  .span-xlg-9 {
+    width: 75%;
+  }
+  .span-xlg-10 {
+    width: 83.3333333333%;
+  }
+  .span-xlg-11 {
+    width: 91.6666666667%;
+  }
+  .span-xlg-12 {
+    width: 100%;
+  }
+}
+
+/** Viewport bugfix for IE10 on Windows 8 & W8 Phone (< update 3) **/
+@-webkit-viewport {
+  width: device-width;
+}
+
+@-moz-viewport {
+  width: device-width;
+}
+
+@-ms-viewport {
+  width: device-width;
+}
+
+@-o-viewport {
+  width: device-width;
+}
+
+@viewport {
+  width: device-width;
+}
+
+/* Typography
+  * ==================================== */
+/* ===========================================
+ * Typography
+ * =========================================== */
+/* Basic typography rules
+ * ==================================== */
+/* Page base
+ * ==================================== */
+/* ===========================================
+ * Specific rules page's base
+ * =========================================== */
+/* Define basic page's ruleset
+ * ==================================== */
+/**
+* apply a natural box layout model to all elements |
+* http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+* ONLY for IE8 and up browser support
+* OLD WAY
+*
+*,*:after,*:before {
+   @include box-sizing(border-box);
+}
+*/
+/*
+* Credits to csstricks.com and jon Neal
+* http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/?utm_source=dlvr.it&utm_medium=twitter
+*/
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/*
+*  Thanks Inuits.css Framework
+*  1. Make sure all viewport height is filled
+*  2. Make sure Fonts rendering is consistent on OSX when sub-pixel anti-aliasing is not supported.
+*/
+html {
+  font-size: 1rem;
+  line-height: 1.428571429;
+  overflow-y: scroll;
+  min-height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* This has been removed since it's bad for accessibility: http://outlinenone.fr/
+a,
+a:focus,
+a:active,
+button,
+button:active {
+   outline: none;
+}
+*/
+a:focus {
+  -moz-outline-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+
+/** Credits to Twitter's bootstrap **/
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/** Main wrapper rules here **/
+body {
+  color: #ffffff;
+}
+
+.content {
+  max-width: 87.5rem;
+  margin: 0 auto;
+}
+
+/* Print
+ * ==================================== */
+/* ===========================================
+ * Specific rules page's base
+ * =========================================== */
+/*
+  * source:
+  * [1] foundation.zurb.com
+  * [2] Twitter bootstrap
+  * [3] Inuit Css
+  * ==================================== */
+@media print {
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    /* Black prints faster: h5bp.com/s */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  /**
+       * Don’t show links that are fragment identifiers, or use the `javascript:`
+       * pseudo protocol.
+       */
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+}

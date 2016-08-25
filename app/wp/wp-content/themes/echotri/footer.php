@@ -10,14 +10,26 @@
  */
 ?>
 
-	  <!-- oter -->
+	  <!-- Footer -->
       <footer class="footer">
           <ul class="footer-links">
               <li class="footer-links__item">
                 <?php //Get this id dynamically ?>
                 <a href="#" my-modal-link data-modal-event="modal-trigger" page-type="secondary" data-type="cd-modal-trigger" data-posticon="people-us" data-postId="84">Qui sommes nous ?</a>
               </li>
-              <?php /* <li class="footer-links__item"><a href="#">Blog</a></li> */ ?>
+              <?php if(!is_home() || is_single()): ?>
+              <li class="footer-links__item">
+                <?php //Get this id dynamically ?>
+                <a href="<?php echo home_url() .'/blog/'?>">Blog</a>
+              </li>
+              <?php endif; ?>
+              <?php /* Only accepts connected users and different page from the one we want to display */
+                if ( is_user_logged_in() && !is_page_template('icons.php')):
+              ?>
+              <li class="footer-links__item">
+                <a href="<?php echo home_url() .'/icones/'?>" target="_blank" rel="noopener">Icones</a>
+              </li>
+              <?php endif; ?>
               <li class="footer-links__item"><a target="_blank" rel="noopener" href="https://www.facebook.com/EchoTri-545067608842775/">Facebook</a></li>
           </ul>
           <p class="footer-cpr">EchoTri tous droits reservés 2015</p>

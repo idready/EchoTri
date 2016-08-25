@@ -25,6 +25,12 @@
     position: relative;
     text-align: center;
 
+    .info-section__content {
+
+        margin: 0 auto;
+        max-width: $bp-xlg-screen;
+    }
+
     .title {
 
         display: inline-block;

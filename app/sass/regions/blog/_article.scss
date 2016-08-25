@@ -1,0 +1,322 @@
+
+/* ===========================================
+ * Specific rules for Article
+ * =========================================== */
+
+/* Specific rule section
+ * ==================================== */
+
+.single-post {
+
+
+    .article-post {
+
+        %link {
+
+            color: darken($info-color, 65%);
+
+            &:hover {
+                color: darken($info-color, 70%);
+            }
+        }
+
+        .article-post__header {
+
+            .article-post__title {
+                color: $primary-color;
+            }
+        }
+
+        .article-post__content {
+
+            margin-top: 40px;
+
+            h1 {
+                font-size: 22px;
+            }
+
+            ul,
+            ol {
+
+                display: inline-block;
+                list-style-type: disc;
+                margin-bottom: 20px;
+                text-align: left;
+            }
+
+            hr {
+                border-style: ridge;
+
+                // Space for the next title
+                +h1 {
+
+                    margin-top: 40px;
+                }
+            }
+
+            p {
+
+                margin-bottom: 20px;
+                text-align: justify;
+            }
+
+            // Font-size
+            a,
+            ul,
+            ol,
+            p {
+
+                font-size: 18px;
+                transition: $default-transition;
+            }
+
+            a {
+                @extend %link;
+            }
+
+            img {
+
+                height: auto;
+                margin-bottom: 10px;
+                max-width: 100%;
+
+                // Image alignments
+                &.alignleft{}
+                &.alignright{}
+                &.aligncenter{}
+            }
+
+            //Responsiveness
+            @include mq('sm') {
+
+                margin-top: 80px;
+
+                a,
+                ul,
+                ol,
+                p {
+                    font-size: 22px;
+                }
+            }
+
+        }
+
+        // comments
+        .article-post__comments {
+
+            margin: 40px auto 0;
+            max-width: 960px;
+
+            .comments-title {
+
+                margin-bottom: 20px;
+            }
+
+            .comment {
+
+                background: lighten($primary-color, 10%);
+                margin-bottom: 10px;
+                padding: 10px;
+
+                .children .comment {
+                    background: $primary-color;
+                }
+
+                img {
+                    border: 1px solid grey;
+                }
+            }
+
+            .comment-body {
+
+                @include clearfix();
+                margin-bottom: 20px;
+            }
+
+            // Metas
+            .comment-author {
+                float: left;
+            }
+
+            .comment-author {
+
+                .url {
+                    color: $white;
+                }
+                .fn {
+                    display: inline-block;
+                    margin: 0 10px;
+                    vertical-align: top;
+                }
+                .says {
+                    display: none;
+                }
+            }
+            .comment-meta {
+
+                a { // Shame on you wordpress, where is my class!!! o_o
+                    color: $gray-dark;
+
+                    &.comment-edit-link {
+
+                        @extend %link;
+                    }
+                }
+
+                // Comment content
+                + p {
+
+                    float: left;
+                    font-size: 20px;
+                    margin-top: 10px;
+                    padding-left: 70px; //60px which is the avatar image's width + 10px for the author name => 60+10
+                    padding-right: 5%;
+                    text-align: left;
+                    transition: $default-transition;
+                    width: 100%;
+                }
+            }
+
+            .reply {
+
+                border-bottom: 1px dotted $black;
+                float: right;
+                margin-top: 15px;
+            }
+
+            // Comment reply
+            .comment-respond {
+
+                margin-top: 20px;
+
+                .comment-reply-title {
+
+                    font-size: 20px;
+                    transition: $default-transition;
+                }
+            }
+
+            // Form
+            .comment-form {
+
+                .comment-notes {
+                    margin-bottom: 20px;
+                }
+
+                .required {
+
+                    color: $primary-color;
+                    display: inline-block;
+                    font-size: 20px;
+                    line-height: 0;
+                    margin-left: 5px;
+                }
+
+                // common
+                input[type="text"],
+                input[type="email"],
+                input[type="password"],
+                button[type="submit"],
+                textarea {
+                    font-size: 25px;
+                }
+
+                input[type="text"],
+                input[type="email"],
+                input[type="password"],
+                textarea {
+
+                    @include placeholder-color($white);
+
+                    background: transparent;
+                    border-color: $white;
+                    border-style: solid;
+                    border-width: 0 0 3px 0;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+                input[type="text"],
+                input[type="email"],
+                input[type="password"] {
+
+                    color: $white;
+                    display: block;
+                    width: 100%;
+
+                    &:focus {
+
+                        border-color: transparent;
+                        border-bottom-color: $white;
+                        outline: none;
+                    }
+                }
+
+                textarea {
+
+                    background: $white;
+                    padding: 15px;
+                }
+
+                label {
+
+                    font-size: 16px;
+                    margin: 30px 0 0;
+                    text-align: left;
+                }
+
+                .form-submit {
+                    margin-top: 20px;
+                }
+                .submit {
+
+                    @include button('md', false, $secondary-color, darken($secondary-color, 5%));
+                    font-size: 20px;
+                }
+            }
+
+            ol,
+            ul {
+                list-style-type: none;
+            }
+
+            a {
+                @extend %link;
+            }
+
+            //Responsiveness
+            @include mq('xs') {
+
+                .comment-meta {
+
+                    float: left;
+                }
+
+                // Comment reply
+                .comment-respond {
+
+                    .comment-reply-title {
+                        font-size: 22px;
+                    }
+                }
+
+                // Form
+                .comment-form {
+
+                }
+            }
+
+            @include mq('sm') {
+
+                margin-top: 80px;
+            }
+
+        }
+
+
+    }
+
+
+}
