@@ -27,10 +27,10 @@
                 if ( is_user_logged_in() && !is_page_template('icons.php')):
               ?>
               <li class="footer-links__item">
-                <a href="<?php echo home_url() .'/icones/'?>" target="_blank" rel="noopener">Icones</a>
+                <a href="<?php echo home_url() .'/icones/'?>" target="_blank" rel="noopener noreferrer">Icones</a>
               </li>
               <?php endif; ?>
-              <li class="footer-links__item"><a target="_blank" rel="noopener" href="https://www.facebook.com/EchoTri-545067608842775/">Facebook</a></li>
+              <li class="footer-links__item"><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/EchoTri-545067608842775/">Facebook</a></li>
           </ul>
           <p class="footer-cpr">EchoTri tous droits reservés 2015</p>
       </footer>
