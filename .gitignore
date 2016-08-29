@@ -68,8 +68,8 @@ app/wp/wp-content/plugins/
 app/wp/!wp-content/themes/
 app/wp/!wp-content/upgrade/
 app/wp/wp-content/languages/
-app/wp/wp-includes/
-app/wp/wp-admin/*
+#app/wp/wp-includes/
+#app/wp/wp-admin/*
 app/wp/wp-content/uploads/
 
 app/wp/wp-content/plugins/
