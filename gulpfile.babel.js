@@ -104,7 +104,7 @@ gulp.task('main-scripts', function() {
       'app/scripts/components/bower_components/angular-ui-router/release/angular-ui-router.min.js',
       'app/scripts/components/bower_components/angular-messages/angular-messages.js',
 
-      'app/scripts/components/bower_components/lodash/lodash.min.js',
+      'app/scripts/components/bower_components/lodash/dist/lodash.min.js',
       'app/scripts/components/bower_components/angular-simple-logger/dist/angular-simple-logger.min.js',
       'app/scripts/components/bower_components/angular-google-maps/dist/angular-google-maps.min.js',
 
