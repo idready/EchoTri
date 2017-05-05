@@ -130,3 +130,49 @@ function custom_pagination($numpages = '', $pagerange = '', $paged='') {
     }
 
 }
+
+// Add custom fields to json response
+function slug_register_featured() {
+    register_api_field( 'posts',
+        'featured',
+        array(
+            'get_callback'    => 'get_meta_to_response',
+            'update_callback' => null,
+            'schema'          => null,
+        )
+    );
+}
+add_action( 'rest_api_init', 'slug_register_featured' );
+
+function get_meta_to_response( $object, $field_name, $request ) {
+    return get_post_meta( $object[ 'id' ], $field_name, true );
+}
+
+add_filter( 'acf/rest_api/key', function( $key, $request, $type ) {
+    return 'acf_fields';
+}, 10, 3 );
+// add_filter( 'acf/rest_api/types', function( $types ) {
+//     if ( array_key_exists( 'post', $types ) ) {
+//         unset( $types['post'] );
+//     }
+// 
+//     return $types;
+// } );
+
+add_action( 'rest_api_init', 'slug_register_acf' );
+function slug_register_acf() {
+  $post_types = get_post_types(array('public'=>true), 'names');
+  foreach ($post_types as $type) {
+    register_api_field( $type,
+        'acf',
+        array(
+            'get_callback'    => 'slug_get_acf',
+            'update_callback' => null,
+            'schema'          => null,
+        )
+    );
+  }
+}
+function slug_get_acf( $object, $field_name, $request ) {
+    return get_fields($object[ 'id' ]);
+}
