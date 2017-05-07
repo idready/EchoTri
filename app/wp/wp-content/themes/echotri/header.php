@@ -21,6 +21,32 @@
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php endif; ?>
 	<title><?php bloginfo( 'name' ); ?></title>
+	<meta name="robots" content="index,follow,noodp"><?php /* All Search Engines */ ?>
+    <?php /* Tells Google not to provide a translation for this page */ ?>
+    <meta name="google" content="notranslate">
+    <?php /* Used to name software used to build the website (i.e. - WordPress, Dreamweaver) */ ?>
+    <meta name="generator" content="Wordpress, AngularJs">
+    <?php /* Short description of your site's subject */ ?>
+    <meta name="subject" content="Site de présentation du livre La Prohétie du Sang">
+    <?php /* Very short (10 words or less) description. Primarily for academic papers */ ?>
+    <meta name="abstract" content="Echotri">
+    <?php /* Full domain name or web address */ ?>
+    <meta name="url" content="http://echotri.fr/">
+    <?php /* Gives a general age rating based on sites content */ ?>
+    <meta name="rating" content="General">
+    <?php /* Allows control over how referrer information is passed */ ?>
+    <meta name="referrer" content="origin-when-cross-origin">
+    <?php /* Disable automatic detection and formatting of possible phone numbers */ ?>
+    <meta name="format-detection" content="telephone=no">
+    <?php /* Stores cookie on the client web browser for client identification */ ?>
+    <?php /* <meta http-equiv="set-cookie" content="name=value; expires=date; path=url"> */ ?>
+
+    <!-- @TODO: Add facebook and twitter sharable specific meta tags -->
+
+    <!-- Links to the author of the document -->
+    <link rel="author" href="humans.txt">
+    <!-- Gives information about an author or another person -->
+    <link rel="me" href="mailto:william-harker@filgmail.com">
 
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
