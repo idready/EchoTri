@@ -37,7 +37,7 @@ gulp.task('styles', () => {
         .pipe($.plumber())
         .pipe($.sourcemaps.init())
         .pipe($.sass.sync({
-            outputStyle: 'expanded',
+            outputStyle: argv.d === 'dev' ? 'expanded' : 'compressed',
             precision: 10,
             includePaths: ['.']
         }).on('error', $.sass.logError))
@@ -46,6 +46,20 @@ gulp.task('styles', () => {
         .pipe($.pxtorem(pxtoremOptions, postcssOptions))
         .pipe(gulp.dest('app/styles'))
         .pipe(reload({stream: true}));
+});
+
+gulp.task('ngTemplates', ['clean'], function () {
+    return gulp.src('app/scripts/directives/templates/**/*.html')
+        .pipe($.htmlmin({collapseWhitespace: true}))
+        .pipe($.ngTemplates({
+            filename: 'templates.js',
+            module: 'app/scripts/',
+            path: (path, base) => {
+                return path.replace(base, '').replace('/templates', '');
+            }
+        }))
+        .pipe(gulp.dest('app/scripts/template/js/'))
+        .pipe($.copy('app/wp/wp-content/themes/echotri/js/', {prefix: 2}));
 });
 
 function lint(files, options) {
@@ -63,7 +77,7 @@ const testLintOptions = {
   }
 };
 
-gulp.task('wp-styles', () => {
+gulp.task('wp-styles', ['styles'],  () => {
 
   console.log('copied stylesheet file for WP');
   return gulp.src('app/styles/home.css')
@@ -224,7 +238,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['styles', 'fonts'], () => {
+gulp.task('serve', ['styles', 'fonts', 'ngTemplates'], () => {
     browserSync({
     notify: false,
     port: 9000,
@@ -248,6 +262,7 @@ gulp.task('serve', ['styles', 'fonts'], () => {
     gulp.watch('app/styles/**/*.css', ['wp-styles']);
     gulp.watch('app/images/svg-src/{,*/}*.svg', ['svgstore']);
     gulp.watch('app/fonts/**/*', ['fonts']);
+    gulp.watch('app/scripts/directives/**/*.html', ['ngTemplates']);
     gulp.watch('bower.json', ['wiredep', 'fonts']);
 });
 

@@ -63,7 +63,7 @@
             <li class="ng-hide" ng-show="echoForm.firstName.$error.minlength">Ce champ requiert au moins 3 caractères.</li>
             <li class="ng-hide" ng-show="echoForm.firstName.$error.maxlength">Ce champ excède le maximum de 30 caractères autorisés.</li>
         </ul>
-
+            
         <!-- Email Field -->
         <div class="input-block">
             <input type="email" ng-disabled="form.handle" ng-model="guest.email" ng-minlength="5"  name="email" id="email" placeholder="Votre email*" ng-model-options="{ allowInvalid: true }" required>
